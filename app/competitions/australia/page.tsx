@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Award, MapPin, Calendar, Users } from "lucide-react";
 
 export default function AustraliaCompetitionPage() {
@@ -111,10 +110,10 @@ export default function AustraliaCompetitionPage() {
               </p>
               <div className="border-l-4 border-blue-600 pl-6 mb-6">
                 <p className="text-xl text-gray-800 font-medium leading-relaxed">
-                  The championship's pinnacle moment came with securing the
+                  The championship&apos;s pinnacle moment came with securing the
                   silver medal in the Line Throw event, where Daniel and Adam
-                  Pekař's perfect synchronization showcased Czech excellence on
-                  the international stage.
+                  Pekař&apos;s perfect synchronization showcased Czech
+                  excellence on the international stage.
                 </p>
               </div>
               <p className="text-lg text-gray-700 leading-relaxed">
