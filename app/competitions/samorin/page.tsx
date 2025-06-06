@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import { Award, MapPin, Calendar, Users, Clock } from "lucide-react";
+import { MapPin, Calendar, Users, Clock } from "lucide-react";
 
 export default function SamorinCompetitionPage() {
   const events = [
@@ -117,7 +116,7 @@ export default function SamorinCompetitionPage() {
               <p className="text-lg text-gray-700 leading-relaxed">
                 Each event offered unique challenges, from explosive sprint
                 performances to technical stroke precision, contributing to
-                Daniel's overall development as a competitive swimmer.
+                Daniel&apos;s overall development as a competitive swimmer.
               </p>
             </div>
             <div className="relative">

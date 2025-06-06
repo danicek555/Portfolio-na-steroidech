@@ -28,7 +28,7 @@ const About: React.FC = () => {
               mixed 4x50m medley relay team at the 2022 Winter Championship in
               Mladá Boleslav. Competing at the highest national level, Daniel
               has secured multiple individual and relay medals, contributing to
-              his team's impressive tally of six individual and four relay
+              his team&apos;s impressive tally of six individual and four relay
               medals. With his proven track record in competitive swimming,
               Daniel is now setting his sights on joining the Colorado
               Hilltoppers team while pursuing his education in the U.S.

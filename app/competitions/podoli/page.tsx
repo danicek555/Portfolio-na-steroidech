@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
-import { Award, MapPin, Calendar, Users, Trophy, Target } from "lucide-react";
+
+import { MapPin, Calendar, Trophy, Target } from "lucide-react";
 
 export default function PodoliCompetitionPage() {
   const events = [
@@ -109,7 +109,7 @@ export default function PodoliCompetitionPage() {
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 The Czech National Swimming Championship (MCR) in Podolí
                 represents the pinnacle of domestic swimming competition, where
-                the nation's best swimmers compete for national titles and
+                the nation&apos;s best swimmers compete for national titles and
                 records.
               </p>
               <div className="border-l-4 border-red-600 pl-6 mb-6">
@@ -121,8 +121,8 @@ export default function PodoliCompetitionPage() {
               </div>
               <p className="text-lg text-gray-700 leading-relaxed">
                 This championship serves as a crucial stepping stone for
-                international competitions and demonstrates Daniel's commitment
-                to achieving excellence in Czech swimming.
+                international competitions and demonstrates Daniel&apos;s
+                commitment to achieving excellence in Czech swimming.
               </p>
             </div>
             <div className="relative">
@@ -180,8 +180,8 @@ export default function PodoliCompetitionPage() {
               <div className="max-w-3xl mx-auto">
                 <p className="text-xl text-gray-700 leading-relaxed mb-6">
                   The Czech National Swimming Championship in Podolí provided an
-                  invaluable opportunity to compete against the country's elite
-                  swimmers in a world-class facility.
+                  invaluable opportunity to compete against the country&apos;s
+                  elite swimmers in a world-class facility.
                 </p>
                 <div className="flex items-center justify-center gap-4">
                   <Trophy className="w-8 h-8 text-red-600" />
