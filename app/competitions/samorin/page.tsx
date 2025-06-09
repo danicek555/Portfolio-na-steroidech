@@ -121,7 +121,7 @@ export default function SamorinCompetitionPage() {
             </div>
             <div className="relative">
               <Image
-                src="/samorin.png"
+                src="/samorin.jpg"
                 alt="Slovakia Cup competition"
                 width={600}
                 height={400}
