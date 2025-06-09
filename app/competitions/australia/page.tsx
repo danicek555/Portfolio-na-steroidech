@@ -198,7 +198,7 @@ export default function AustraliaCompetitionPage() {
               </div>
               <div className="relative h-64 rounded-xl overflow-hidden group">
                 <Image
-                  src="/ausFoto.jpg"
+                  src="/ausFoto.JPG"
                   alt="Championship team photo"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-300"
