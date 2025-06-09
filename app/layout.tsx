@@ -2,7 +2,7 @@ import "./styles/globals.css";
 //import "./styles/custom.css"; // <== přidáš tohle
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
-import { fontFamily, roboto, montserrat } from "./fonts";
+import { roboto, montserrat } from "./fonts";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
