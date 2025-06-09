@@ -28,7 +28,7 @@ const projects: Project[] = [
       "A bot that automatically buys tickets on Ticketportal for a specific event with specific search parameters.",
     technologies: ["NodeJS", "Javascript", "Puppeteer"],
     link: "https://github.com/danicek555/Auto-Kupovani-Listku",
-    img: "/botTicketportal.png",
+    img: "/botTicketPortal.png",
     type: "external",
     featured: true,
   },
