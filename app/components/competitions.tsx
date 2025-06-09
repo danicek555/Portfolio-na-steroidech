@@ -21,7 +21,7 @@ const competitions: Competition[] = [
     description:
       "Witness Daniel's incredible journey to becoming a World Vice-champion in lifesaving.",
     link: "/competitions/australia",
-    img: "/ausFoto.JPG",
+    img: "/ausFoto.jpg",
   },
   {
     title: "Slovakia Cup Šamorín 2024",
