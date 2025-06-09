@@ -31,7 +31,7 @@ export default function SamorinCompetitionPage() {
       <section className="relative h-screen flex items-center justify-center text-white">
         <div className="absolute inset-0">
           <Image
-            src="/samorin.png"
+            src="/samorin.jpg"
             alt="Slovakia Cup Šamorín 2024"
             fill
             className="object-cover"

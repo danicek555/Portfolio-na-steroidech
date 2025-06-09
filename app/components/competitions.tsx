@@ -21,14 +21,14 @@ const competitions: Competition[] = [
     description:
       "Witness Daniel's incredible journey to becoming a World Vice-champion in lifesaving.",
     link: "/competitions/australia",
-    img: "/ausFoto.jpg",
+    img: "/ausFoto_temp.jpg",
   },
   {
     title: "Slovakia Cup Šamorín 2024",
     description:
       "International swimming competition showcasing versatility across multiple disciplines in Slovakia.",
     link: "/competitions/samorin",
-    img: "/samorin.png",
+    img: "/samorin.jpg",
   },
 ];
 
