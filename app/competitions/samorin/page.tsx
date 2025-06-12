@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { MapPin, Calendar, Users, Clock } from "lucide-react";
+import { useTheme } from "../../components/ThemeProvider";
 
 export default function SamorinCompetitionPage() {
+  const { isDarkMode } = useTheme();
+
   const events = [
     {
       event: "50m Freestyle",
@@ -26,7 +31,11 @@ export default function SamorinCompetitionPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div
+      className={`min-h-screen transition-colors duration-300 ${
+        isDarkMode ? "bg-gray-900" : "bg-white"
+      }`}
+    >
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center text-white">
         <div className="absolute inset-0">
@@ -55,11 +64,21 @@ export default function SamorinCompetitionPage() {
             <span className="block text-blue-400">Šamorín 2024</span>
           </h1>
 
-          <div className="bg-white/95 rounded-2xl p-8 inline-flex items-center gap-6 text-gray-900 shadow-2xl">
+          <div
+            className={`${
+              isDarkMode ? "bg-gray-800/95" : "bg-white/95"
+            } rounded-2xl p-8 inline-flex items-center gap-6 ${
+              isDarkMode ? "text-white" : "text-gray-900"
+            } shadow-2xl transition-colors duration-300`}
+          >
             <div className="text-6xl">🏊‍♂️</div>
             <div className="text-left">
               <h3 className="text-2xl font-bold mb-2">Swimming Excellence</h3>
-              <p className="text-gray-600 text-lg">
+              <p
+                className={`${
+                  isDarkMode ? "text-gray-300" : "text-gray-600"
+                } text-lg transition-colors duration-300`}
+              >
                 Multiple Events Participation
               </p>
             </div>
@@ -72,25 +91,73 @@ export default function SamorinCompetitionPage() {
         <div className="max-w-6xl mx-auto">
           {/* Event Info */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl">
+            <div
+              className={`flex items-center gap-4 p-6 ${
+                isDarkMode ? "bg-gray-800" : "bg-gray-50"
+              } rounded-xl transition-colors duration-300`}
+            >
               <MapPin className="w-8 h-8 text-purple-600" />
               <div>
-                <h3 className="font-bold text-gray-900">Location</h3>
-                <p className="text-gray-600">Šamorín, Slovakia</p>
+                <h3
+                  className={`font-bold ${
+                    isDarkMode ? "text-white" : "text-gray-900"
+                  } transition-colors duration-300`}
+                >
+                  Location
+                </h3>
+                <p
+                  className={`${
+                    isDarkMode ? "text-gray-300" : "text-gray-600"
+                  } transition-colors duration-300`}
+                >
+                  Šamorín, Slovakia
+                </p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl">
+            <div
+              className={`flex items-center gap-4 p-6 ${
+                isDarkMode ? "bg-gray-800" : "bg-gray-50"
+              } rounded-xl transition-colors duration-300`}
+            >
               <Calendar className="w-8 h-8 text-purple-600" />
               <div>
-                <h3 className="font-bold text-gray-900">Date</h3>
-                <p className="text-gray-600">2024</p>
+                <h3
+                  className={`font-bold ${
+                    isDarkMode ? "text-white" : "text-gray-900"
+                  } transition-colors duration-300`}
+                >
+                  Date
+                </h3>
+                <p
+                  className={`${
+                    isDarkMode ? "text-gray-300" : "text-gray-600"
+                  } transition-colors duration-300`}
+                >
+                  2024
+                </p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl">
+            <div
+              className={`flex items-center gap-4 p-6 ${
+                isDarkMode ? "bg-gray-800" : "bg-gray-50"
+              } rounded-xl transition-colors duration-300`}
+            >
               <Users className="w-8 h-8 text-purple-600" />
               <div>
-                <h3 className="font-bold text-gray-900">Competition</h3>
-                <p className="text-gray-600">Slovakia Cup</p>
+                <h3
+                  className={`font-bold ${
+                    isDarkMode ? "text-white" : "text-gray-900"
+                  } transition-colors duration-300`}
+                >
+                  Competition
+                </h3>
+                <p
+                  className={`${
+                    isDarkMode ? "text-gray-300" : "text-gray-600"
+                  } transition-colors duration-300`}
+                >
+                  Slovakia Cup
+                </p>
               </div>
             </div>
           </div>
@@ -98,22 +165,38 @@ export default function SamorinCompetitionPage() {
           {/* Story */}
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2
+                className={`text-4xl font-bold ${
+                  isDarkMode ? "text-white" : "text-gray-900"
+                } mb-6 transition-colors duration-300`}
+              >
                 International Experience
               </h2>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              <p
+                className={`text-lg ${
+                  isDarkMode ? "text-gray-300" : "text-gray-700"
+                } mb-6 leading-relaxed transition-colors duration-300`}
+              >
                 The Slovakia Cup in Šamorín represents an important
                 international swimming competition where Daniel Mitka showcased
                 his versatility across multiple swimming disciplines.
               </p>
               <div className="border-l-4 border-purple-600 pl-6 mb-6">
-                <p className="text-xl text-gray-800 font-medium leading-relaxed">
+                <p
+                  className={`text-xl ${
+                    isDarkMode ? "text-gray-200" : "text-gray-800"
+                  } font-medium leading-relaxed transition-colors duration-300`}
+                >
                   This competition provided valuable international experience,
                   competing against swimmers from across Central Europe and
                   testing skills in various swimming strokes and distances.
                 </p>
               </div>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p
+                className={`text-lg ${
+                  isDarkMode ? "text-gray-300" : "text-gray-700"
+                } leading-relaxed transition-colors duration-300`}
+              >
                 Each event offered unique challenges, from explosive sprint
                 performances to technical stroke precision, contributing to
                 Daniel&apos;s overall development as a competitive swimmer.
@@ -132,25 +215,41 @@ export default function SamorinCompetitionPage() {
 
           {/* Events Participated */}
           <div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">
+            <h2
+              className={`text-4xl font-bold ${
+                isDarkMode ? "text-white" : "text-gray-900"
+              } mb-8 text-center transition-colors duration-300`}
+            >
               Events Participated
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {events.map((event, index) => (
                 <div
                   key={index}
-                  className="p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300"
+                  className={`p-6 ${
+                    isDarkMode
+                      ? "bg-gray-800 hover:bg-gray-700"
+                      : "bg-gray-50 hover:bg-gray-100"
+                  } rounded-xl transition-all duration-300`}
                 >
                   <div className="flex items-center gap-4">
                     <Clock className="w-8 h-8 text-purple-600" />
                     <div>
-                      <h3 className="font-bold text-gray-900 mb-1">
+                      <h3
+                        className={`font-bold ${
+                          isDarkMode ? "text-white" : "text-gray-900"
+                        } mb-1 transition-colors duration-300`}
+                      >
                         {event.event}
                       </h3>
                       <p className="text-purple-600 font-semibold text-sm mb-2">
                         {event.status}
                       </p>
-                      <p className="text-gray-600 text-sm">
+                      <p
+                        className={`${
+                          isDarkMode ? "text-gray-300" : "text-gray-600"
+                        } text-sm transition-colors duration-300`}
+                      >
                         {event.description}
                       </p>
                     </div>

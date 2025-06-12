@@ -1,4 +1,11 @@
+"use client";
+
+import { useTheme } from "./ThemeProvider";
+import clsx from "clsx";
+
 const Hero: React.FC = () => {
+  const { isDarkMode } = useTheme();
+
   return (
     <section
       id="home"
@@ -9,19 +16,32 @@ const Hero: React.FC = () => {
         backgroundPosition: "center",
       }}
     >
-      {/* Dark overlay for better text readability */}
-      {/* <div className="absolute inset-0 bg-black bg-opacity-40"></div> */}
       {/* Content */}
-      <div className="relative z-10 text-left text-white max-w-2xl">
-        <h1 className="text-6xl font-bold mb-6 font-montserrat">
+      <div className="relative z-10 text-left max-w-2xl">
+        <h1
+          className={clsx(
+            "text-6xl font-bold mb-6 font-montserrat transition-colors duration-300",
+            isDarkMode ? "text-blue-100" : "text-white"
+          )}
+        >
           Daniel Mitka
         </h1>
-        <p className="text-2xl mb-8 leading-relaxed font-montserrat">
+        <p
+          className={clsx(
+            "text-2xl mb-8 leading-relaxed font-montserrat transition-colors duration-300",
+            isDarkMode ? "text-blue-200" : "text-gray-100"
+          )}
+        >
           Czech Youth Swimming Champion & Lifesaving Medalist
         </p>
         <a
           href="#footer"
-          className="inline-block bg-green-500 text-white px-8 py-3 rounded font-bold text-lg hover:bg-green-600 transition-colors"
+          className={clsx(
+            "inline-block px-8 py-3 rounded font-bold text-lg transition-all duration-300",
+            isDarkMode
+              ? "bg-blue-600 hover:bg-blue-700 text-white"
+              : "bg-green-500 hover:bg-green-600 text-white"
+          )}
         >
           Get in touch
         </a>

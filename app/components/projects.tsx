@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "./ThemeProvider";
 
 type Project = {
   title: string;
@@ -36,14 +39,25 @@ const projects: Project[] = [
 ];
 
 const Projects: React.FC = () => {
+  const { isDarkMode } = useTheme();
+
   return (
-    <section id="work" className="py-16 px-8 bg-white">
+    <section
+      id="work"
+      className={`py-16 px-8 ${
+        isDarkMode ? "bg-gray-900" : "bg-white"
+      } transition-colors duration-300`}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h3 className="text-green-500 text-sm font-semibold uppercase tracking-wider mb-4">
             COMPUTER SCIENCE PROJECTS
           </h3>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-8">
+          <h2
+            className={`text-4xl md:text-5xl font-bold ${
+              isDarkMode ? "text-white" : "text-gray-800"
+            } mb-8 transition-colors duration-300`}
+          >
             My Recent Works
           </h2>
         </div>
@@ -59,14 +73,28 @@ const Projects: React.FC = () => {
                   rel="noopener noreferrer"
                   className="block group cursor-pointer"
                 >
-                  <div className="bg-gray-50 rounded-3xl p-8 md:p-16 transition-all duration-500 group-hover:bg-gray-100">
+                  <div
+                    className={`${
+                      isDarkMode
+                        ? "bg-gray-800 group-hover:bg-gray-700"
+                        : "bg-gray-50 group-hover:bg-gray-100"
+                    } rounded-3xl p-8 md:p-16 transition-all duration-500`}
+                  >
                     <div className="flex flex-col lg:flex-row items-center gap-12">
                       {/* Project Info */}
                       <div className="flex-1 text-center lg:text-left">
-                        <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                        <h3
+                          className={`text-4xl md:text-5xl font-bold ${
+                            isDarkMode ? "text-white" : "text-gray-900"
+                          } mb-6 transition-colors duration-300`}
+                        >
                           {project.title}
                         </h3>
-                        <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl">
+                        <p
+                          className={`text-xl ${
+                            isDarkMode ? "text-gray-300" : "text-gray-600"
+                          } mb-8 leading-relaxed max-w-2xl transition-colors duration-300`}
+                        >
                           {project.description}
                         </p>
 
@@ -75,7 +103,11 @@ const Projects: React.FC = () => {
                           {project.technologies.map((tech, index) => (
                             <span
                               key={index}
-                              className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium group-hover:bg-gray-300 transition-colors duration-300"
+                              className={`${
+                                isDarkMode
+                                  ? "bg-gray-700 text-gray-300 group-hover:bg-gray-600"
+                                  : "bg-gray-200 text-gray-700 group-hover:bg-gray-300"
+                              } px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300`}
                             >
                               {tech}
                             </span>
@@ -117,7 +149,13 @@ const Projects: React.FC = () => {
                 </a>
               ) : (
                 // Regular Project Card for future projects
-                <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-102 hover:-translate-y-2 transition-all duration-300 transform border border-gray-100">
+                <div
+                  className={`${
+                    isDarkMode
+                      ? "bg-gray-800 border-gray-700"
+                      : "bg-white border-gray-100"
+                  } rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-102 hover:-translate-y-2 transition-all duration-300 transform border`}
+                >
                   <div className="relative h-64 md:h-80">
                     <Image
                       src={project.img}
@@ -131,16 +169,28 @@ const Projects: React.FC = () => {
                       {project.technologies.map((tech, index) => (
                         <span
                           key={index}
-                          className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs font-medium"
+                          className={`${
+                            isDarkMode
+                              ? "bg-gray-700 text-gray-300"
+                              : "bg-gray-100 text-gray-700"
+                          } px-2 py-1 rounded text-xs font-medium transition-colors duration-300`}
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-3">
+                    <h3
+                      className={`text-xl font-bold ${
+                        isDarkMode ? "text-white" : "text-gray-800"
+                      } mb-3 transition-colors duration-300`}
+                    >
                       {project.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
+                    <p
+                      className={`${
+                        isDarkMode ? "text-gray-300" : "text-gray-600"
+                      } mb-4 leading-relaxed transition-colors duration-300`}
+                    >
                       {project.description}
                     </p>
                     {project.type === "internal" ? (

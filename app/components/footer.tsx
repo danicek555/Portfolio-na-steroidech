@@ -1,8 +1,20 @@
+"use client";
+
 import { Mail, Phone, ExternalLink, Facebook, Instagram } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
+import clsx from "clsx";
 
 const Footer: React.FC = () => {
+  const { isDarkMode } = useTheme();
+
   return (
-    <footer id="footer" className="bg-white text-black">
+    <footer
+      id="footer"
+      className={clsx(
+        "transition-colors duration-300",
+        isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
+      )}
+    >
       <div className="max-w-6xl mx-auto px-6 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Contact Information */}
@@ -11,14 +23,24 @@ const Footer: React.FC = () => {
             <div className="space-y-3">
               <a
                 href="mailto:danmitka@gmail.com"
-                className="flex items-center text-black-300 hover:text-gray transition-colors duration-200"
+                className={clsx(
+                  "flex items-center transition-colors duration-200",
+                  isDarkMode
+                    ? "text-gray-300 hover:text-white"
+                    : "text-gray-600 hover:text-gray-800"
+                )}
               >
                 <Mail className="w-4 h-4 mr-2" />
                 danmitka@gmail.com
               </a>
               <a
                 href="tel:+420735872528"
-                className="flex items-center text-black-300 hover:text-gray transition-colors duration-200"
+                className={clsx(
+                  "flex items-center transition-colors duration-200",
+                  isDarkMode
+                    ? "text-gray-300 hover:text-white"
+                    : "text-gray-600 hover:text-gray-800"
+                )}
               >
                 <Phone className="w-4 h-4 mr-2" />
                 +420 735 872 528
@@ -27,7 +49,12 @@ const Footer: React.FC = () => {
                 href="https://vysledky.czechswimming.cz/lide/59887000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center text-black-300 hover:text-gray transition-colors duration-200"
+                className={clsx(
+                  "flex items-center transition-colors duration-200",
+                  isDarkMode
+                    ? "text-gray-300 hover:text-white"
+                    : "text-gray-600 hover:text-gray-800"
+                )}
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
                 Swimming Statistics
@@ -41,7 +68,12 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-black-300 hover:text-gray transition-colors duration-200"
+                className={clsx(
+                  "transition-colors duration-200",
+                  isDarkMode
+                    ? "text-gray-300 hover:text-white"
+                    : "text-gray-600 hover:text-gray-800"
+                )}
                 aria-label="Facebook"
               >
                 <Facebook className="w-6 h-6" />
@@ -49,7 +81,12 @@ const Footer: React.FC = () => {
               <a
                 href="https://www.instagram.com/dan_mitka"
                 target="_blank"
-                className="text-black-300 hover:text-gray transition-colors duration-200"
+                className={clsx(
+                  "transition-colors duration-200",
+                  isDarkMode
+                    ? "text-gray-300 hover:text-white"
+                    : "text-gray-600 hover:text-gray-800"
+                )}
                 aria-label="Instagram"
               >
                 <Instagram className="w-6 h-6" />
@@ -60,7 +97,12 @@ const Footer: React.FC = () => {
           {/* About */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Daniel Mitka</h3>
-            <p className="text-black-300 text-sm leading-relaxed">
+            <p
+              className={clsx(
+                "text-sm leading-relaxed",
+                isDarkMode ? "text-gray-300" : "text-gray-600"
+              )}
+            >
               Passionate developer and swimming enthusiast. Building digital
               experiences and tracking athletic performance.
             </p>
@@ -68,8 +110,18 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-black-700 mt-8 pt-6 text-center">
-          <p className="text-black-400 text-sm">
+        <div
+          className={clsx(
+            "border-t mt-8 pt-6 text-center",
+            isDarkMode ? "border-gray-600" : "border-gray-200"
+          )}
+        >
+          <p
+            className={clsx(
+              "text-sm",
+              isDarkMode ? "text-gray-400" : "text-gray-500"
+            )}
+          >
             &copy; {new Date().getFullYear()} Daniel Mitka. All rights reserved.
           </p>
         </div>

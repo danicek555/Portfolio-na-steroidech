@@ -1,8 +1,18 @@
+"use client";
+
 import Image from "next/image";
+import { useTheme } from "./ThemeProvider";
 
 const About: React.FC = () => {
+  const { isDarkMode } = useTheme();
+
   return (
-    <section id="about" className="py-16 px-8 bg-white">
+    <section
+      id="about"
+      className={`py-16 px-8 ${
+        isDarkMode ? "bg-gray-900" : "bg-white"
+      } transition-colors duration-300`}
+    >
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
@@ -15,13 +25,19 @@ const About: React.FC = () => {
             </span>
 
             <h2
-              className="text-3xl font-bold font-montserrat text-black leading-tight"
+              className={`text-3xl font-bold font-montserrat ${
+                isDarkMode ? "text-white" : "text-black"
+              } leading-tight transition-colors duration-300`}
               style={{ fontWeight: 700, fontFamily: "'Roboto', sans-serif" }}
             >
               Czech National Record Holder
             </h2>
 
-            <p className="text-gray-600 text-base leading-relaxed">
+            <p
+              className={`${
+                isDarkMode ? "text-gray-300" : "text-gray-600"
+              } text-base leading-relaxed transition-colors duration-300`}
+            >
               Daniel Mitka, a 16-year-old elite swimmer from SK Motorlet Praha,
               has achieved remarkable success in Czech swimming. His crowning
               achievement includes setting a national record as part of the
@@ -36,7 +52,9 @@ const About: React.FC = () => {
 
             <a
               href="#footer"
-              className="inline-block text-black underline font-medium font-montserrat hover:text-green-500 transition-colors text-sm"
+              className={`inline-block ${
+                isDarkMode ? "text-white" : "text-black"
+              } underline font-medium font-montserrat hover:text-green-500 transition-colors text-sm`}
               style={{ fontWeight: 700, fontFamily: "'Roboto', sans-serif" }}
             >
               Get in touch

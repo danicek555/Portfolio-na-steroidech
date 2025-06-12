@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "./ThemeProvider";
 
 type Competition = {
   title: string;
@@ -33,14 +36,25 @@ const competitions: Competition[] = [
 ];
 
 const Competitions: React.FC = () => {
+  const { isDarkMode } = useTheme();
+
   return (
-    <section id="competitions" className="py-16 px-8 bg-gray-50">
+    <section
+      id="competitions"
+      className={`py-16 px-8 ${
+        isDarkMode ? "bg-gray-800" : "bg-gray-50"
+      } transition-colors duration-300`}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h3 className="text-green-500 text-sm font-semibold uppercase tracking-wider mb-4">
             COMPETITIVE SWIMMING
           </h3>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-8">
+          <h2
+            className={`text-4xl md:text-5xl font-bold ${
+              isDarkMode ? "text-white" : "text-gray-800"
+            } mb-8 transition-colors duration-300`}
+          >
             Achieving excellence in the pool
           </h2>
         </div>
@@ -49,7 +63,9 @@ const Competitions: React.FC = () => {
           {competitions.map((comp, i) => (
             <div
               key={i}
-              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-102 hover:-translate-y-2 transition-all duration-300 transform"
+              className={`${
+                isDarkMode ? "bg-gray-700" : "bg-white"
+              } rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-102 hover:-translate-y-2 transition-all duration-300 transform`}
             >
               <div className="relative h-64 md:h-80">
                 <Image
@@ -60,10 +76,18 @@ const Competitions: React.FC = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-3">
+                <h3
+                  className={`text-xl font-bold ${
+                    isDarkMode ? "text-white" : "text-gray-800"
+                  } mb-3 transition-colors duration-300`}
+                >
                   {comp.title}
                 </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p
+                  className={`${
+                    isDarkMode ? "text-gray-300" : "text-gray-600"
+                  } mb-4 leading-relaxed transition-colors duration-300`}
+                >
                   {comp.description}
                 </p>
                 <Link
