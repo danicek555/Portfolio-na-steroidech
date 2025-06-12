@@ -1,7 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import { Award, MapPin, Calendar, Users } from "lucide-react";
+import { useTheme } from "../../components/ThemeProvider";
+import clsx from "clsx";
 
 export default function AustraliaCompetitionPage() {
+  const { isDarkMode } = useTheme();
+
   const achievements = [
     {
       position: "2nd",
@@ -27,7 +33,12 @@ export default function AustraliaCompetitionPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div
+      className={clsx(
+        "min-h-screen transition-colors duration-300",
+        isDarkMode ? "bg-gray-900" : "bg-white"
+      )}
+    >
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center text-white">
         <div className="absolute inset-0">
@@ -38,7 +49,12 @@ export default function AustraliaCompetitionPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div
+            className={clsx(
+              "absolute inset-0 transition-all duration-300",
+              isDarkMode ? "bg-black/70" : "bg-black/50"
+            )}
+          />
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
@@ -58,11 +74,25 @@ export default function AustraliaCompetitionPage() {
             </span>
           </h1>
 
-          <div className="bg-white/95 rounded-2xl p-8 inline-flex items-center gap-6 text-gray-900 shadow-2xl">
+          <div
+            className={clsx(
+              "rounded-2xl p-8 inline-flex items-center gap-6 shadow-2xl transition-colors duration-300",
+              isDarkMode
+                ? "bg-gray-800/95 text-white"
+                : "bg-white/95 text-gray-900"
+            )}
+          >
             <div className="text-6xl">🥈</div>
             <div className="text-left">
               <h3 className="text-2xl font-bold mb-2">Line Throw Event</h3>
-              <p className="text-gray-600 text-lg">With partner Adam Pekař</p>
+              <p
+                className={clsx(
+                  "text-lg transition-colors duration-300",
+                  isDarkMode ? "text-gray-300" : "text-gray-600"
+                )}
+              >
+                With partner Adam Pekař
+              </p>
             </div>
           </div>
         </div>
@@ -73,25 +103,82 @@ export default function AustraliaCompetitionPage() {
         <div className="max-w-6xl mx-auto">
           {/* Event Info */}
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl">
+            <div
+              className={clsx(
+                "flex items-center gap-4 p-6 rounded-xl transition-colors duration-300",
+                isDarkMode ? "bg-gray-800" : "bg-gray-50"
+              )}
+            >
               <MapPin className="w-8 h-8 text-blue-600" />
               <div>
-                <h3 className="font-bold text-gray-900">Location</h3>
-                <p className="text-gray-600">Gold Coast, Australia</p>
+                <h3
+                  className={clsx(
+                    "font-bold transition-colors duration-300",
+                    isDarkMode ? "text-white" : "text-gray-900"
+                  )}
+                >
+                  Location
+                </h3>
+                <p
+                  className={clsx(
+                    "transition-colors duration-300",
+                    isDarkMode ? "text-gray-300" : "text-gray-600"
+                  )}
+                >
+                  Gold Coast, Australia
+                </p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl">
+            <div
+              className={clsx(
+                "flex items-center gap-4 p-6 rounded-xl transition-colors duration-300",
+                isDarkMode ? "bg-gray-800" : "bg-gray-50"
+              )}
+            >
               <Calendar className="w-8 h-8 text-blue-600" />
               <div>
-                <h3 className="font-bold text-gray-900">Date</h3>
-                <p className="text-gray-600">2024</p>
+                <h3
+                  className={clsx(
+                    "font-bold transition-colors duration-300",
+                    isDarkMode ? "text-white" : "text-gray-900"
+                  )}
+                >
+                  Date
+                </h3>
+                <p
+                  className={clsx(
+                    "transition-colors duration-300",
+                    isDarkMode ? "text-gray-300" : "text-gray-600"
+                  )}
+                >
+                  2024
+                </p>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl">
+            <div
+              className={clsx(
+                "flex items-center gap-4 p-6 rounded-xl transition-colors duration-300",
+                isDarkMode ? "bg-gray-800" : "bg-gray-50"
+              )}
+            >
               <Users className="w-8 h-8 text-blue-600" />
               <div>
-                <h3 className="font-bold text-gray-900">Category</h3>
-                <p className="text-gray-600">Junior Division</p>
+                <h3
+                  className={clsx(
+                    "font-bold transition-colors duration-300",
+                    isDarkMode ? "text-white" : "text-gray-900"
+                  )}
+                >
+                  Category
+                </h3>
+                <p
+                  className={clsx(
+                    "transition-colors duration-300",
+                    isDarkMode ? "text-gray-300" : "text-gray-600"
+                  )}
+                >
+                  Junior Division
+                </p>
               </div>
             </div>
           </div>
@@ -99,24 +186,44 @@ export default function AustraliaCompetitionPage() {
           {/* Story */}
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2
+                className={clsx(
+                  "text-4xl font-bold mb-6 transition-colors duration-300",
+                  isDarkMode ? "text-white" : "text-gray-900"
+                )}
+              >
                 The Championship Story
               </h2>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              <p
+                className={clsx(
+                  "text-lg mb-6 leading-relaxed transition-colors duration-300",
+                  isDarkMode ? "text-gray-300" : "text-gray-700"
+                )}
+              >
                 At the prestigious 2024 Lifesaving World Championships in Gold
                 Coast, Australia, Daniel Mitka demonstrated exceptional prowess
                 in multiple disciplines, proudly representing the Czech Republic
                 in the junior category.
               </p>
               <div className="border-l-4 border-blue-600 pl-6 mb-6">
-                <p className="text-xl text-gray-800 font-medium leading-relaxed">
+                <p
+                  className={clsx(
+                    "text-xl font-medium leading-relaxed transition-colors duration-300",
+                    isDarkMode ? "text-gray-200" : "text-gray-800"
+                  )}
+                >
                   The championship&apos;s pinnacle moment came with securing the
                   silver medal in the Line Throw event, where Daniel and Adam
                   Pekař&apos;s perfect synchronization showcased Czech
                   excellence on the international stage.
                 </p>
               </div>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p
+                className={clsx(
+                  "text-lg leading-relaxed transition-colors duration-300",
+                  isDarkMode ? "text-gray-300" : "text-gray-700"
+                )}
+              >
                 This achievement represents not just individual skill, but the
                 culmination of years of dedicated training and teamwork that has
                 placed Czech lifesaving on the world map.
@@ -135,36 +242,57 @@ export default function AustraliaCompetitionPage() {
 
           {/* Achievements Grid */}
           <div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">
+            <h2
+              className={clsx(
+                "text-4xl font-bold mb-8 text-center transition-colors duration-300",
+                isDarkMode ? "text-white" : "text-gray-900"
+              )}
+            >
               Competition Results
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {achievements.map((achievement, index) => (
                 <div
                   key={index}
-                  className={`p-6 rounded-xl transition-all duration-300 hover:scale-105 ${
+                  className={clsx(
+                    "p-6 rounded-xl transition-all duration-300 hover:scale-105",
                     achievement.highlight
-                      ? "bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300"
+                      ? isDarkMode
+                        ? "bg-gradient-to-br from-yellow-900/50 to-yellow-800/50 border-2 border-yellow-500"
+                        : "bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300"
+                      : isDarkMode
+                      ? "bg-gray-800 hover:bg-gray-700"
                       : "bg-gray-50 hover:bg-gray-100"
-                  }`}
+                  )}
                 >
                   <div className="text-center">
                     {achievement.highlight && (
                       <Award className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
                     )}
                     <span
-                      className={`text-4xl font-bold block mb-3 ${
+                      className={clsx(
+                        "text-4xl font-bold block mb-3",
                         achievement.highlight
                           ? "text-yellow-600"
                           : "text-blue-600"
-                      }`}
+                      )}
                     >
                       {achievement.position}
                     </span>
-                    <h3 className="font-bold text-gray-900 mb-2">
+                    <h3
+                      className={clsx(
+                        "font-bold mb-2 transition-colors duration-300",
+                        isDarkMode ? "text-white" : "text-gray-900"
+                      )}
+                    >
                       {achievement.event}
                     </h3>
-                    <p className="text-gray-600 text-sm">
+                    <p
+                      className={clsx(
+                        "text-sm transition-colors duration-300",
+                        isDarkMode ? "text-gray-300" : "text-gray-600"
+                      )}
+                    >
                       {achievement.description}
                     </p>
                   </div>
@@ -175,7 +303,12 @@ export default function AustraliaCompetitionPage() {
 
           {/* Photo Gallery */}
           <div className="mt-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">
+            <h2
+              className={clsx(
+                "text-4xl font-bold mb-8 text-center transition-colors duration-300",
+                isDarkMode ? "text-white" : "text-gray-900"
+              )}
+            >
               Championship Moments
             </h2>
             <div className="grid md:grid-cols-3 gap-6">

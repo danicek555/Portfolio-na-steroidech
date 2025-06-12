@@ -2,38 +2,43 @@
 
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
+import clsx from "clsx";
 
 const Navbar: React.FC = () => {
   const { isDarkMode } = useTheme();
 
   return (
     <nav
-      className={`sticky top-0 w-full flex items-center justify-between px-10 py-4 ${
+      className={clsx(
+        "sticky top-0 w-full flex items-center justify-between px-10 py-4 border-b shadow-md z-50 transition-colors duration-300",
         isDarkMode
           ? "bg-gray-800 border-gray-700 text-white"
           : "bg-white border-gray-200 text-black"
-      } border-b shadow-md z-50 transition-colors duration-300`}
+      )}
     >
       <Link
         href="/"
-        className={`text-2xl font-bold font-montserrat tracking-wide ${
+        className={clsx(
+          "text-2xl font-bold font-montserrat tracking-wide no-underline transition-colors duration-300",
           isDarkMode ? "text-white" : "text-black"
-        } no-underline transition-colors duration-300`}
+        )}
         style={{ fontWeight: 700 }}
       >
         DANIEL MITKA
       </Link>
       <ul
-        className={`flex items-center space-x-8 font-montserrat text-lg ${
+        className={clsx(
+          "flex items-center space-x-8 font-montserrat text-lg",
           isDarkMode ? "text-white" : "text-black"
-        }`}
+        )}
       >
         <li>
           <Link
             href="/#home"
-            className={`${
+            className={clsx(
+              "transition-colors no-underline font-bold",
               isDarkMode ? "hover:text-gray-300" : "hover:text-gray-600"
-            } transition-colors no-underline font-bold`}
+            )}
             style={{ fontWeight: 700 }}
           >
             Home
@@ -42,9 +47,10 @@ const Navbar: React.FC = () => {
         <li>
           <Link
             href="/#about"
-            className={`${
+            className={clsx(
+              "transition-colors no-underline font-bold",
               isDarkMode ? "hover:text-gray-300" : "hover:text-gray-600"
-            } transition-colors no-underline font-bold`}
+            )}
             style={{ fontWeight: 700 }}
           >
             About
@@ -53,9 +59,10 @@ const Navbar: React.FC = () => {
         <li>
           <Link
             href="/#competitions"
-            className={`${
+            className={clsx(
+              "transition-colors no-underline font-bold",
               isDarkMode ? "hover:text-gray-300" : "hover:text-gray-600"
-            } transition-colors no-underline font-bold`}
+            )}
             style={{ fontWeight: 700 }}
           >
             Competitions
@@ -64,9 +71,10 @@ const Navbar: React.FC = () => {
         <li>
           <Link
             href="/#work"
-            className={`${
+            className={clsx(
+              "transition-colors no-underline font-bold",
               isDarkMode ? "hover:text-gray-300" : "hover:text-gray-600"
-            } transition-colors no-underline font-bold`}
+            )}
             style={{ fontWeight: 700 }}
           >
             Work
@@ -77,9 +85,10 @@ const Navbar: React.FC = () => {
             href="https://www.instagram.com/dan_mitka"
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex items-center ${
+            className={clsx(
+              "flex items-center transition-colors pr-8 no-underline font-bold",
               isDarkMode ? "hover:text-gray-300" : "hover:text-gray-600"
-            } transition-colors pr-8 no-underline font-bold`}
+            )}
             style={{ fontWeight: 700 }}
           >
             <svg

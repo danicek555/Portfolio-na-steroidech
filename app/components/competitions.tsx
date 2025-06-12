@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
+import clsx from "clsx";
 
 type Competition = {
   title: string;
@@ -41,9 +42,10 @@ const Competitions: React.FC = () => {
   return (
     <section
       id="competitions"
-      className={`py-16 px-8 ${
+      className={clsx(
+        "py-16 px-8 transition-colors duration-300",
         isDarkMode ? "bg-gray-800" : "bg-gray-50"
-      } transition-colors duration-300`}
+      )}
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
@@ -51,9 +53,10 @@ const Competitions: React.FC = () => {
             COMPETITIVE SWIMMING
           </h3>
           <h2
-            className={`text-4xl md:text-5xl font-bold ${
+            className={clsx(
+              "text-4xl md:text-5xl font-bold mb-8 transition-colors duration-300",
               isDarkMode ? "text-white" : "text-gray-800"
-            } mb-8 transition-colors duration-300`}
+            )}
           >
             Achieving excellence in the pool
           </h2>
@@ -63,9 +66,10 @@ const Competitions: React.FC = () => {
           {competitions.map((comp, i) => (
             <div
               key={i}
-              className={`${
+              className={clsx(
+                "rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-102 hover:-translate-y-2 transition-all duration-300 transform",
                 isDarkMode ? "bg-gray-700" : "bg-white"
-              } rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-102 hover:-translate-y-2 transition-all duration-300 transform`}
+              )}
             >
               <div className="relative h-64 md:h-80">
                 <Image
@@ -77,16 +81,18 @@ const Competitions: React.FC = () => {
               </div>
               <div className="p-6">
                 <h3
-                  className={`text-xl font-bold ${
+                  className={clsx(
+                    "text-xl font-bold mb-3 transition-colors duration-300",
                     isDarkMode ? "text-white" : "text-gray-800"
-                  } mb-3 transition-colors duration-300`}
+                  )}
                 >
                   {comp.title}
                 </h3>
                 <p
-                  className={`${
+                  className={clsx(
+                    "mb-4 leading-relaxed transition-colors duration-300",
                     isDarkMode ? "text-gray-300" : "text-gray-600"
-                  } mb-4 leading-relaxed transition-colors duration-300`}
+                  )}
                 >
                   {comp.description}
                 </p>
