@@ -65,7 +65,6 @@ const About: React.FC = () => {
               Get in touch
             </a>
           </div>
-
           {/* Right Column - Image */}
           <div className="relative max-w-xl">
             <Image
