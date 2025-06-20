@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
+import { useTranslations } from "next-intl";
 import clsx from "clsx";
 
 type Competition = {
@@ -12,32 +13,30 @@ type Competition = {
   img: string;
 };
 
-const competitions: Competition[] = [
-  {
-    title: "Czech National Swimming Championship 2024",
-    description:
-      "Experience the pinnacle of Czech swimming competition at the prestigious MCR Podolí championship.",
-    link: "/competitions/podoli",
-    img: "/podoliFoto.jpg",
-  },
-  {
-    title: "Lifesaving World Championships 2024",
-    description:
-      "Witness Daniel's incredible journey to becoming a World Vice-champion in lifesaving.",
-    link: "/competitions/australia",
-    img: "/ausFoto_temp.jpg",
-  },
-  {
-    title: "Slovakia Cup Šamorín 2024",
-    description:
-      "International swimming competition showcasing versatility across multiple disciplines in Slovakia.",
-    link: "/competitions/samorin",
-    img: "/samorin.jpg",
-  },
-];
-
 const Competitions: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const t = useTranslations("Competitions");
+
+  const competitions: Competition[] = [
+    {
+      title: t("competitions.0.title"),
+      description: t("competitions.0.description"),
+      link: "/competitions/podoli",
+      img: "/podoliFoto.jpg",
+    },
+    {
+      title: t("competitions.1.title"),
+      description: t("competitions.1.description"),
+      link: "/competitions/australia",
+      img: "/ausFoto_temp.jpg",
+    },
+    {
+      title: t("competitions.2.title"),
+      description: t("competitions.2.description"),
+      link: "/competitions/samorin",
+      img: "/samorin.jpg",
+    },
+  ];
 
   return (
     <section
@@ -50,7 +49,7 @@ const Competitions: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h3 className="text-green-500 text-sm font-semibold uppercase tracking-wider mb-4">
-            COMPETITIVE SWIMMING
+            {t("badge")}
           </h3>
           <h2
             className={clsx(
@@ -58,7 +57,7 @@ const Competitions: React.FC = () => {
               isDarkMode ? "text-white" : "text-gray-800"
             )}
           >
-            Achieving excellence in the pool
+            {t("title")}
           </h2>
         </div>
 
@@ -77,6 +76,7 @@ const Competitions: React.FC = () => {
                   alt={comp.title}
                   fill
                   className="object-cover"
+                  priority
                 />
               </div>
               <div className="p-6">
@@ -100,7 +100,7 @@ const Competitions: React.FC = () => {
                   href={comp.link}
                   className="text-green-500 hover:text-green-600 font-medium inline-flex items-center"
                 >
-                  Learn more &gt;
+                  {t("cta")}
                 </Link>
               </div>
             </div>

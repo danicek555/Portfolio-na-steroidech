@@ -2,33 +2,35 @@
 
 import Image from "next/image";
 import { Award, MapPin, Calendar, Users } from "lucide-react";
-import { useTheme } from "../../components/ThemeProvider";
+import { useTheme } from "../../../../components/ThemeProvider";
+import { useTranslations } from "next-intl";
 import clsx from "clsx";
 
 export default function AustraliaCompetitionPage() {
   const { isDarkMode } = useTheme();
+  const t = useTranslations("Australia");
 
   const achievements = [
     {
-      position: "2nd",
-      event: "Line Throw Event",
-      description: "Silver medal with Adam Pekař",
+      position: t("results.achievements.0.position"),
+      event: t("results.achievements.0.event"),
+      description: t("results.achievements.0.description"),
       highlight: true,
     },
     {
-      position: "4th",
-      event: "Rescue Tube Rescue Relay",
-      description: "Outperforming teams from New Zealand and South Africa",
+      position: t("results.achievements.1.position"),
+      event: t("results.achievements.1.event"),
+      description: t("results.achievements.1.description"),
     },
     {
-      position: "6th",
-      event: "4x25 Manikin Relay",
-      description: "Outstanding teamwork and precision",
+      position: t("results.achievements.2.position"),
+      event: t("results.achievements.2.event"),
+      description: t("results.achievements.2.description"),
     },
     {
-      position: "14th",
-      event: "Beach Sprint",
-      description: "Individual excellence on sand",
+      position: t("results.achievements.3.position"),
+      event: t("results.achievements.3.event"),
+      description: t("results.achievements.3.description"),
     },
   ];
 
@@ -60,18 +62,16 @@ export default function AustraliaCompetitionPage() {
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider">
-              International Success
+              {t("hero.badge1")}
             </span>
             <span className="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-              Featured
+              {t("hero.badge2")}
             </span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-            Silver Medal at the 2024
-            <span className="block text-yellow-400">
-              Lifesaving World Championships
-            </span>
+            {t("hero.title")}
+            <span className="block text-yellow-400">{t("hero.subtitle")}</span>
           </h1>
 
           <div
@@ -84,14 +84,16 @@ export default function AustraliaCompetitionPage() {
           >
             <div className="text-6xl">🥈</div>
             <div className="text-left">
-              <h3 className="text-2xl font-bold mb-2">Line Throw Event</h3>
+              <h3 className="text-2xl font-bold mb-2">
+                {t("hero.eventTitle")}
+              </h3>
               <p
                 className={clsx(
                   "text-lg transition-colors duration-300",
                   isDarkMode ? "text-gray-300" : "text-gray-600"
                 )}
               >
-                With partner Adam Pekař
+                {t("hero.partner")}
               </p>
             </div>
           </div>
@@ -117,7 +119,7 @@ export default function AustraliaCompetitionPage() {
                     isDarkMode ? "text-white" : "text-gray-900"
                   )}
                 >
-                  Location
+                  {t("info.location")}
                 </h3>
                 <p
                   className={clsx(
@@ -125,7 +127,7 @@ export default function AustraliaCompetitionPage() {
                     isDarkMode ? "text-gray-300" : "text-gray-600"
                   )}
                 >
-                  Gold Coast, Australia
+                  {t("info.locationValue")}
                 </p>
               </div>
             </div>
@@ -143,7 +145,7 @@ export default function AustraliaCompetitionPage() {
                     isDarkMode ? "text-white" : "text-gray-900"
                   )}
                 >
-                  Date
+                  {t("info.date")}
                 </h3>
                 <p
                   className={clsx(
@@ -151,7 +153,7 @@ export default function AustraliaCompetitionPage() {
                     isDarkMode ? "text-gray-300" : "text-gray-600"
                   )}
                 >
-                  2024
+                  {t("info.dateValue")}
                 </p>
               </div>
             </div>
@@ -169,7 +171,7 @@ export default function AustraliaCompetitionPage() {
                     isDarkMode ? "text-white" : "text-gray-900"
                   )}
                 >
-                  Category
+                  {t("info.category")}
                 </h3>
                 <p
                   className={clsx(
@@ -177,7 +179,7 @@ export default function AustraliaCompetitionPage() {
                     isDarkMode ? "text-gray-300" : "text-gray-600"
                   )}
                 >
-                  Junior Division
+                  {t("info.categoryValue")}
                 </p>
               </div>
             </div>
@@ -192,7 +194,7 @@ export default function AustraliaCompetitionPage() {
                   isDarkMode ? "text-white" : "text-gray-900"
                 )}
               >
-                The Championship Story
+                {t("story.title")}
               </h2>
               <p
                 className={clsx(
@@ -200,10 +202,7 @@ export default function AustraliaCompetitionPage() {
                   isDarkMode ? "text-gray-300" : "text-gray-700"
                 )}
               >
-                At the prestigious 2024 Lifesaving World Championships in Gold
-                Coast, Australia, Daniel Mitka demonstrated exceptional prowess
-                in multiple disciplines, proudly representing the Czech Republic
-                in the junior category.
+                {t("story.paragraph1")}
               </p>
               <div className="border-l-4 border-blue-600 pl-6 mb-6">
                 <p
@@ -212,10 +211,7 @@ export default function AustraliaCompetitionPage() {
                     isDarkMode ? "text-gray-200" : "text-gray-800"
                   )}
                 >
-                  The championship&apos;s pinnacle moment came with securing the
-                  silver medal in the Line Throw event, where Daniel and Adam
-                  Pekař&apos;s perfect synchronization showcased Czech
-                  excellence on the international stage.
+                  {t("story.highlight")}
                 </p>
               </div>
               <p
@@ -224,9 +220,7 @@ export default function AustraliaCompetitionPage() {
                   isDarkMode ? "text-gray-300" : "text-gray-700"
                 )}
               >
-                This achievement represents not just individual skill, but the
-                culmination of years of dedicated training and teamwork that has
-                placed Czech lifesaving on the world map.
+                {t("story.paragraph2")}
               </p>
             </div>
             <div className="relative">
@@ -236,6 +230,7 @@ export default function AustraliaCompetitionPage() {
                 width={600}
                 height={400}
                 className="rounded-xl shadow-lg object-cover w-full h-full"
+                priority
               />
             </div>
           </div>
@@ -248,7 +243,7 @@ export default function AustraliaCompetitionPage() {
                 isDarkMode ? "text-white" : "text-gray-900"
               )}
             >
-              Competition Results
+              {t("results.title")}
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {achievements.map((achievement, index) => (
@@ -309,7 +304,7 @@ export default function AustraliaCompetitionPage() {
                 isDarkMode ? "text-white" : "text-gray-900"
               )}
             >
-              Championship Moments
+              {t("gallery.title")}
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="relative h-64 rounded-xl overflow-hidden group">
@@ -318,6 +313,7 @@ export default function AustraliaCompetitionPage() {
                   alt="Championship moment 1"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  priority
                 />
               </div>
               <div className="relative h-64 rounded-xl overflow-hidden group">
@@ -327,6 +323,7 @@ export default function AustraliaCompetitionPage() {
                   fill
                   className="object-cover object-center group-hover:scale-110 transition-transform duration-300"
                   style={{ objectPosition: "center 20%" }}
+                  priority
                 />
               </div>
               <div className="relative h-64 rounded-xl overflow-hidden group">
@@ -335,6 +332,7 @@ export default function AustraliaCompetitionPage() {
                   alt="Championship team photo"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  priority
                 />
               </div>
             </div>

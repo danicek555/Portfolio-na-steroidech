@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { MapPin, Calendar, Users, Clock } from "lucide-react";
-import { useTheme } from "../../components/ThemeProvider";
+import { useTheme } from "../../../../components/ThemeProvider";
 
 export default function SamorinCompetitionPage() {
   const { isDarkMode } = useTheme();

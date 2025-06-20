@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
+import { useTranslations } from "next-intl";
 import clsx from "clsx";
 
 type Project = {
@@ -15,32 +16,31 @@ type Project = {
   featured?: boolean;
 };
 
-const projects: Project[] = [
-  {
-    title: "My Love Website",
-    description:
-      "A romantic website counting days together with interactive hearts and beautiful animations.",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    link: "https://daniel.mitka.cz/terka/",
-    img: "/Macbook_No_Background.png",
-    type: "external",
-    featured: true,
-  },
-  {
-    title: "Automatic Bot for Buying Tickets on Ticketportal",
-    description:
-      "A bot that automatically buys tickets on Ticketportal for a specific event with specific search parameters.",
-    technologies: ["NodeJS", "Javascript", "Puppeteer"],
-    link: "https://github.com/danicek555/Auto-Kupovani-Listku",
-    img: "/botTicketPortal.png",
-    type: "external",
-    featured: true,
-  },
-  // Add more projects here in the future
-];
-
 const Projects: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const t = useTranslations("Projects");
+
+  const projects: Project[] = [
+    {
+      title: t("projects.0.title"),
+      description: t("projects.0.description"),
+      technologies: ["HTML", "CSS", "JavaScript"],
+      link: "https://daniel.mitka.cz/terka/",
+      img: "/Macbook_No_Background.png",
+      type: "external",
+      featured: true,
+    },
+    {
+      title: t("projects.1.title"),
+      description: t("projects.1.description"),
+      technologies: ["NodeJS", "Javascript", "Puppeteer"],
+      link: "https://github.com/danicek555/Auto-Kupovani-Listku",
+      img: "/botTicketPortal.png",
+      type: "external",
+      featured: true,
+    },
+    // Add more projects here in the future
+  ];
 
   return (
     <section
@@ -53,7 +53,7 @@ const Projects: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h3 className="text-green-500 text-sm font-semibold uppercase tracking-wider mb-4">
-            COMPUTER SCIENCE PROJECTS
+            {t("badge")}
           </h3>
           <h2
             className={clsx(
@@ -61,7 +61,7 @@ const Projects: React.FC = () => {
               isDarkMode ? "text-white" : "text-gray-800"
             )}
           >
-            My Recent Works
+            {t("title")}
           </h2>
         </div>
 
@@ -122,7 +122,7 @@ const Projects: React.FC = () => {
                         </div>
 
                         <div className="inline-flex items-center text-green-600 font-semibold text-lg group-hover:text-green-700 transition-colors duration-300">
-                          Visit Website
+                          {t("visitWebsite")}
                           <svg
                             className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"
                             fill="none"
@@ -148,6 +148,7 @@ const Projects: React.FC = () => {
                             width={800}
                             height={500}
                             className="w-full h-auto object-contain drop-shadow-2xl"
+                            priority
                           />
                         </div>
                       </div>
@@ -209,7 +210,7 @@ const Projects: React.FC = () => {
                         href={project.link}
                         className="text-green-500 hover:text-green-600 font-medium inline-flex items-center"
                       >
-                        View Project &gt;
+                        {t("viewProject")}
                       </Link>
                     ) : (
                       <a
@@ -218,7 +219,7 @@ const Projects: React.FC = () => {
                         rel="noopener noreferrer"
                         className="text-green-500 hover:text-green-600 font-medium inline-flex items-center"
                       >
-                        View Project &gt;
+                        {t("viewProject")}
                       </a>
                     )}
                   </div>

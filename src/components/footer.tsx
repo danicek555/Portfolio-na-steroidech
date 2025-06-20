@@ -2,10 +2,12 @@
 
 import { Mail, Phone, ExternalLink, Facebook, Instagram } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
+import { useTranslations } from "next-intl";
 import clsx from "clsx";
 
 const Footer: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const t = useTranslations("Footer");
 
   return (
     <footer
@@ -19,7 +21,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Contact Information */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <h3 className="text-lg font-semibold mb-4">{t("contact")}</h3>
             <div className="space-y-3">
               <a
                 href="mailto:danmitka@gmail.com"
@@ -57,14 +59,14 @@ const Footer: React.FC = () => {
                 )}
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
-                Swimming Statistics
+                {t("swimmingStatistics")}
               </a>
             </div>
           </div>
 
           {/* Social Media */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Social Media</h3>
+            <h3 className="text-lg font-semibold mb-4">{t("socialMedia")}</h3>
             <div className="flex space-x-4">
               <a
                 href="#"
@@ -96,15 +98,14 @@ const Footer: React.FC = () => {
 
           {/* About */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Daniel Mitka</h3>
+            <h3 className="text-lg font-semibold mb-4">{t("about")}</h3>
             <p
               className={clsx(
                 "text-sm leading-relaxed",
                 isDarkMode ? "text-gray-300" : "text-gray-600"
               )}
             >
-              Passionate developer and swimming enthusiast. Building digital
-              experiences and tracking athletic performance.
+              {t("aboutDescription")}
             </p>
           </div>
         </div>
@@ -122,7 +123,7 @@ const Footer: React.FC = () => {
               isDarkMode ? "text-gray-400" : "text-gray-500"
             )}
           >
-            &copy; {new Date().getFullYear()} Daniel Mitka. All rights reserved.
+            {t("copyright", { year: new Date().getFullYear() })}
           </p>
         </div>
       </div>

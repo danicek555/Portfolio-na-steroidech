@@ -1,0 +1,113 @@
+{
+  "About": {
+    "badge": "RISING STAR SWIMMER",
+    "title": "Czech National Record Holder",
+    "description": "Daniel Mitka, a 16-year-old elite swimmer from SK Motorlet Praha, has achieved remarkable success in Czech swimming. His crowning achievement includes setting a national record as part of the mixed 4x50m medley relay team at the 2022 Winter Championship in Mladá Boleslav. Competing at the highest national level, Daniel has secured multiple individual and relay medals, contributing to his team's impressive tally of six individual and four relay medals. With his proven track record in competitive swimming, Daniel is now setting his sights on joining the Colorado Hilltoppers team while pursuing his education in the U.S.",
+    "cta": "Get in touch"
+  },
+  "Hero": {
+    "subtitle": "Czech Youth Swimming Champion & Lifesaving Medalist",
+    "cta": "Get in touch"
+  },
+  "Competitions": {
+    "badge": "COMPETITIVE SWIMMING",
+    "title": "Achieving excellence in the pool",
+    "cta": "Learn more >",
+    "competitions": [
+      {
+        "title": "Czech National Swimming Championship 2024",
+        "description": "Experience the pinnacle of Czech swimming competition at the prestigious MCR Podolí championship."
+      },
+      {
+        "title": "Lifesaving World Championships 2024",
+        "description": "Witness Daniel's incredible journey to becoming a World Vice-champion in lifesaving."
+      },
+      {
+        "title": "Slovakia Cup Šamorín 2024",
+        "description": "International swimming competition showcasing versatility across multiple disciplines in Slovakia."
+      }
+    ]
+  },
+  "Projects": {
+    "badge": "COMPUTER SCIENCE PROJECTS",
+    "title": "My Recent Works",
+    "visitWebsite": "Visit Website",
+    "viewProject": "View Project >",
+    "projects": [
+      {
+        "title": "My Love Website",
+        "description": "A romantic website counting days together with interactive hearts and beautiful animations."
+      },
+      {
+        "title": "Automatic Bot for Buying Tickets on Ticketportal",
+        "description": "A bot that automatically buys tickets on Ticketportal for a specific event with specific search parameters."
+      }
+    ]
+  },
+  "Navbar": {
+    "home": "Home",
+    "about": "About",
+    "competitions": "Competitions",
+    "work": "Work"
+  },
+  "Footer": {
+    "contact": "Contact",
+    "socialMedia": "Social Media",
+    "swimmingStatistics": "Swimming Statistics",
+    "about": "Daniel Mitka",
+    "aboutDescription": "Passionate developer and swimming enthusiast. Building digital experiences and tracking athletic performance.",
+    "copyright": "© {year} Daniel Mitka. All rights reserved."
+  },
+  "Australia": {
+    "hero": {
+      "badge1": "International Success",
+      "badge2": "Featured",
+      "title": "Silver Medal at the 2024",
+      "subtitle": "Lifesaving World Championships",
+      "eventTitle": "Line Throw Event",
+      "partner": "With partner Adam Pekař"
+    },
+    "info": {
+      "location": "Location",
+      "locationValue": "Gold Coast, Australia",
+      "date": "Date",
+      "dateValue": "2024",
+      "category": "Category",
+      "categoryValue": "Junior Division"
+    },
+    "story": {
+      "title": "The Championship Story",
+      "paragraph1": "At the prestigious 2024 Lifesaving World Championships in Gold Coast, Australia, Daniel Mitka demonstrated exceptional prowess in multiple disciplines, proudly representing the Czech Republic in the junior category.",
+      "highlight": "The championship's pinnacle moment came with securing the silver medal in the Line Throw event, where Daniel and Adam Pekař's perfect synchronization showcased Czech excellence on the international stage.",
+      "paragraph2": "This achievement represents not just individual skill, but the culmination of years of dedicated training and teamwork that has placed Czech lifesaving on the world map."
+    },
+    "results": {
+      "title": "Competition Results",
+      "achievements": [
+        {
+          "position": "2nd",
+          "event": "Line Throw Event",
+          "description": "Silver medal with Adam Pekař"
+        },
+        {
+          "position": "4th",
+          "event": "Rescue Tube Rescue Relay",
+          "description": "Outperforming teams from New Zealand and South Africa"
+        },
+        {
+          "position": "6th",
+          "event": "4x25 Manikin Relay",
+          "description": "Outstanding teamwork and precision"
+        },
+        {
+          "position": "14th",
+          "event": "Beach Sprint",
+          "description": "Individual excellence on sand"
+        }
+      ]
+    },
+    "gallery": {
+      "title": "Championship Moments"
+    }
+  }
+}

@@ -1,10 +1,12 @@
 "use client";
 
 import { useTheme } from "./ThemeProvider";
+import { useTranslations } from "next-intl";
 import clsx from "clsx";
 
 const Hero: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const t = useTranslations("Hero");
 
   return (
     <section
@@ -32,7 +34,7 @@ const Hero: React.FC = () => {
             isDarkMode ? "text-blue-200" : "text-gray-100"
           )}
         >
-          Czech Youth Swimming Champion & Lifesaving Medalist
+          {t("subtitle")}
         </p>
         <a
           href="#footer"
@@ -43,7 +45,7 @@ const Hero: React.FC = () => {
               : "bg-green-500 hover:bg-green-600 text-white"
           )}
         >
-          Get in touch
+          {t("cta")}
         </a>
       </div>
     </section>

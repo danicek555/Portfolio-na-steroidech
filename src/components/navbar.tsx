@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
+import { useTranslations } from "next-intl";
 import clsx from "clsx";
 
 const Navbar: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const t = useTranslations("Navbar");
 
   return (
     <nav
@@ -41,7 +43,7 @@ const Navbar: React.FC = () => {
             )}
             style={{ fontWeight: 700 }}
           >
-            Home
+            {t("home")}
           </Link>
         </li>
         <li>
@@ -53,7 +55,7 @@ const Navbar: React.FC = () => {
             )}
             style={{ fontWeight: 700 }}
           >
-            About
+            {t("about")}
           </Link>
         </li>
         <li>
@@ -65,7 +67,7 @@ const Navbar: React.FC = () => {
             )}
             style={{ fontWeight: 700 }}
           >
-            Competitions
+            {t("competitions")}
           </Link>
         </li>
         <li>
@@ -77,7 +79,7 @@ const Navbar: React.FC = () => {
             )}
             style={{ fontWeight: 700 }}
           >
-            Work
+            {t("work")}
           </Link>
         </li>
         <li>

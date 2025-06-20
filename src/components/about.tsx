@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { useTheme } from "./ThemeProvider";
+import { useTranslations } from "next-intl";
 import clsx from "clsx";
 
 const About: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const t = useTranslations("About");
 
   return (
     <section
@@ -23,7 +25,7 @@ const About: React.FC = () => {
               className="text-green-500 uppercase text-xs font-bold font-montserrat tracking-wider"
               style={{ fontWeight: 700, fontFamily: "'Roboto', sans-serif" }}
             >
-              RISING STAR SWIMMER
+              {t("badge")}
             </span>
 
             <h2
@@ -33,7 +35,7 @@ const About: React.FC = () => {
               )}
               style={{ fontWeight: 700, fontFamily: "'Roboto', sans-serif" }}
             >
-              Czech National Record Holder
+              {t("title")}
             </h2>
 
             <p
@@ -42,16 +44,7 @@ const About: React.FC = () => {
                 isDarkMode ? "text-gray-300" : "text-gray-600"
               )}
             >
-              Daniel Mitka, a 16-year-old elite swimmer from SK Motorlet Praha,
-              has achieved remarkable success in Czech swimming. His crowning
-              achievement includes setting a national record as part of the
-              mixed 4x50m medley relay team at the 2022 Winter Championship in
-              Mladá Boleslav. Competing at the highest national level, Daniel
-              has secured multiple individual and relay medals, contributing to
-              his team&apos;s impressive tally of six individual and four relay
-              medals. With his proven track record in competitive swimming,
-              Daniel is now setting his sights on joining the Colorado
-              Hilltoppers team while pursuing his education in the U.S.
+              {t("description")}
             </p>
 
             <a
@@ -62,7 +55,7 @@ const About: React.FC = () => {
               )}
               style={{ fontWeight: 700, fontFamily: "'Roboto', sans-serif" }}
             >
-              Get in touch
+              {t("cta")}
             </a>
           </div>
           {/* Right Column - Image */}
@@ -73,6 +66,7 @@ const About: React.FC = () => {
               width={300}
               height={400}
               className="rounded-lg object-cover w-full h-auto "
+              priority
             />
           </div>
         </div>

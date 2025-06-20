@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { MapPin, Calendar, Trophy, Target } from "lucide-react";
-import { useTheme } from "../../components/ThemeProvider";
+import { useTheme } from "../../../../components/ThemeProvider";
 import clsx from "clsx";
 
 export default function PodoliCompetitionPage() {
