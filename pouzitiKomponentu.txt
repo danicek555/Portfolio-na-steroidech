@@ -1,0 +1,27 @@
+
+// Single video
+<VideoPlayer
+  videoId="Nm6LNRUCTCM"
+  title="Championship Highlights"
+  description="Watch the competition highlights..."
+  duration="5:30"
+  views="1.2K"
+/>
+
+// Video gallery for multiple videos
+<VideoGallery
+  title="Swimming Competition Videos"
+  subtitle="Experience my competitive swimming journey"
+  videos={[
+    {
+      id: "1",
+      videoId: "Nm6LNRUCTCM",
+      title: "Czech National Championship",
+      category: "Competition"
+    },
+    // Add more videos...
+  ]}
+  columns={2}
+/>
+
+

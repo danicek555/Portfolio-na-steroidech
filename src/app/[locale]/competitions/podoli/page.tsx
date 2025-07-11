@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { MapPin, Calendar, Trophy, Target } from "lucide-react";
 import { useTheme } from "../../../../components/ThemeProvider";
+import VideoPlayer from "../../../../components/VideoPlayer";
 import clsx from "clsx";
 
 export default function PodoliCompetitionPage() {
@@ -237,6 +238,47 @@ export default function PodoliCompetitionPage() {
                 height={400}
                 className="rounded-xl shadow-lg object-cover w-full h-full"
               />
+            </div>
+          </div>
+
+          {/* Featured Video Section */}
+          <div className="mb-16">
+            <h2
+              className={clsx(
+                "text-4xl font-bold mb-8 text-center transition-colors duration-300",
+                isDarkMode ? "text-white" : "text-gray-900"
+              )}
+            >
+              Championship Highlights
+            </h2>
+            <div className="max-w-4xl mx-auto">
+              <VideoPlayer
+                videoId="Nm6LNRUCTCM"
+                title="Czech National Swimming Championship - Podolí 2024"
+                description="Experience the intensity and excellence of the Czech National Swimming Championship. Watch highlights from this prestigious competition featuring the country's top swimmers competing for national titles in the iconic Podolí swimming complex."
+                duration="5:30"
+                views="1000"
+                className="mb-8"
+              />
+              <div
+                className={clsx(
+                  "text-center p-6 rounded-xl transition-colors duration-300",
+                  isDarkMode
+                    ? "bg-gradient-to-r from-red-900/20 to-blue-900/20"
+                    : "bg-gradient-to-r from-red-50 to-blue-50"
+                )}
+              >
+                <p
+                  className={clsx(
+                    "text-lg italic transition-colors duration-300",
+                    isDarkMode ? "text-gray-300" : "text-gray-700"
+                  )}
+                >
+                  "This video captures the essence of competing at the highest
+                  level of Czech swimming, showcasing the dedication, technique,
+                  and passion that defines national championship competition."
+                </p>
+              </div>
             </div>
           </div>
 
