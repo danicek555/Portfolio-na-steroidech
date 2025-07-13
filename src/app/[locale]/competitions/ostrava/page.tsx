@@ -1,20 +1,30 @@
 "use client";
 
 import Image from "next/image";
-import {
-  MapPin,
-  Calendar,
-  Trophy,
-  Target,
-  Users,
-  Medal,
-  Timer,
-} from "lucide-react";
+import { MapPin, Calendar, Trophy, Users, Medal, Timer } from "lucide-react";
 import { useTheme } from "../../../../components/ThemeProvider";
 import VideoPlayer from "../../../../components/VideoPlayer";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
+
+// Define interfaces for type safety
+interface IndividualResult {
+  event: string;
+  time: string;
+  points: string;
+  placement: string;
+  category: string;
+  description: string;
+  videoId: string;
+}
+
+interface TeamAchievement {
+  category: string;
+  result: string;
+  description: string;
+  icon: React.ReactNode;
+}
 
 export default function OstravaCompetitionPage() {
   const { isDarkMode } = useTheme();
@@ -22,7 +32,7 @@ export default function OstravaCompetitionPage() {
 
   const individualResults = t
     .raw("individualResults.events")
-    .map((event: any, index: number) => ({
+    .map((event: IndividualResult, index: number) => ({
       ...event,
       videoId: ["EHc84z_gTc4", "YjjmiyxTSnU", "Nm6LNRUCTCM", "1ChSgR-nSn0"][
         index
@@ -31,7 +41,7 @@ export default function OstravaCompetitionPage() {
 
   const teamAchievements = t
     .raw("teamAchievements.achievements")
-    .map((achievement: any, index: number) => ({
+    .map((achievement: TeamAchievement) => ({
       ...achievement,
       icon:
         achievement.category === "Qualification" ? (
@@ -377,62 +387,64 @@ export default function OstravaCompetitionPage() {
                 },
               }}
             >
-              {teamAchievements.map((achievement: any, index: number) => (
-                <motion.div
-                  key={index}
-                  className={clsx(
-                    "text-center p-6 rounded-xl transition-all duration-300 hover:shadow-lg",
-                    isDarkMode
-                      ? "bg-gradient-to-br from-orange-900/30 to-purple-900/30 border border-gray-700"
-                      : "bg-gradient-to-br from-orange-50 to-purple-50 border border-gray-200"
-                  )}
-                  variants={{
-                    hidden: { opacity: 0, y: 30, scale: 0.9 },
-                    visible: { opacity: 1, y: 0, scale: 1 },
-                  }}
-                  whileHover={{
-                    scale: 1.05,
-                    y: -10,
-                    transition: { duration: 0.2 },
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <div className="flex justify-center mb-4">
-                    <motion.div
-                      className="p-3 rounded-full bg-orange-600 text-white"
-                      whileHover={{
-                        scale: 1.1,
-                        rotate: 360,
-                        transition: { duration: 0.3 },
-                      }}
+              {teamAchievements.map(
+                (achievement: TeamAchievement, index: number) => (
+                  <motion.div
+                    key={index}
+                    className={clsx(
+                      "text-center p-6 rounded-xl transition-all duration-300 hover:shadow-lg",
+                      isDarkMode
+                        ? "bg-gradient-to-br from-orange-900/30 to-purple-900/30 border border-gray-700"
+                        : "bg-gradient-to-br from-orange-50 to-purple-50 border border-gray-200"
+                    )}
+                    variants={{
+                      hidden: { opacity: 0, y: 30, scale: 0.9 },
+                      visible: { opacity: 1, y: 0, scale: 1 },
+                    }}
+                    whileHover={{
+                      scale: 1.05,
+                      y: -10,
+                      transition: { duration: 0.2 },
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <div className="flex justify-center mb-4">
+                      <motion.div
+                        className="p-3 rounded-full bg-orange-600 text-white"
+                        whileHover={{
+                          scale: 1.1,
+                          rotate: 360,
+                          transition: { duration: 0.3 },
+                        }}
+                      >
+                        {achievement.icon}
+                      </motion.div>
+                    </div>
+                    <h3
+                      className={clsx(
+                        "text-xl font-bold mb-2 transition-colors duration-300",
+                        isDarkMode ? "text-white" : "text-gray-900"
+                      )}
                     >
-                      {achievement.icon}
-                    </motion.div>
-                  </div>
-                  <h3
-                    className={clsx(
-                      "text-xl font-bold mb-2 transition-colors duration-300",
-                      isDarkMode ? "text-white" : "text-gray-900"
-                    )}
-                  >
-                    {achievement.category}
-                  </h3>
-                  <motion.p
-                    className="text-2xl font-bold text-orange-600 mb-2"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {achievement.result}
-                  </motion.p>
-                  <p
-                    className={clsx(
-                      "text-sm transition-colors duration-300",
-                      isDarkMode ? "text-gray-300" : "text-gray-600"
-                    )}
-                  >
-                    {achievement.description}
-                  </p>
-                </motion.div>
-              ))}
+                      {achievement.category}
+                    </h3>
+                    <motion.p
+                      className="text-2xl font-bold text-orange-600 mb-2"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      {achievement.result}
+                    </motion.p>
+                    <p
+                      className={clsx(
+                        "text-sm transition-colors duration-300",
+                        isDarkMode ? "text-gray-300" : "text-gray-600"
+                      )}
+                    >
+                      {achievement.description}
+                    </p>
+                  </motion.div>
+                )
+              )}
             </motion.div>
           </motion.div>
 
@@ -476,80 +488,82 @@ export default function OstravaCompetitionPage() {
                 },
               }}
             >
-              {individualResults.map((result: any, index: number) => (
-                <motion.div
-                  key={index}
-                  className={clsx(
-                    "p-6 rounded-xl border transition-all duration-300 hover:shadow-lg",
-                    isDarkMode
-                      ? "bg-gradient-to-br from-orange-900/20 to-purple-900/20 border-gray-700"
-                      : "bg-gradient-to-br from-orange-50 to-purple-50 border-gray-200"
-                  )}
-                  variants={{
-                    hidden: { opacity: 0, y: 30, scale: 0.95 },
-                    visible: { opacity: 1, y: 0, scale: 1 },
-                  }}
-                  whileHover={{
-                    scale: 1.02,
-                    y: -5,
-                    transition: { duration: 0.2 },
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <div className="flex items-start gap-4">
-                    <motion.div
-                      className="flex-shrink-0 p-2 rounded-lg bg-orange-600 text-white"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Timer className="w-6 h-6" />
-                    </motion.div>
-                    <div className="flex-1">
-                      <h3
-                        className={clsx(
-                          "text-xl font-bold mb-2 transition-colors duration-300",
-                          isDarkMode ? "text-white" : "text-gray-900"
-                        )}
+              {individualResults.map(
+                (result: IndividualResult, index: number) => (
+                  <motion.div
+                    key={index}
+                    className={clsx(
+                      "p-6 rounded-xl border transition-all duration-300 hover:shadow-lg",
+                      isDarkMode
+                        ? "bg-gradient-to-br from-orange-900/20 to-purple-900/20 border-gray-700"
+                        : "bg-gradient-to-br from-orange-50 to-purple-50 border-gray-200"
+                    )}
+                    variants={{
+                      hidden: { opacity: 0, y: 30, scale: 0.95 },
+                      visible: { opacity: 1, y: 0, scale: 1 },
+                    }}
+                    whileHover={{
+                      scale: 1.02,
+                      y: -5,
+                      transition: { duration: 0.2 },
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="flex items-start gap-4">
+                      <motion.div
+                        className="flex-shrink-0 p-2 rounded-lg bg-orange-600 text-white"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ duration: 0.2 }}
                       >
-                        {result.event}
-                      </h3>
-                      <div className="flex items-center gap-4 mb-3">
-                        <motion.span
-                          className="text-2xl font-bold text-orange-600"
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          {result.time}
-                        </motion.span>
-                        <motion.span
-                          className="text-sm font-medium text-purple-600"
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          {result.points}
-                        </motion.span>
-                      </div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Medal className="w-4 h-4 text-orange-600" />
-                        <span
+                        <Timer className="w-6 h-6" />
+                      </motion.div>
+                      <div className="flex-1">
+                        <h3
                           className={clsx(
-                            "font-medium transition-colors duration-300",
-                            isDarkMode ? "text-gray-300" : "text-gray-700"
+                            "text-xl font-bold mb-2 transition-colors duration-300",
+                            isDarkMode ? "text-white" : "text-gray-900"
                           )}
                         >
-                          {result.placement} in {result.category}
-                        </span>
+                          {result.event}
+                        </h3>
+                        <div className="flex items-center gap-4 mb-3">
+                          <motion.span
+                            className="text-2xl font-bold text-orange-600"
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            {result.time}
+                          </motion.span>
+                          <motion.span
+                            className="text-sm font-medium text-purple-600"
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            {result.points}
+                          </motion.span>
+                        </div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <Medal className="w-4 h-4 text-orange-600" />
+                          <span
+                            className={clsx(
+                              "font-medium transition-colors duration-300",
+                              isDarkMode ? "text-gray-300" : "text-gray-700"
+                            )}
+                          >
+                            {result.placement} in {result.category}
+                          </span>
+                        </div>
+                        <p
+                          className={clsx(
+                            "text-sm transition-colors duration-300",
+                            isDarkMode ? "text-gray-400" : "text-gray-600"
+                          )}
+                        >
+                          {result.description}
+                        </p>
                       </div>
-                      <p
-                        className={clsx(
-                          "text-sm transition-colors duration-300",
-                          isDarkMode ? "text-gray-400" : "text-gray-600"
-                        )}
-                      >
-                        {result.description}
-                      </p>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                )
+              )}
             </motion.div>
 
             {/* Event Videos */}
@@ -591,33 +605,37 @@ export default function OstravaCompetitionPage() {
                   },
                 }}
               >
-                {individualResults.map((result: any, index: number) => (
-                  <motion.div
-                    key={index}
-                    variants={{
-                      hidden: { opacity: 0, y: 40, scale: 0.9 },
-                      visible: { opacity: 1, y: 0, scale: 1 },
-                    }}
-                    whileHover={{
-                      scale: 1.02,
-                      transition: { duration: 0.2 },
-                    }}
-                  >
-                    <VideoPlayer
-                      videoId={result.videoId}
-                      title={`${result.event} - ${t("eventVideos.videoTitle")}`}
-                      description={t("eventVideos.videoDescription", {
-                        event: result.event,
-                        time: result.time,
-                        points: result.points,
-                        placement: result.placement,
-                      })}
-                      duration="3:45"
-                      views="850"
-                      className="mb-4"
-                    />
-                  </motion.div>
-                ))}
+                {individualResults.map(
+                  (result: IndividualResult, index: number) => (
+                    <motion.div
+                      key={index}
+                      variants={{
+                        hidden: { opacity: 0, y: 40, scale: 0.9 },
+                        visible: { opacity: 1, y: 0, scale: 1 },
+                      }}
+                      whileHover={{
+                        scale: 1.02,
+                        transition: { duration: 0.2 },
+                      }}
+                    >
+                      <VideoPlayer
+                        videoId={result.videoId}
+                        title={`${result.event} - ${t(
+                          "eventVideos.videoTitle"
+                        )}`}
+                        description={t("eventVideos.videoDescription", {
+                          event: result.event,
+                          time: result.time,
+                          points: result.points,
+                          placement: result.placement,
+                        })}
+                        duration="3:45"
+                        views="850"
+                        className="mb-4"
+                      />
+                    </motion.div>
+                  )
+                )}
               </motion.div>
             </motion.div>
           </motion.div>

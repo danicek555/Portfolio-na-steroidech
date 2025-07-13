@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import clsx from "clsx";
 
 type Competition = {
@@ -53,17 +53,17 @@ const Competitions: React.FC = () => {
   const hasMoreThanThree = competitions.length > 3;
   const slidesToShow = hasMoreThanThree ? 3 : competitions.length;
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) =>
       prev + 1 >= competitions.length - slidesToShow + 1 ? 0 : prev + 1
     );
-  };
+  }, [competitions.length, slidesToShow]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentSlide((prev) =>
       prev - 1 < 0 ? competitions.length - slidesToShow : prev - 1
     );
-  };
+  }, [competitions.length, slidesToShow]);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -114,7 +114,7 @@ const Competitions: React.FC = () => {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [hasMoreThanThree]);
+  }, [hasMoreThanThree, nextSlide, prevSlide]);
 
   // Handle mouse leave to reset drag state
   useEffect(() => {

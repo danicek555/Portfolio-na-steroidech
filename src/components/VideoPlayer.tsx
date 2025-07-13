@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Play, ExternalLink, Clock, Eye } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 import clsx from "clsx";
+import Image from "next/image";
 
 interface VideoPlayerProps {
   videoId: string;
@@ -26,7 +27,6 @@ export default function VideoPlayer({
 }: VideoPlayerProps) {
   const { isDarkMode } = useTheme();
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
   const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
@@ -35,7 +35,6 @@ export default function VideoPlayer({
 
   const handlePlayClick = () => {
     setIsPlaying(true);
-    setIsLoaded(true);
   };
 
   const handleOpenInYouTube = () => {
@@ -55,13 +54,15 @@ export default function VideoPlayer({
           {!isPlaying ? (
             // Thumbnail with Play Button
             <div className="relative w-full h-full group cursor-pointer">
-              <img
+              <Image
                 src={thumbnailUrl}
                 alt={title}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
                 onError={(e) => {
                   // Fallback to standard resolution thumbnail
-                  e.currentTarget.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                  const target = e.target as HTMLImageElement;
+                  target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
                 }}
               />
 
@@ -93,7 +94,6 @@ export default function VideoPlayer({
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              onLoad={() => setIsLoaded(true)}
             />
           )}
         </div>
