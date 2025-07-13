@@ -12,7 +12,7 @@
   "Competitions": {
     "badge": "ZÁVODNÍ PLAVÁNÍ",
     "title": "Dosažení excelence v bazénu",
-    "cta": "Více informací >",
+    "cta": "Více informací ",
     "competitions": [
       {
         "title": "České mistrovství v plavání 2024",
@@ -36,15 +36,11 @@
     "badge": "POČÍTAČOVÉ PROJEKTY",
     "title": "Moje nedávné práce",
     "visitWebsite": "Navštívit web",
-    "viewProject": "Zobrazit projekt >",
+    "viewProject": "Zobrazit projekt ",
     "projects": [
       {
         "title": "Můj Love Web",
         "description": "Romantický web počítající dny spolu s interaktivními srdci a krásnými animacemi."
-      },
-      {
-        "title": "Automatický bot pro nákup lístků na Ticketportal",
-        "description": "Bot, který automaticky nakupuje lístky na Ticketportal pro konkrétní událost s konkrétními vyhledávacími parametry."
       }
     ]
   },

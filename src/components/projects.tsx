@@ -30,16 +30,6 @@ const Projects: React.FC = () => {
       type: "external",
       featured: true,
     },
-
-    {
-      title: t("projects.1.title"),
-      description: t("projects.1.description"),
-      technologies: ["NodeJS", "Javascript", "Puppeteer"],
-      link: "https://github.com/danicek555/Auto-Kupovani-Listku",
-      img: "/botTicketPortal.png",
-      type: "external",
-      featured: true,
-    },
     // Add more projects here in the future
   ];
 
