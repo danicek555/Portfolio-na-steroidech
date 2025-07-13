@@ -3,8 +3,8 @@
 import {
   createContext,
   useContext,
-  useState,
   useEffect,
+  useState,
   ReactNode,
 } from "react";
 
@@ -27,55 +27,52 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
-// Function to get initial theme from localStorage
-const getInitialTheme = (): boolean => {
-  if (typeof window !== "undefined") {
-    const savedTheme = localStorage.getItem("darkMode");
-    if (savedTheme !== null) {
-      return JSON.parse(savedTheme);
-    }
-  }
-  return false;
-};
-
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [isDarkMode, setIsDarkMode] = useState(getInitialTheme);
-  const [isInitialized, setIsInitialized] = useState(false);
+  // Always start with false for SSR consistency
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Initialize theme and handle hydration
   useEffect(() => {
-    const savedTheme = localStorage.getItem("darkMode");
-    if (savedTheme !== null) {
-      const parsedTheme = JSON.parse(savedTheme);
-      setIsDarkMode(parsedTheme);
+    // Check saved theme preference after mount
+    const saved =
+      sessionStorage.getItem("preserveTheme") ??
+      localStorage.getItem("darkMode");
 
-      // Apply theme to document immediately
-      if (parsedTheme) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+    let isDark = false;
+    if (saved !== null) {
+      isDark = JSON.parse(saved);
+    } else {
+      // Check if script set the data-theme attribute
+      isDark = document.documentElement.getAttribute("data-theme") === "dark";
     }
-    setIsInitialized(true);
+
+    setIsDarkMode(isDark);
+    // Apply the theme class after hydration
+    document.documentElement.classList.toggle("dark", isDark);
+    // Clean up the data attribute
+    document.documentElement.removeAttribute("data-theme");
+
+    setIsMounted(true);
   }, []);
 
-  // Save theme to localStorage and apply to document when changed
   useEffect(() => {
-    if (!isInitialized) return;
-
+    if (!isMounted) return;
     localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
-
-    // Add/remove dark class to html element for global styling
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode, isInitialized]);
+    document.documentElement.classList.toggle("dark", isDarkMode);
+  }, [isDarkMode, isMounted]);
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+    setIsDarkMode((prev) => !prev);
   };
+
+  // Don't render children until mounted to avoid hydration mismatch
+  if (!isMounted) {
+    return (
+      <ThemeContext.Provider value={{ isDarkMode: false, toggleDarkMode }}>
+        <div style={{ opacity: 0, pointerEvents: "none" }}>{children}</div>
+      </ThemeContext.Provider>
+    );
+  }
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleDarkMode }}>

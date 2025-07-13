@@ -9,6 +9,7 @@ import { roboto, montserrat } from "../../styles/fonts";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "../../i18n/routing";
+import Script from "next/script";
 
 export const metadata = {
   title: "Daniel Mitka",
@@ -22,33 +23,43 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  // Ensure that the incoming `locale` is valid
   const { locale } = await params;
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
   return (
-    <html lang={locale} className={`${roboto.variable} ${montserrat.variable}`}>
+    <html
+      lang={locale}
+      className={`${roboto.variable} ${montserrat.variable}`}
+      suppressHydrationWarning
+    >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('darkMode');
-                  if (theme && JSON.parse(theme)) {
-                    document.documentElement.classList.add('dark');
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                  }
-                } catch (e) {
-                  // Ignore errors
-                }
-              })();
-            `,
-          }}
-        />
+        <Script id="theme-mode" strategy="beforeInteractive">
+          {`
+      (function () {
+        try {
+          var theme = sessionStorage.getItem('preserveTheme') ?? localStorage.getItem('darkMode');
+          var isDark = theme ? JSON.parse(theme) : false;
+          
+          // Store the theme preference but don't set the class immediately
+          // Let React handle it after hydration to avoid mismatch
+          if (isDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          
+          // Clean up sessionStorage
+          sessionStorage.removeItem('preserveTheme');
+        } catch (e) {
+          // Fallback: remove theme attribute if there's an error
+          document.documentElement.removeAttribute('data-theme');
+        }
+      })();
+    `}
+        </Script>
       </head>
       <body
         className="transition-colors duration-300 bg-white dark:bg-gray-900"
