@@ -30,6 +30,26 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${roboto.variable} ${montserrat.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('darkMode');
+                  if (theme && JSON.parse(theme)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {
+                  // Ignore errors
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className="transition-colors duration-300 bg-white dark:bg-gray-900"
         style={{

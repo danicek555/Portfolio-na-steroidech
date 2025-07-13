@@ -21,21 +21,39 @@ export default function LanguageToggle() {
     const pathWithoutLocale =
       pathname.replace(new RegExp(`^/${locale}`), "") || "/";
 
-    // Store current scroll position into sessionStorage
+    // Store current scroll position and theme state into sessionStorage
     sessionStorage.setItem("restoreScrollY", String(window.scrollY));
+    sessionStorage.setItem("preserveTheme", JSON.stringify(isDarkMode));
 
     // Navigate to the same page with different locale
     router.push(pathWithoutLocale, { locale: nextLocale });
   };
 
-  // Restore scroll position after navigation
+  // Restore scroll position and ensure theme is preserved after navigation
   useEffect(() => {
     const scrollY = sessionStorage.getItem("restoreScrollY");
     if (scrollY !== null) {
       window.scrollTo(0, parseInt(scrollY, 10));
       sessionStorage.removeItem("restoreScrollY");
     }
-  }, []);
+
+    // Ensure theme is preserved after navigation
+    const preservedTheme = sessionStorage.getItem("preserveTheme");
+    if (preservedTheme !== null) {
+      const shouldBeDark = JSON.parse(preservedTheme);
+
+      // Apply theme to document immediately if it's different from current
+      if (shouldBeDark !== isDarkMode) {
+        if (shouldBeDark) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      }
+
+      sessionStorage.removeItem("preserveTheme");
+    }
+  }, [isDarkMode]);
 
   return (
     <button

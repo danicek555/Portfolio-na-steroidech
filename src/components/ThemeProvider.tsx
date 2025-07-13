@@ -27,19 +27,42 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+// Function to get initial theme from localStorage
+const getInitialTheme = (): boolean => {
+  if (typeof window !== "undefined") {
+    const savedTheme = localStorage.getItem("darkMode");
+    if (savedTheme !== null) {
+      return JSON.parse(savedTheme);
+    }
+  }
+  return false;
+};
 
-  // Load theme from localStorage on mount
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  const [isDarkMode, setIsDarkMode] = useState(getInitialTheme);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Initialize theme and handle hydration
   useEffect(() => {
     const savedTheme = localStorage.getItem("darkMode");
-    if (savedTheme) {
-      setIsDarkMode(JSON.parse(savedTheme));
+    if (savedTheme !== null) {
+      const parsedTheme = JSON.parse(savedTheme);
+      setIsDarkMode(parsedTheme);
+
+      // Apply theme to document immediately
+      if (parsedTheme) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     }
+    setIsInitialized(true);
   }, []);
 
-  // Save theme to localStorage when changed
+  // Save theme to localStorage and apply to document when changed
   useEffect(() => {
+    if (!isInitialized) return;
+
     localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
 
     // Add/remove dark class to html element for global styling
@@ -48,7 +71,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     } else {
       document.documentElement.classList.remove("dark");
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, isInitialized]);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
