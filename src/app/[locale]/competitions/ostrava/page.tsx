@@ -14,69 +14,32 @@ import { useTheme } from "../../../../components/ThemeProvider";
 import VideoPlayer from "../../../../components/VideoPlayer";
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 
 export default function OstravaCompetitionPage() {
   const { isDarkMode } = useTheme();
+  const t = useTranslations("Ostrava");
 
-  const individualResults = [
-    {
-      event: "100m Freestyle",
-      time: "0:55.68",
-      points: "578 pts",
-      placement: "15th place",
-      category: "Overall",
-      description: "Sprint freestyle technique",
-      videoId: "EHc84z_gTc4",
-    },
-    {
-      event: "400m Individual Medley",
-      time: "4:49.75",
-      points: "586 pts",
-      placement: "6th place",
-      category: "Overall",
-      description: "All four strokes combined - best individual result",
-      videoId: "YjjmiyxTSnU",
-    },
-    {
-      event: "200m Freestyle",
-      time: "2:00.81",
-      points: "601 pts",
-      placement: "8th place",
-      category: "Overall",
-      description: "Middle distance freestyle",
-      videoId: "Nm6LNRUCTCM",
-    },
-    {
-      event: "200m Individual Medley",
-      time: "2:15.61",
-      points: "594 pts",
-      placement: "8th place",
-      category: "Overall",
-      description: "Technical multi-stroke event",
-      videoId: "1ChSgR-nSn0",
-    },
-  ];
+  const individualResults = t
+    .raw("individualResults.events")
+    .map((event: any, index: number) => ({
+      ...event,
+      videoId: ["EHc84z_gTc4", "YjjmiyxTSnU", "Nm6LNRUCTCM", "1ChSgR-nSn0"][
+        index
+      ],
+    }));
 
-  const teamAchievements = [
-    {
-      category: "Men's Team",
-      result: "8th Place",
-      description: "Elite level team competition",
-      icon: <Users className="w-6 h-6" />,
-    },
-    {
-      category: "Women's Team",
-      result: "8th Place",
-      description: "Strong team performance",
-      icon: <Users className="w-6 h-6" />,
-    },
-    {
-      category: "Qualification",
-      result: "Advanced to Finals",
-      description: "Successful semifinal performance",
-      icon: <Trophy className="w-6 h-6" />,
-    },
-  ];
+  const teamAchievements = t
+    .raw("teamAchievements.achievements")
+    .map((achievement: any, index: number) => ({
+      ...achievement,
+      icon:
+        achievement.category === "Qualification" ? (
+          <Trophy className="w-6 h-6" />
+        ) : (
+          <Users className="w-6 h-6" />
+        ),
+    }));
 
   return (
     <div
@@ -115,14 +78,14 @@ export default function OstravaCompetitionPage() {
               whileHover={{ scale: 1.05, rotate: 2 }}
               whileTap={{ scale: 0.95 }}
             >
-              Team Championship
+              {t("hero.badge1")}
             </motion.span>
             <motion.span
               className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold"
               whileHover={{ scale: 1.05, rotate: -2 }}
               whileTap={{ scale: 0.95 }}
             >
-              Finals
+              {t("hero.badge2")}
             </motion.span>
           </motion.div>
 
@@ -137,7 +100,7 @@ export default function OstravaCompetitionPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              MČR Družstev Finále
+              {t("hero.title")}
             </motion.span>
             <motion.span
               className="block text-orange-400"
@@ -145,7 +108,7 @@ export default function OstravaCompetitionPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              Ostrava 2025
+              {t("hero.subtitle")}
             </motion.span>
           </motion.h1>
 
@@ -175,7 +138,7 @@ export default function OstravaCompetitionPage() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
               >
-                Motorlet Praha
+                {t("hero.teamName")}
               </motion.h3>
               <motion.p
                 className={clsx(
@@ -186,7 +149,7 @@ export default function OstravaCompetitionPage() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.4 }}
               >
-                1st & 2nd League Finals
+                {t("hero.teamDescription")}
               </motion.p>
             </div>
           </motion.div>
@@ -237,7 +200,7 @@ export default function OstravaCompetitionPage() {
                     isDarkMode ? "text-white" : "text-gray-900"
                   )}
                 >
-                  Location
+                  {t("info.location")}
                 </h3>
                 <p
                   className={clsx(
@@ -245,7 +208,7 @@ export default function OstravaCompetitionPage() {
                     isDarkMode ? "text-gray-300" : "text-gray-600"
                   )}
                 >
-                  Ostrava, Czech Republic
+                  {t("info.locationValue")}
                 </p>
               </div>
             </motion.div>
@@ -274,7 +237,7 @@ export default function OstravaCompetitionPage() {
                     isDarkMode ? "text-white" : "text-gray-900"
                   )}
                 >
-                  Date
+                  {t("info.date")}
                 </h3>
                 <p
                   className={clsx(
@@ -282,7 +245,7 @@ export default function OstravaCompetitionPage() {
                     isDarkMode ? "text-gray-300" : "text-gray-600"
                   )}
                 >
-                  March 22-23, 2025
+                  {t("info.dateValue")}
                 </p>
               </div>
             </motion.div>
@@ -311,7 +274,7 @@ export default function OstravaCompetitionPage() {
                     isDarkMode ? "text-white" : "text-gray-900"
                   )}
                 >
-                  Level
+                  {t("info.level")}
                 </h3>
                 <p
                   className={clsx(
@@ -319,7 +282,7 @@ export default function OstravaCompetitionPage() {
                     isDarkMode ? "text-gray-300" : "text-gray-600"
                   )}
                 >
-                  Elite Team Championship
+                  {t("info.levelValue")}
                 </p>
               </div>
             </motion.div>
@@ -334,7 +297,7 @@ export default function OstravaCompetitionPage() {
                   isDarkMode ? "text-white" : "text-gray-900"
                 )}
               >
-                Elite Team Championship
+                {t("story.title")}
               </h2>
               <p
                 className={clsx(
@@ -342,10 +305,7 @@ export default function OstravaCompetitionPage() {
                   isDarkMode ? "text-gray-300" : "text-gray-700"
                 )}
               >
-                The Team Championship Finals in Ostrava represents the pinnacle
-                of Czech club swimming, where only the best teams advance after
-                rigorous semifinal competitions. Motorlet Praha earned their
-                place through exceptional performances in earlier rounds.
+                {t("story.paragraph1")}
               </p>
               <div className="border-l-4 border-orange-600 pl-6 mb-6">
                 <p
@@ -354,9 +314,7 @@ export default function OstravaCompetitionPage() {
                     isDarkMode ? "text-gray-200" : "text-gray-800"
                   )}
                 >
-                  "We advance to the finals, which will be held on March 22-23
-                  in Ostrava" - celebrating the successful semifinal campaign
-                  that brought both men's and women's teams to the elite level.
+                  &quot;{t("story.quote")}&quot;
                 </p>
               </div>
               <p
@@ -365,9 +323,7 @@ export default function OstravaCompetitionPage() {
                   isDarkMode ? "text-gray-300" : "text-gray-700"
                 )}
               >
-                The finals showcased Daniel's versatility across multiple
-                disciplines, contributing crucial points to Motorlet Praha's
-                overall team success in this prestigious competition.
+                {t("story.paragraph2")}
               </p>
             </div>
             <div className="relative">
@@ -407,7 +363,7 @@ export default function OstravaCompetitionPage() {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              Team Achievements
+              {t("teamAchievements.title")}
             </motion.h2>
             <motion.div
               className="grid md:grid-cols-3 gap-6"
@@ -421,7 +377,7 @@ export default function OstravaCompetitionPage() {
                 },
               }}
             >
-              {teamAchievements.map((achievement, index) => (
+              {teamAchievements.map((achievement: any, index: number) => (
                 <motion.div
                   key={index}
                   className={clsx(
@@ -506,7 +462,7 @@ export default function OstravaCompetitionPage() {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              Daniel's Individual Results
+              {t("individualResults.title")}
             </motion.h2>
             <motion.div
               className="grid md:grid-cols-2 gap-6 mb-12"
@@ -520,7 +476,7 @@ export default function OstravaCompetitionPage() {
                 },
               }}
             >
-              {individualResults.map((result, index) => (
+              {individualResults.map((result: any, index: number) => (
                 <motion.div
                   key={index}
                   className={clsx(
@@ -621,7 +577,7 @@ export default function OstravaCompetitionPage() {
                   visible: { opacity: 1, y: 0 },
                 }}
               >
-                Event Videos
+                {t("eventVideos.title")}
               </motion.h3>
               <motion.div
                 className="grid md:grid-cols-2 gap-8"
@@ -635,7 +591,7 @@ export default function OstravaCompetitionPage() {
                   },
                 }}
               >
-                {individualResults.map((result, index) => (
+                {individualResults.map((result: any, index: number) => (
                   <motion.div
                     key={index}
                     variants={{
@@ -649,8 +605,13 @@ export default function OstravaCompetitionPage() {
                   >
                     <VideoPlayer
                       videoId={result.videoId}
-                      title={`${result.event} - Team Championship Finals Ostrava 2025`}
-                      description={`Watch Daniel's performance in the ${result.event} at the Team Championship Finals in Ostrava. Final time: ${result.time}, earning ${result.points} and finishing ${result.placement}.`}
+                      title={`${result.event} - ${t("eventVideos.videoTitle")}`}
+                      description={t("eventVideos.videoDescription", {
+                        event: result.event,
+                        time: result.time,
+                        points: result.points,
+                        placement: result.placement,
+                      })}
                       duration="3:45"
                       views="850"
                       className="mb-4"
@@ -677,7 +638,7 @@ export default function OstravaCompetitionPage() {
                   isDarkMode ? "text-white" : "text-gray-900"
                 )}
               >
-                Competition Overview
+                {t("statistics.competitionOverview.title")}
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
@@ -687,10 +648,10 @@ export default function OstravaCompetitionPage() {
                       isDarkMode ? "text-gray-300" : "text-gray-600"
                     )}
                   >
-                    Events Competed:
+                    {t("statistics.competitionOverview.eventsCompeted")}
                   </span>
                   <span className="font-bold text-orange-600">
-                    4 Individual
+                    {t("statistics.competitionOverview.eventsCompetedValue")}
                   </span>
                 </div>
                 <div className="flex justify-between">
@@ -700,9 +661,11 @@ export default function OstravaCompetitionPage() {
                       isDarkMode ? "text-gray-300" : "text-gray-600"
                     )}
                   >
-                    Best Placement:
+                    {t("statistics.competitionOverview.bestPlacement")}
                   </span>
-                  <span className="font-bold text-orange-600">6th Place</span>
+                  <span className="font-bold text-orange-600">
+                    {t("statistics.competitionOverview.bestPlacementValue")}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span
@@ -711,9 +674,11 @@ export default function OstravaCompetitionPage() {
                       isDarkMode ? "text-gray-300" : "text-gray-600"
                     )}
                   >
-                    Highest Points:
+                    {t("statistics.competitionOverview.highestPoints")}
                   </span>
-                  <span className="font-bold text-orange-600">601 pts</span>
+                  <span className="font-bold text-orange-600">
+                    {t("statistics.competitionOverview.highestPointsValue")}
+                  </span>
                 </div>
               </div>
             </div>
@@ -731,7 +696,7 @@ export default function OstravaCompetitionPage() {
                   isDarkMode ? "text-white" : "text-gray-900"
                 )}
               >
-                Team Performance
+                {t("statistics.teamPerformance.title")}
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
@@ -741,9 +706,11 @@ export default function OstravaCompetitionPage() {
                       isDarkMode ? "text-gray-300" : "text-gray-600"
                     )}
                   >
-                    Men's Team:
+                    {t("statistics.teamPerformance.mensTeam")}
                   </span>
-                  <span className="font-bold text-purple-600">8th Place</span>
+                  <span className="font-bold text-purple-600">
+                    {t("statistics.teamPerformance.mensTeamValue")}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span
@@ -752,9 +719,11 @@ export default function OstravaCompetitionPage() {
                       isDarkMode ? "text-gray-300" : "text-gray-600"
                     )}
                   >
-                    Women's Team:
+                    {t("statistics.teamPerformance.womensTeam")}
                   </span>
-                  <span className="font-bold text-purple-600">8th Place</span>
+                  <span className="font-bold text-purple-600">
+                    {t("statistics.teamPerformance.womensTeamValue")}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span
@@ -763,9 +732,11 @@ export default function OstravaCompetitionPage() {
                       isDarkMode ? "text-gray-300" : "text-gray-600"
                     )}
                   >
-                    Overall Result:
+                    {t("statistics.teamPerformance.overallResult")}
                   </span>
-                  <span className="font-bold text-purple-600">Improvement</span>
+                  <span className="font-bold text-purple-600">
+                    {t("statistics.teamPerformance.overallResultValue")}
+                  </span>
                 </div>
               </div>
             </div>
@@ -779,7 +750,7 @@ export default function OstravaCompetitionPage() {
                 isDarkMode ? "text-white" : "text-gray-900"
               )}
             >
-              Championship Impact
+              {t("highlights.title")}
             </h2>
             <div
               className={clsx(
@@ -796,11 +767,7 @@ export default function OstravaCompetitionPage() {
                     isDarkMode ? "text-gray-300" : "text-gray-700"
                   )}
                 >
-                  The Team Championship Finals in Ostrava showcased the strength
-                  of Czech club swimming, with Motorlet Praha achieving solid
-                  results across both men's and women's divisions. Daniel's
-                  contribution across four individual events demonstrated his
-                  versatility and commitment to team success.
+                  {t("highlights.description")}
                 </p>
                 <div className="flex items-center justify-center gap-4">
                   <Trophy className="w-8 h-8 text-orange-600" />
@@ -810,7 +777,7 @@ export default function OstravaCompetitionPage() {
                       isDarkMode ? "text-gray-200" : "text-gray-800"
                     )}
                   >
-                    Elite Team Championship Finals Experience
+                    {t("highlights.experience")}
                   </span>
                 </div>
               </div>

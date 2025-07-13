@@ -274,9 +274,10 @@ export default function PodoliCompetitionPage() {
                     isDarkMode ? "text-gray-300" : "text-gray-700"
                   )}
                 >
-                  "This video captures the essence of competing at the highest
-                  level of Czech swimming, showcasing the dedication, technique,
-                  and passion that defines national championship competition."
+                  &quot;This video captures the essence of competing at the
+                  highest level of Czech swimming, showcasing the dedication,
+                  technique, and passion that defines national championship
+                  competition.&quot;
                 </p>
               </div>
             </div>
