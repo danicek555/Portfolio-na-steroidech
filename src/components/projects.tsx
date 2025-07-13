@@ -30,6 +30,7 @@ const Projects: React.FC = () => {
       type: "external",
       featured: true,
     },
+
     {
       title: t("projects.1.title"),
       description: t("projects.1.description"),
