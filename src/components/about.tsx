@@ -59,13 +59,13 @@ const About: React.FC = () => {
             </a>
           </div>
           {/* Right Column - Image */}
-          <div className="relative max-w-xl">
+          <div className="relative max-w-xl mx-auto lg:mx-0">
             <Image
               src="/profilovaFotka.jpg"
               alt="Daniel Mitka swimming"
-              width={300}
-              height={400}
-              className="rounded-lg object-cover w-full h-auto "
+              width={500}
+              height={600}
+              className="rounded-lg object-cover w-full h-auto"
               priority
             />
           </div>
