@@ -17,6 +17,8 @@ interface IndividualResult {
   category: string;
   description: string;
   videoId: string;
+  duration: string;
+  views: string;
 }
 
 interface TeamAchievement {
@@ -37,6 +39,8 @@ export default function OstravaCompetitionPage() {
       videoId: ["EHc84z_gTc4", "YjjmiyxTSnU", "Nm6LNRUCTCM", "1ChSgR-nSn0"][
         index
       ],
+      duration: ["1:17", "5:22", "2:31", "2:43"][index],
+      views: ["530", "756", "304", "947"][index],
     }));
 
   const teamAchievements = t
@@ -629,8 +633,8 @@ export default function OstravaCompetitionPage() {
                           points: result.points,
                           placement: result.placement,
                         })}
-                        duration="3:45"
-                        views="850"
+                        duration={result.duration}
+                        views={result.views}
                         className="mb-4"
                       />
                     </motion.div>

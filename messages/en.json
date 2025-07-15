@@ -2,7 +2,7 @@
   "About": {
     "badge": "RISING STAR SWIMMER",
     "title": "Czech National Record Holder",
-    "description": "Daniel Mitka, a 16-year-old elite swimmer from SK Motorlet Praha, has achieved remarkable success in Czech swimming. His crowning achievement includes setting a national record as part of the mixed 4x50m medley relay team at the 2022 Winter Championship in Mladá Boleslav. Competing at the highest national level, Daniel has secured multiple individual and relay medals, contributing to his team's impressive tally of six individual and four relay medals. With his proven track record in competitive swimming, Daniel is now setting his sights on joining the Colorado Hilltoppers team while pursuing his education in the U.S.",
+    "description": "Daniel Mitka, a 16-year-old elite swimmer from SK Motorlet Praha, has achieved remarkable success in Czech swimming. His standout achievement is setting a national record as part of the mixed 4x50m medley relay at the 2022 Winter Championships in Mladá Boleslav. Competing at the highest national level, Daniel contributes every year to the performance and overall success of SK Motorlet Praha. With his proven track record in competitive swimming, he is now focused on joining the Colorado Hilltoppers team while pursuing his studies in the USA.",
     "cta": "Get in touch"
   },
   "Hero": {
@@ -11,24 +11,24 @@
   },
   "Competitions": {
     "badge": "COMPETITIVE SWIMMING",
-    "title": "Achieving excellence in the pool",
-    "cta": "Learn more >",
+    "title": "Recent Race Performances",
+    "cta": "Learn more ",
     "competitions": [
       {
-        "title": "Czech National Swimming Championship 2024",
-        "description": "Experience the pinnacle of Czech swimming competition at the prestigious MCR Podolí championship."
-      },
-      {
-        "title": "Lifesaving World Championships 2024",
-        "description": "Witness Daniel's incredible journey to becoming a World Vice-champion in lifesaving."
+        "title": "Team Championship Finals Ostrava 2025",
+        "description": "Elite team championship finals representing Motorlet Praha at the highest level of Czech swimming competition."
       },
       {
         "title": "Slovakia Cup Šamorín 2024",
         "description": "International swimming competition showcasing versatility across multiple disciplines in Slovakia."
       },
       {
-        "title": "Team Championship Finals Ostrava 2025",
-        "description": "Elite team championship finals representing Motorlet Praha at the highest level of Czech swimming competition."
+        "title": "Lifesaving World Championships 2024",
+        "description": "Witness Daniel's incredible journey to becoming a World Vice-champion in lifesaving."
+      },
+      {
+        "title": "Czech National Swimming Championship 2024",
+        "description": "Experience the pinnacle of Czech swimming competition at the prestigious MCR Podolí championship."
       }
     ]
   },
@@ -41,10 +41,6 @@
       {
         "title": "My Love Website",
         "description": "A romantic website counting days together with interactive hearts and beautiful animations."
-      },
-      {
-        "title": "Automatic Bot for Buying Tickets on Ticketportal",
-        "description": "A bot that automatically buys tickets on Ticketportal for a specific event with specific search parameters."
       }
     ]
   },
@@ -223,6 +219,130 @@
       "title": "Championship Impact",
       "description": "The Team Championship Finals in Ostrava showcased the strength of Czech club swimming, with Motorlet Praha achieving solid results across both men's and women's divisions. Daniel's contribution across four individual events demonstrated his versatility and commitment to team success.",
       "experience": "Elite Team Championship Finals Experience"
+    }
+  },
+  "Samorin": {
+    "hero": {
+      "badge1": "International Competition",
+      "badge2": "2024",
+      "title": "Slovakia Cup",
+      "subtitle": "Šamorín 2024",
+      "eventTitle": "Swimming Excellence",
+      "eventDescription": "Multiple Events Participation"
+    },
+    "info": {
+      "location": "Location",
+      "locationValue": "Šamorín, Slovakia",
+      "date": "Date",
+      "dateValue": "October 25, 2024",
+      "competition": "Competition",
+      "competitionValue": "Slovakia Cup"
+    },
+    "story": {
+      "title": "International Experience",
+      "paragraph1": "The Slovakia Cup in Šamorín on October 25, 2024, was a showcase of versatility where Daniel Mitka competed across five different swimming events, demonstrating technical proficiency in both freestyle and individual medley disciplines.",
+      "highlight": "Standout performances included a strong 100m freestyle time of 0:52.82 and consistent individual medley swims across 100m, 200m, and 400m distances, showing excellent stroke technique and endurance.",
+      "paragraph2": "The competition featured multiple events ranging from sprint distances to challenging 400m individual medley, testing both speed and technical mastery across all four competitive swimming strokes."
+    },
+    "events": {
+      "title": "Events Participated",
+      "eventsList": [
+        {
+          "event": "100m Individual Medley",
+          "time": "0:58.53",
+          "description": "Personal best in all four swimming strokes"
+        },
+        {
+          "event": "200m Freestyle",
+          "time": "1:54.80",
+          "description": "Strong middle distance performance"
+        },
+        {
+          "event": "400m Individual Medley",
+          "time": "4:36.38",
+          "description": "Challenging long distance medley event"
+        },
+        {
+          "event": "200m Individual Medley",
+          "time": "2:06.65",
+          "description": "Technical precision across all strokes"
+        },
+        {
+          "event": "100m Freestyle",
+          "time": "0:52.82",
+          "description": "Sprint freestyle performance"
+        }
+      ]
+    }
+  },
+  "Podoli": {
+    "hero": {
+      "badge1": "National Championship",
+      "badge2": "Czech Republic",
+      "title": "Czech National Swimming",
+      "subtitle": "Championship 2024",
+      "eventTitle": "MCR Podolí",
+      "eventDescription": "Representing Czech Republic"
+    },
+    "info": {
+      "location": "Location",
+      "locationValue": "Podolí, Prague",
+      "date": "Date",
+      "dateValue": "2024",
+      "level": "Level",
+      "levelValue": "National Championship"
+    },
+    "story": {
+      "title": "National Competition Excellence",
+      "paragraph1": "The Czech National Swimming Championship (MCR) in Podolí represents the pinnacle of domestic swimming competition, where the nation's best swimmers compete for national titles and records.",
+      "highlight": "Competing at this level demands not only technical excellence but also mental fortitude to perform under the pressure of representing your region at the highest national standard.",
+      "paragraph2": "This championship serves as a crucial stepping stone for international competitions and demonstrates Daniel's commitment to achieving excellence in Czech swimming."
+    },
+    "events": {
+      "title": "Championship Events",
+      "eventsList": [
+        {
+          "event": "50m Freestyle",
+          "result": "Finals",
+          "time": "25.00",
+          "description": "Heats: 25.14 | Finals: 25.00 - Strong sprint performance"
+        },
+        {
+          "event": "200m Individual Medley",
+          "result": "Heats",
+          "time": "2:11.91",
+          "description": "Heats: 2:11.91 | Finals: 2:11.92 - All four strokes combined"
+        },
+        {
+          "event": "200m Freestyle",
+          "result": "Finals",
+          "time": "1:57.72",
+          "description": "Heats: 2:00.50 | Finals: 1:57.72 - Excellent improvement in finals"
+        },
+        {
+          "event": "100m Breaststroke",
+          "result": "Finals",
+          "time": "1:07.99",
+          "description": "Heats: 1:09.01 | Finals: 1:07.99 - Strong technical performance"
+        },
+        {
+          "event": "400m Individual Medley",
+          "result": "Finals",
+          "time": "4:44.39",
+          "description": "Heats: 4:44.39 - Long distance medley challenge"
+        },
+        {
+          "event": "200m Breaststroke",
+          "result": "Heats",
+          "time": "2:32.03",
+          "description": "Heats: 2:32.03 | Finals: 2:33.19 - Technical breaststroke race"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Championship Experience",
+      "description": "The Czech National Swimming Championship in Podolí provided an invaluable opportunity to compete against the country's elite swimmers in a world-class facility.",
+      "experience": "National Level Competition Experience"
     }
   }
 }

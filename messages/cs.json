@@ -2,33 +2,33 @@
   "About": {
     "badge": "VZESTUPUJÍCÍ HVĚZDA PLAVÁNÍ",
     "title": "Držitel českého národního rekordu",
-    "description": "Daniel Mitka, 16letý elitní plavec ze SK Motorlet Praha, dosáhl pozoruhodných úspěchů v českém plavání. Jeho vrcholným úspěchem je vytvoření národního rekordu jako člen smíšené štafety 4x50m polohový závod na Zimním mistrovství 2022 v Mladé Boleslavi. Soutěží na nejvyšší národní úrovni, Daniel získal mnoho individuálních a štafetových medailí, přispívajících k působivému celku jeho týmu šesti individuálních a čtyř štafetových medailí. Se svým prokázaným úspěchem v závodním plavání se Daniel nyní zaměřuje na připojení k týmu Colorado Hilltoppers při studiu v USA.",
+    "description": "Daniel Mitka, 16letý elitní plavec ze SK Motorlet Praha, dosáhl pozoruhodných úspěchů v českém plavání. Jeho vrcholným úspěchem je vyplavání národního rekordu jako člen smíšené štafety 4x50m polohový závod na Zimním mistrovství 2022 v Mladé Boleslavi. Soutěží na nejvyšší národní úrovni a pravidelně každým rokem přispívá k výsledkům a týmovému úspěchu SK Motorlet Praha. Se svým prokázaným úspěchem v závodním plavání se nyní Daniel zaměřuje na připojení k týmu Colorado Hilltoppers při studiu v USA.",
     "cta": "Kontaktujte mě"
   },
   "Hero": {
-    "subtitle": "Český mládežnický šampion v plavání a medailista v záchranářství",
+    "subtitle": "Český juniorský mistr v plavání a medailista na mistrovství světa v záchranářství",
     "cta": "Kontaktujte mě"
   },
   "Competitions": {
     "badge": "ZÁVODNÍ PLAVÁNÍ",
-    "title": "Dosažení excelence v bazénu",
+    "title": "Aktuální závodní výkony",
     "cta": "Více informací ",
     "competitions": [
       {
-        "title": "České mistrovství v plavání 2024",
-        "description": "Zažijte vrchol českého plaveckého závodění na prestižním mistrovství MCR Podolí."
-      },
-      {
-        "title": "Mistrovství světa v záchranářství 2024",
-        "description": "Sledujte Danielovu neuvěřitelnou cestu k titulu světového vicemistra v záchranářství."
+        "title": "Finále MČR družstev Ostrava 2025",
+        "description": "Elitní finále týmového mistrovství reprezentující Motorlet Praha na nejvyšší úrovni českého plaveckého závodění."
       },
       {
         "title": "Slovenský pohár Šamorín 2024",
         "description": "Mezinárodní plavecká soutěž předvádějící všestrannost napříč různými disciplínami na Slovensku."
       },
       {
-        "title": "Finále MČR družstev Ostrava 2025",
-        "description": "Elitní finále týmového mistrovství reprezentující Motorlet Praha na nejvyšší úrovni českého plaveckého závodění."
+        "title": "Mistrovství světa v záchranářství 2024",
+        "description": "Sledujte Danielovu neuvěřitelnou cestu k titulu světového vicemistra v záchranářství."
+      },
+      {
+        "title": "České juniorské mistrovství v plavání 2024",
+        "description": "Zažijte vrchol českého plaveckého závodění na prestižním mistrovství ČR v Podolí."
       }
     ]
   },
@@ -55,7 +55,7 @@
     "socialMedia": "Sociální sítě",
     "swimmingStatistics": "Plavecké statistiky",
     "about": "Daniel Mitka",
-    "aboutDescription": "Vášnivý vývojář a nadšenec do plavání. Budování digitálních zážitků a sledování atletického výkonu.",
+    "aboutDescription": "Vášnivý vývojář a nadšenec do plavání. ",
     "copyright": "© {year} Daniel Mitka. Všechna práva vyhrazena."
   },
   "Australia": {
@@ -219,6 +219,130 @@
       "title": "Dopad mistrovství",
       "description": "Finále týmového mistrovství v Ostravě předvedlo sílu českého klubového plavání, kdy Motorlet Praha dosáhl solidních výsledků v mužské i ženské kategorii. Danielův příspěvek ve čtyřech individuálních disciplínách prokázal jeho všestrannost a odhodlání k týmovému úspěchu.",
       "experience": "Zkušenost z finále elitního týmového mistrovství"
+    }
+  },
+  "Samorin": {
+    "hero": {
+      "badge1": "Mezinárodní soutěž",
+      "badge2": "2024",
+      "title": "Slovenský pohár",
+      "subtitle": "Šamorín 2024",
+      "eventTitle": "Plavecká excelence",
+      "eventDescription": "Účast ve více disciplínách"
+    },
+    "info": {
+      "location": "Lokalita",
+      "locationValue": "Šamorín, Slovensko",
+      "date": "Datum",
+      "dateValue": "25. října 2024",
+      "competition": "Soutěž",
+      "competitionValue": "Slovenský pohár"
+    },
+    "story": {
+      "title": "Mezinárodní zkušenost",
+      "paragraph1": "Slovenský pohár v Šamoríně 25. října 2024 byl ukázkou všestrannosti, kde Daniel Mitka soutěžil v pěti různých plaveckých disciplínách a předvedl technickou zdatnost jak ve volném způsobu, tak v polohových závodech.",
+      "highlight": "Vynikající výkony zahrnovaly silný čas 0:52.82 na 100m volného způsobu a konzistentní polohové závody na 100m, 200m a 400m vzdálenostech, prokazující výbornou techniku a vytrvalost.",
+      "paragraph2": "Soutěž zahrnovala různé disciplíny od sprintových vzdáleností po náročný 400m polohový závod, testující rychlost i technické zvládnutí všech čtyř závodních plaveckých způsobů."
+    },
+    "events": {
+      "title": "Soutěžené disciplíny",
+      "eventsList": [
+        {
+          "event": "100m polohový závod",
+          "time": "0:58.53",
+          "description": "Osobní rekord ve všech čtyřech plaveckých způsobech"
+        },
+        {
+          "event": "200m volný způsob",
+          "time": "1:54.80",
+          "description": "Silný výkon na střední vzdálenosti"
+        },
+        {
+          "event": "400m polohový závod",
+          "time": "4:36.38",
+          "description": "Náročná dlouhá polohová disciplína"
+        },
+        {
+          "event": "200m polohový závod",
+          "time": "2:06.65",
+          "description": "Technická přesnost napříč všemi způsoby"
+        },
+        {
+          "event": "100m volný způsob",
+          "time": "0:52.82",
+          "description": "Sprintový výkon volného způsobu"
+        }
+      ]
+    }
+  },
+  "Podoli": {
+    "hero": {
+      "badge1": "Národní mistrovství",
+      "badge2": "Česká republika",
+      "title": "České národní mistrovství",
+      "subtitle": "v plavání 2024",
+      "eventTitle": "MCR Podolí",
+      "eventDescription": "Reprezentace České republiky"
+    },
+    "info": {
+      "location": "Lokalita",
+      "locationValue": "Podolí, Praha",
+      "date": "Datum",
+      "dateValue": "2024",
+      "level": "Úroveň",
+      "levelValue": "Národní mistrovství"
+    },
+    "story": {
+      "title": "Excelence národní soutěže",
+      "paragraph1": "České národní mistrovství v plavání (MCR) v Podolí představuje vrchol domácí plavecké soutěže, kde nejlepší plavci národa soutěží o národní tituly a rekordy.",
+      "highlight": "Soutěžení na této úrovni vyžaduje nejen technickou dokonalost, ale také mentální sílu pro výkon pod tlakem reprezentace regionu na nejvyšší národní úrovni.",
+      "paragraph2": "Toto mistrovství slouží jako klíčový odrazový můstek pro mezinárodní soutěže a demonstruje Danielovo odhodlání dosáhnout dokonalosti v českém plavání."
+    },
+    "events": {
+      "title": "Mistrovské disciplíny",
+      "eventsList": [
+        {
+          "event": "50m volný způsob",
+          "result": "Finále",
+          "time": "25.00",
+          "description": "Rozplavby: 25.14 | Finále: 25.00 - Silný sprintový výkon"
+        },
+        {
+          "event": "200m polohový závod",
+          "result": "Rozplavby",
+          "time": "2:11.91",
+          "description": "Rozplavby: 2:11.91 | Finále: 2:11.92 - Všechny čtyři způsoby kombinované"
+        },
+        {
+          "event": "200m volný způsob",
+          "result": "Finále",
+          "time": "1:57.72",
+          "description": "Rozplavby: 2:00.50 | Finále: 1:57.72 - Výborné zlepšení ve finále"
+        },
+        {
+          "event": "100m prsa",
+          "result": "Finále",
+          "time": "1:07.99",
+          "description": "Rozplavby: 1:09.01 | Finále: 1:07.99 - Silný technický výkon"
+        },
+        {
+          "event": "400m polohový závod",
+          "result": "Finále",
+          "time": "4:44.39",
+          "description": "Rozplavby: 4:44.39 - Dlouhá polohová výzva"
+        },
+        {
+          "event": "200m prsa",
+          "result": "Rozplavby",
+          "time": "2:32.03",
+          "description": "Rozplavby: 2:32.03 | Finále: 2:33.19 - Technický závod v prsa"
+        }
+      ]
+    },
+    "highlights": {
+      "title": "Mistrovská zkušenost",
+      "description": "České národní mistrovství v plavání v Podolí poskytlo neocenitelnou příležitost soutěžit proti elitním plavcům země v zařízení světové třídy.",
+      "experience": "Zkušenost ze soutěže na národní úrovni"
     }
   }
 }

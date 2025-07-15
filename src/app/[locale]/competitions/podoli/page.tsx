@@ -3,38 +3,19 @@
 import Image from "next/image";
 import { MapPin, Calendar, Trophy, Target } from "lucide-react";
 import { useTheme } from "../../../../components/ThemeProvider";
-import VideoPlayer from "../../../../components/VideoPlayer";
+import { useTranslations } from "next-intl";
 import clsx from "clsx";
 
 export default function PodoliCompetitionPage() {
   const { isDarkMode } = useTheme();
+  const t = useTranslations("Podoli");
 
-  const events = [
-    {
-      event: "50m Freestyle",
-      result: "Personal Best",
-      time: "TBA",
-      description: "Sprint freestyle technique",
-    },
-    {
-      event: "100m Freestyle",
-      result: "Strong Performance",
-      time: "TBA",
-      description: "Middle distance swimming",
-    },
-    {
-      event: "50m Butterfly",
-      result: "Competed",
-      time: "TBA",
-      description: "Technical butterfly stroke",
-    },
-    {
-      event: "100m Individual Medley",
-      result: "National Level",
-      time: "TBA",
-      description: "All four swimming strokes combined",
-    },
-  ];
+  const events = t.raw("events.eventsList") as Array<{
+    event: string;
+    result: string;
+    time: string;
+    description: string;
+  }>;
 
   return (
     <div
@@ -64,16 +45,16 @@ export default function PodoliCompetitionPage() {
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider">
-              National Championship
+              {t("hero.badge1")}
             </span>
             <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-              Czech Republic
+              {t("hero.badge2")}
             </span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-            Czech National Swimming
-            <span className="block text-red-400">Championship 2024</span>
+            {t("hero.title")}
+            <span className="block text-red-400">{t("hero.subtitle")}</span>
           </h1>
 
           <div
@@ -86,14 +67,16 @@ export default function PodoliCompetitionPage() {
           >
             <div className="text-6xl">🇨🇿</div>
             <div className="text-left">
-              <h3 className="text-2xl font-bold mb-2">MCR Podolí</h3>
+              <h3 className="text-2xl font-bold mb-2">
+                {t("hero.eventTitle")}
+              </h3>
               <p
                 className={clsx(
                   "text-lg transition-colors duration-300",
                   isDarkMode ? "text-gray-300" : "text-gray-600"
                 )}
               >
-                Representing Czech Republic
+                {t("hero.eventDescription")}
               </p>
             </div>
           </div>
@@ -119,7 +102,7 @@ export default function PodoliCompetitionPage() {
                     isDarkMode ? "text-white" : "text-gray-900"
                   )}
                 >
-                  Location
+                  {t("info.location")}
                 </h3>
                 <p
                   className={clsx(
@@ -127,7 +110,7 @@ export default function PodoliCompetitionPage() {
                     isDarkMode ? "text-gray-300" : "text-gray-600"
                   )}
                 >
-                  Podolí, Prague
+                  {t("info.locationValue")}
                 </p>
               </div>
             </div>
@@ -145,7 +128,7 @@ export default function PodoliCompetitionPage() {
                     isDarkMode ? "text-white" : "text-gray-900"
                   )}
                 >
-                  Date
+                  {t("info.date")}
                 </h3>
                 <p
                   className={clsx(
@@ -153,7 +136,7 @@ export default function PodoliCompetitionPage() {
                     isDarkMode ? "text-gray-300" : "text-gray-600"
                   )}
                 >
-                  2024
+                  {t("info.dateValue")}
                 </p>
               </div>
             </div>
@@ -171,7 +154,7 @@ export default function PodoliCompetitionPage() {
                     isDarkMode ? "text-white" : "text-gray-900"
                   )}
                 >
-                  Level
+                  {t("info.level")}
                 </h3>
                 <p
                   className={clsx(
@@ -179,7 +162,7 @@ export default function PodoliCompetitionPage() {
                     isDarkMode ? "text-gray-300" : "text-gray-600"
                   )}
                 >
-                  National Championship
+                  {t("info.levelValue")}
                 </p>
               </div>
             </div>
@@ -194,7 +177,7 @@ export default function PodoliCompetitionPage() {
                   isDarkMode ? "text-white" : "text-gray-900"
                 )}
               >
-                National Competition Excellence
+                {t("story.title")}
               </h2>
               <p
                 className={clsx(
@@ -202,10 +185,7 @@ export default function PodoliCompetitionPage() {
                   isDarkMode ? "text-gray-300" : "text-gray-700"
                 )}
               >
-                The Czech National Swimming Championship (MCR) in Podolí
-                represents the pinnacle of domestic swimming competition, where
-                the nation&apos;s best swimmers compete for national titles and
-                records.
+                {t("story.paragraph1")}
               </p>
               <div className="border-l-4 border-red-600 pl-6 mb-6">
                 <p
@@ -214,9 +194,7 @@ export default function PodoliCompetitionPage() {
                     isDarkMode ? "text-gray-200" : "text-gray-800"
                   )}
                 >
-                  Competing at this level demands not only technical excellence
-                  but also mental fortitude to perform under the pressure of
-                  representing your region at the highest national standard.
+                  {t("story.highlight")}
                 </p>
               </div>
               <p
@@ -225,9 +203,7 @@ export default function PodoliCompetitionPage() {
                   isDarkMode ? "text-gray-300" : "text-gray-700"
                 )}
               >
-                This championship serves as a crucial stepping stone for
-                international competitions and demonstrates Daniel&apos;s
-                commitment to achieving excellence in Czech swimming.
+                {t("story.paragraph2")}
               </p>
             </div>
             <div className="relative">
@@ -241,48 +217,6 @@ export default function PodoliCompetitionPage() {
             </div>
           </div>
 
-          {/* Featured Video Section */}
-          <div className="mb-16">
-            <h2
-              className={clsx(
-                "text-4xl font-bold mb-8 text-center transition-colors duration-300",
-                isDarkMode ? "text-white" : "text-gray-900"
-              )}
-            >
-              Championship Highlights
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <VideoPlayer
-                videoId="Nm6LNRUCTCM"
-                title="Czech National Swimming Championship - Podolí 2024"
-                description="Experience the intensity and excellence of the Czech National Swimming Championship. Watch highlights from this prestigious competition featuring the country's top swimmers competing for national titles in the iconic Podolí swimming complex."
-                duration="5:30"
-                views="1000"
-                className="mb-8"
-              />
-              <div
-                className={clsx(
-                  "text-center p-6 rounded-xl transition-colors duration-300",
-                  isDarkMode
-                    ? "bg-gradient-to-r from-red-900/20 to-blue-900/20"
-                    : "bg-gradient-to-r from-red-50 to-blue-50"
-                )}
-              >
-                <p
-                  className={clsx(
-                    "text-lg italic transition-colors duration-300",
-                    isDarkMode ? "text-gray-300" : "text-gray-700"
-                  )}
-                >
-                  &quot;This video captures the essence of competing at the
-                  highest level of Czech swimming, showcasing the dedication,
-                  technique, and passion that defines national championship
-                  competition.&quot;
-                </p>
-              </div>
-            </div>
-          </div>
-
           {/* Competition Events */}
           <div>
             <h2
@@ -291,7 +225,7 @@ export default function PodoliCompetitionPage() {
                 isDarkMode ? "text-white" : "text-gray-900"
               )}
             >
-              Championship Events
+              {t("events.title")}
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {events.map((event, index) => (
@@ -351,7 +285,7 @@ export default function PodoliCompetitionPage() {
                 isDarkMode ? "text-white" : "text-gray-900"
               )}
             >
-              Championship Experience
+              {t("highlights.title")}
             </h2>
             <div
               className={clsx(
@@ -368,9 +302,7 @@ export default function PodoliCompetitionPage() {
                     isDarkMode ? "text-gray-300" : "text-gray-700"
                   )}
                 >
-                  The Czech National Swimming Championship in Podolí provided an
-                  invaluable opportunity to compete against the country&apos;s
-                  elite swimmers in a world-class facility.
+                  {t("highlights.description")}
                 </p>
                 <div className="flex items-center justify-center gap-4">
                   <Trophy className="w-8 h-8 text-red-600" />
@@ -380,7 +312,7 @@ export default function PodoliCompetitionPage() {
                       isDarkMode ? "text-gray-200" : "text-gray-800"
                     )}
                   >
-                    National Level Competition Experience
+                    {t("highlights.experience")}
                   </span>
                 </div>
               </div>

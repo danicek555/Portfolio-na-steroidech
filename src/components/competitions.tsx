@@ -27,26 +27,26 @@ const Competitions: React.FC = () => {
     {
       title: t("competitions.0.title"),
       description: t("competitions.0.description"),
-      link: "/competitions/podoli",
-      img: "/podoliFoto.jpg",
+      link: "/competitions/ostrava",
+      img: "/ostrava.jpg",
     },
     {
       title: t("competitions.1.title"),
       description: t("competitions.1.description"),
-      link: "/competitions/australia",
-      img: "/ausFoto_temp.jpg",
-    },
-    {
-      title: t("competitions.2.title"),
-      description: t("competitions.2.description"),
       link: "/competitions/samorin",
       img: "/samorin.jpg",
     },
     {
+      title: t("competitions.2.title"),
+      description: t("competitions.2.description"),
+      link: "/competitions/australia",
+      img: "/ausFoto_temp.jpg",
+    },
+    {
       title: t("competitions.3.title"),
       description: t("competitions.3.description"),
-      link: "/competitions/ostrava",
-      img: "/ostrava.jpg",
+      link: "/competitions/podoli",
+      img: "/podoliFoto.jpg",
     },
   ];
 

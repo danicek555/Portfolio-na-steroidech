@@ -3,32 +3,19 @@
 import Image from "next/image";
 import { MapPin, Calendar, Users, Clock } from "lucide-react";
 import { useTheme } from "../../../../components/ThemeProvider";
+import { useTranslations } from "next-intl";
+
+interface Event {
+  event: string;
+  time: string;
+  description: string;
+}
 
 export default function SamorinCompetitionPage() {
   const { isDarkMode } = useTheme();
+  const t = useTranslations("Samorin");
 
-  const events = [
-    {
-      event: "50m Freestyle",
-      status: "Participated",
-      description: "Sprint swimming event",
-    },
-    {
-      event: "100m Freestyle",
-      status: "Participated",
-      description: "Middle distance swimming",
-    },
-    {
-      event: "50m Backstroke",
-      status: "Participated",
-      description: "Sprint backstroke technique",
-    },
-    {
-      event: "Individual Medley",
-      status: "Participated",
-      description: "All four swimming strokes",
-    },
-  ];
+  const events = t.raw("events.eventsList");
 
   return (
     <div
@@ -52,16 +39,16 @@ export default function SamorinCompetitionPage() {
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider">
-              International Competition
+              {t("hero.badge1")}
             </span>
             <span className="bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-              2024
+              {t("hero.badge2")}
             </span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-            Slovakia Cup
-            <span className="block text-blue-400">Šamorín 2024</span>
+            {t("hero.title")}
+            <span className="block text-blue-400">{t("hero.subtitle")}</span>
           </h1>
 
           <div
@@ -73,13 +60,15 @@ export default function SamorinCompetitionPage() {
           >
             <div className="text-6xl">🏊‍♂️</div>
             <div className="text-left">
-              <h3 className="text-2xl font-bold mb-2">Swimming Excellence</h3>
+              <h3 className="text-2xl font-bold mb-2">
+                {t("hero.eventTitle")}
+              </h3>
               <p
                 className={`${
                   isDarkMode ? "text-gray-300" : "text-gray-600"
                 } text-lg transition-colors duration-300`}
               >
-                Multiple Events Participation
+                {t("hero.eventDescription")}
               </p>
             </div>
           </div>
@@ -103,14 +92,14 @@ export default function SamorinCompetitionPage() {
                     isDarkMode ? "text-white" : "text-gray-900"
                   } transition-colors duration-300`}
                 >
-                  Location
+                  {t("info.location")}
                 </h3>
                 <p
                   className={`${
                     isDarkMode ? "text-gray-300" : "text-gray-600"
                   } transition-colors duration-300`}
                 >
-                  Šamorín, Slovakia
+                  {t("info.locationValue")}
                 </p>
               </div>
             </div>
@@ -126,14 +115,14 @@ export default function SamorinCompetitionPage() {
                     isDarkMode ? "text-white" : "text-gray-900"
                   } transition-colors duration-300`}
                 >
-                  Date
+                  {t("info.date")}
                 </h3>
                 <p
                   className={`${
                     isDarkMode ? "text-gray-300" : "text-gray-600"
                   } transition-colors duration-300`}
                 >
-                  2024
+                  {t("info.dateValue")}
                 </p>
               </div>
             </div>
@@ -149,14 +138,14 @@ export default function SamorinCompetitionPage() {
                     isDarkMode ? "text-white" : "text-gray-900"
                   } transition-colors duration-300`}
                 >
-                  Competition
+                  {t("info.competition")}
                 </h3>
                 <p
                   className={`${
                     isDarkMode ? "text-gray-300" : "text-gray-600"
                   } transition-colors duration-300`}
                 >
-                  Slovakia Cup
+                  {t("info.competitionValue")}
                 </p>
               </div>
             </div>
@@ -170,16 +159,14 @@ export default function SamorinCompetitionPage() {
                   isDarkMode ? "text-white" : "text-gray-900"
                 } mb-6 transition-colors duration-300`}
               >
-                International Experience
+                {t("story.title")}
               </h2>
               <p
                 className={`text-lg ${
                   isDarkMode ? "text-gray-300" : "text-gray-700"
                 } mb-6 leading-relaxed transition-colors duration-300`}
               >
-                The Slovakia Cup in Šamorín represents an important
-                international swimming competition where Daniel Mitka showcased
-                his versatility across multiple swimming disciplines.
+                {t("story.paragraph1")}
               </p>
               <div className="border-l-4 border-purple-600 pl-6 mb-6">
                 <p
@@ -187,9 +174,7 @@ export default function SamorinCompetitionPage() {
                     isDarkMode ? "text-gray-200" : "text-gray-800"
                   } font-medium leading-relaxed transition-colors duration-300`}
                 >
-                  This competition provided valuable international experience,
-                  competing against swimmers from across Central Europe and
-                  testing skills in various swimming strokes and distances.
+                  {t("story.highlight")}
                 </p>
               </div>
               <p
@@ -197,9 +182,7 @@ export default function SamorinCompetitionPage() {
                   isDarkMode ? "text-gray-300" : "text-gray-700"
                 } leading-relaxed transition-colors duration-300`}
               >
-                Each event offered unique challenges, from explosive sprint
-                performances to technical stroke precision, contributing to
-                Daniel&apos;s overall development as a competitive swimmer.
+                {t("story.paragraph2")}
               </p>
             </div>
             <div className="relative">
@@ -208,7 +191,7 @@ export default function SamorinCompetitionPage() {
                 alt="Slovakia Cup competition"
                 width={600}
                 height={400}
-                className="rounded-xl shadow-lg object-cover w-full h-full"
+                className="rounded-xl shadow-lg object-cover w-full h-80"
               />
             </div>
           </div>
@@ -220,10 +203,10 @@ export default function SamorinCompetitionPage() {
                 isDarkMode ? "text-white" : "text-gray-900"
               } mb-8 text-center transition-colors duration-300`}
             >
-              Events Participated
+              {t("events.title")}
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
-              {events.map((event, index) => (
+              {events.map((event: Event, index: number) => (
                 <div
                   key={index}
                   className={`p-6 ${
@@ -243,7 +226,7 @@ export default function SamorinCompetitionPage() {
                         {event.event}
                       </h3>
                       <p className="text-purple-600 font-semibold text-sm mb-2">
-                        {event.status}
+                        {event.time}
                       </p>
                       <p
                         className={`${
