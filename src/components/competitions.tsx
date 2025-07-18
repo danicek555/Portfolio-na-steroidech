@@ -29,7 +29,7 @@ const Competitions: React.FC = () => {
       title: t("competitions.0.title"),
       description: t("competitions.0.description"),
       link: "/competitions/ostrava",
-      img: "/ostrava.jpg",
+      img: "/ostrava1.jpg",
     },
     {
       title: t("competitions.1.title"),

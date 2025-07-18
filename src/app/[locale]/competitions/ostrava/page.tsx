@@ -66,7 +66,7 @@ export default function OstravaCompetitionPage() {
       <section className="relative h-screen flex items-center justify-center text-white">
         <div className="absolute inset-0">
           <Image
-            src="/ostrava.jpg"
+            src="/ostrava1.jpg"
             alt="Team Championship Finals Ostrava 2025"
             fill
             className="object-cover"
@@ -342,7 +342,7 @@ export default function OstravaCompetitionPage() {
             </div>
             <div className="relative">
               <Image
-                src="/ostrava.jpg"
+                src="/ostrava3.jpg"
                 alt="Team Championship competition"
                 width={600}
                 height={400}
