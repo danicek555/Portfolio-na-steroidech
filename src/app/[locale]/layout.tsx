@@ -72,15 +72,26 @@ export const metadata = {
         url: `${siteUrl}/profilovaFotka.jpg`,
         width: 1200,
         height: 630,
-        alt: `${authorName} - Czech Swimming Champion`,
+        alt: `${authorName} - Czech Swimming Champion & Developer`,
+        type: "image/jpeg",
       },
       {
         url: `${siteUrl}/skokDoVody.jpg`,
         width: 1200,
         height: 630,
-        alt: `${authorName} swimming competition`,
+        alt: `${authorName} - Swimming Action`,
+        type: "image/jpeg",
+      },
+      {
+        url: `${siteUrl}/samorin.jpg`,
+        width: 1200,
+        height: 630,
+        alt: `${authorName} - Swimming Competition`,
+        type: "image/jpeg",
       },
     ],
+    // Facebook specific
+    appId: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID,
   },
   twitter: {
     card: "summary_large_image",
@@ -88,7 +99,9 @@ export const metadata = {
     description: siteDescription,
     images: [`${siteUrl}/profilovaFotka.jpg`],
     creator: twitterHandle,
+    site: twitterHandle,
   },
+
   verification: {
     // Add verification codes if needed
     // google: "your-google-verification-code",
@@ -133,6 +146,7 @@ export const metadata = {
   alternates: {
     canonical: siteUrl,
     languages: {
+      "x-default": siteUrl,
       "en-US": `${siteUrl}/en`,
       "cs-CZ": `${siteUrl}/cs`,
     },
@@ -143,7 +157,28 @@ export const metadata = {
     "apple-mobile-web-app-status-bar-style": "black-translucent",
     "format-detection": "telephone=no",
     "msapplication-TileColor": "#2563eb",
-    "msapplication-config": "/browserconfig.xml", // If you have this file
+    "msapplication-config": "/browserconfig.xml",
+
+    // Facebook specific meta tags
+    "fb:app_id": process.env.NEXT_PUBLIC_FACEBOOK_APP_ID,
+    "fb:pages": process.env.NEXT_PUBLIC_FACEBOOK_PAGE_ID,
+    "fb:admins": process.env.NEXT_PUBLIC_FACEBOOK_ADMIN_ID,
+
+    // Enhanced Open Graph for social sharing
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:type": "image/jpeg",
+    "og:rich_attachment": "true",
+    "og:see_also": `${siteUrl}/competitions`,
+
+    // Additional social platforms
+    "pinterest-rich-pin": "true",
+    "linkedin:owner": authorName,
+
+    // Schema.org structured data hints
+    "profile:first_name": "Daniel",
+    "profile:last_name": "Mitka",
+    "profile:username": "danielmitka",
   },
 };
 
