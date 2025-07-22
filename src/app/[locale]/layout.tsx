@@ -11,13 +11,23 @@ import { notFound } from "next/navigation";
 import { routing } from "../../i18n/routing";
 import Script from "next/script";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz";
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Daniel Mitka Portfolio";
+const siteTitle =
+  process.env.NEXT_PUBLIC_SITE_TITLE ||
+  "Daniel Mitka - Czech Swimming Champion & Developer";
+const siteDescription =
+  process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
+  "Czech Youth Swimming Champion & Lifesaving Medalist. Competitive swimmer with international experience in Australia, Slovakia, and Czech Republic. Full-stack developer passionate about technology and sports.";
+const authorName = process.env.NEXT_PUBLIC_AUTHOR_NAME || "Daniel Mitka";
+const twitterHandle = process.env.NEXT_PUBLIC_TWITTER_HANDLE || "@MitkaDaniel";
+
 export const metadata = {
   title: {
-    default: "Daniel Mitka - Czech Swimming Champion & Developer",
-    template: "%s | Daniel Mitka",
+    default: siteTitle,
+    template: `%s | ${authorName}`,
   },
-  description:
-    "Czech Youth Swimming Champion & Lifesaving Medalist. Competitive swimmer with international experience in Australia, Slovakia, and Czech Republic. Full-stack developer passionate about technology and sports.",
+  description: siteDescription,
   keywords: [
     "Daniel Mitka",
     "Czech swimmer",
@@ -35,9 +45,9 @@ export const metadata = {
     "web developer",
     "swimming competitions",
   ],
-  authors: [{ name: "Daniel Mitka" }],
-  creator: "Daniel Mitka",
-  publisher: "Daniel Mitka",
+  authors: [{ name: authorName }],
+  creator: authorName,
+  publisher: authorName,
   robots: {
     index: true,
     follow: true,
@@ -53,33 +63,31 @@ export const metadata = {
     type: "website",
     locale: "en_US",
     alternateLocale: "cs_CZ",
-    url: "https://danielmitka.com",
-    title: "Daniel Mitka - Czech Swimming Champion & Developer",
-    description:
-      "Czech Youth Swimming Champion & Lifesaving Medalist. Competitive swimmer with international experience and full-stack developer.",
-    siteName: "Daniel Mitka Portfolio",
+    url: siteUrl,
+    title: siteTitle,
+    description: siteDescription,
+    siteName: siteName,
     images: [
       {
-        url: "/profilovaFotka.jpg",
+        url: `${siteUrl}/profilovaFotka.jpg`,
         width: 1200,
         height: 630,
-        alt: "Daniel Mitka - Czech Swimming Champion",
+        alt: `${authorName} - Czech Swimming Champion`,
       },
       {
-        url: "/skokDoVody.jpg",
+        url: `${siteUrl}/skokDoVody.jpg`,
         width: 1200,
         height: 630,
-        alt: "Daniel Mitka swimming competition",
+        alt: `${authorName} swimming competition`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Daniel Mitka - Czech Swimming Champion & Developer",
-    description:
-      "Czech Youth Swimming Champion & Lifesaving Medalist. Competitive swimmer with international experience.",
-    images: ["/profilovaFotka.jpg"],
-    creator: "@MitkaDaniel", // Add your Twitter handle if you have one
+    title: siteTitle,
+    description: siteDescription,
+    images: [`${siteUrl}/profilovaFotka.jpg`],
+    creator: twitterHandle,
   },
   verification: {
     // Add verification codes if needed
@@ -87,8 +95,9 @@ export const metadata = {
     // yandex: "your-yandex-verification-code",
     // yahoo: "your-yahoo-verification-code",
   },
-  category: "Sports & Technology",
-  classification: "Portfolio Website",
+  category: process.env.NEXT_PUBLIC_SITE_CATEGORY || "Sports & Technology",
+  classification:
+    process.env.NEXT_PUBLIC_SITE_CLASSIFICATION || "Portfolio Website",
   referrer: "origin-when-cross-origin",
 
   icons: {
@@ -112,7 +121,7 @@ export const metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Daniel Mitka",
+    title: authorName,
   },
   formatDetection: {
     telephone: false,
@@ -122,13 +131,13 @@ export const metadata = {
     url: false,
   },
   alternates: {
-    canonical: "https://daniel.mitka.cz",
+    canonical: siteUrl,
     languages: {
-      "en-US": "https://daniel.mitka.cz/en",
-      "cs-CZ": "https://daniel.mitka.cz/cs",
+      "en-US": `${siteUrl}/en`,
+      "cs-CZ": `${siteUrl}/cs`,
     },
   },
-  metadataBase: new URL("https://daniel.mitka.cz"), // Update with your actual domain
+  metadataBase: new URL(siteUrl),
   other: {
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "black-translucent",
