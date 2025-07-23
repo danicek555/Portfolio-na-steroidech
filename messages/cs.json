@@ -344,5 +344,27 @@
       "description": "České národní mistrovství v plavání v Podolí poskytlo neocenitelnou příležitost soutěžit proti elitním plavcům země v zařízení světové třídy.",
       "experience": "Zkušenost ze soutěže na národní úrovni"
     }
+  },
+  "NotFound": {
+    "title": "Ups! Stránka nebyla nalezena",
+    "subtitle": "404",
+    "description": "Vypadá to, že jste zaplavali do neznámých vod! Stránka, kterou hledáte, neexistuje.",
+    "features": [
+      {
+        "title": "Ztratili jste se?",
+        "description": "Nebojte se, i ti nejlepší plavci občas udělají špatnou zatáčku v bazénu."
+      },
+      {
+        "title": "Vraťte se zpět",
+        "description": "Pojďme vás vrátit zpět do hlavní soutěžní oblasti, kde se odehrává veškerá akce."
+      },
+      {
+        "title": "Prozkoumejte více",
+        "description": "Zatímco jste zde, podívejte se na moje plavecké úspěchy, závody a projekty."
+      }
+    ],
+    "homeButton": "Návrat domů",
+    "competitionsButton": "Zobrazit závody",
+    "funFact": "Zajímavost: Daniel se nikdy neztratil v plaveckém bazénu! 🏊‍♂️"
   }
 }

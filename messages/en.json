@@ -344,5 +344,27 @@
       "description": "The Czech National Swimming Championship in Podolí provided an invaluable opportunity to compete against the country's elite swimmers in a world-class facility.",
       "experience": "National Level Competition Experience"
     }
+  },
+  "NotFound": {
+    "title": "Oops! Page Not Found",
+    "subtitle": "404",
+    "description": "Looks like you've swum into uncharted waters! The page you're looking for doesn't exist.",
+    "features": [
+      {
+        "title": "Lost your way?",
+        "description": "Don't worry, even the best swimmers sometimes take a wrong turn in the pool."
+      },
+      {
+        "title": "Dive back in",
+        "description": "Let's get you back to the main competition area where all the action happens."
+      },
+      {
+        "title": "Explore more",
+        "description": "Check out my swimming achievements, competitions, and projects while you're here."
+      }
+    ],
+    "homeButton": "Return to Home",
+    "competitionsButton": "View Competitions",
+    "funFact": "Fun fact: Daniel has never gotten lost in a swimming pool! 🏊‍♂️"
   }
 }
