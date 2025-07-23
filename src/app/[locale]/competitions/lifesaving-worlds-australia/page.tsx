@@ -1,344 +1,138 @@
-"use client";
+import { Metadata } from "next";
+import AustraliaCompetitionClient from "./AustraliaCompetitionClient";
 
-import Image from "next/image";
-import { Award, MapPin, Calendar, Users } from "lucide-react";
-import { useTheme } from "../../../../components/ThemeProvider";
-import { useTranslations } from "next-intl";
-import clsx from "clsx";
+// Environment variables for metadata
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz";
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Daniel Mitka Portfolio";
+const authorName = process.env.NEXT_PUBLIC_AUTHOR_NAME || "Daniel Mitka";
+
+export const metadata: Metadata = {
+  title: "Australia Youth Swimming Championship 2023 - Daniel Mitka",
+  description:
+    "Daniel Mitka's outstanding performance at the Australia Youth Swimming Championship 2023, winning silver medal in Mixed Rescue with Adam Pekař. International competition experience in Australia.",
+
+  keywords: [
+    "Australia Youth Swimming Championship",
+    "Daniel Mitka Australia",
+    "youth swimming championship Australia",
+    "mixed rescue silver medal",
+    "Adam Pekař swimming partner",
+    "international swimming competition",
+    "Czech swimmer Australia",
+    "lifesaving competition Australia",
+    "swimming championship 2023",
+    "youth athlete Australia",
+    "competitive swimming Australia",
+    "Daniel Mitka silver medal",
+    "swimming achievements Australia",
+    "international swimming experience",
+    "Czech Republic swimming team",
+  ],
+
+  authors: [{ name: authorName }],
+  creator: authorName,
+  publisher: authorName,
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  openGraph: {
+    title: "Australia Youth Swimming Championship 2023 - Daniel Mitka",
+    description:
+      "Silver medal performance at Australia Youth Swimming Championship. Mixed Rescue event with Adam Pekař. International competitive swimming experience.",
+    url: `${siteUrl}/competitions/australia`,
+    siteName: siteName,
+    images: [
+      {
+        url: `${siteUrl}/winPhoto.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Daniel Mitka victory moment at Australia Youth Swimming Championship",
+        type: "image/jpeg",
+      },
+      {
+        url: `${siteUrl}/fotkaWithAdam.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Daniel Mitka with Adam Pekař at Australia championship",
+        type: "image/jpeg",
+      },
+      {
+        url: `${siteUrl}/zapadPhoto.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Championship ceremony in Australia",
+        type: "image/jpeg",
+      },
+    ],
+    locale: "en_US",
+    type: "article",
+    publishedTime: "2023-12-01",
+    modifiedTime: new Date().toISOString(),
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Australia Youth Swimming Championship 2023 - Daniel Mitka",
+    description:
+      "🥈 Silver medal at Australia Youth Swimming Championship! Mixed Rescue event with Adam Pekař. International swimming achievement.",
+    images: [`${siteUrl}/winPhoto.jpg`],
+    creator: process.env.NEXT_PUBLIC_TWITTER_HANDLE || "@MitkaDaniel",
+  },
+
+  alternates: {
+    canonical: `${siteUrl}/competitions/australia`,
+    languages: {
+      cs: `${siteUrl}/cs/competitions/australia`,
+      en: `${siteUrl}/en/competitions/australia`,
+      "x-default": `${siteUrl}/competitions/australia`,
+    },
+  },
+
+  category: "Sports Competition",
+
+  other: {
+    // Facebook specific
+    ...(process.env.NEXT_PUBLIC_FACEBOOK_APP_ID && {
+      "fb:app_id": process.env.NEXT_PUBLIC_FACEBOOK_APP_ID,
+    }),
+    "og:type": "article",
+    "article:author": authorName,
+    "article:section": "Swimming Competitions",
+    "article:tag": [
+      "Swimming",
+      "Australia",
+      "Youth Championship",
+      "Silver Medal",
+      "Mixed Rescue",
+    ],
+
+    // Competition specific
+    "sports:competition": "Australia Youth Swimming Championship",
+    "sports:year": "2023",
+    "sports:location": "Australia",
+    "sports:achievement": "Silver Medal - Mixed Rescue",
+    "sports:partner": "Adam Pekař",
+    "sports:category": "Youth",
+    "sports:level": "International",
+
+    // Schema.org
+    "schema:event": "Australia Youth Swimming Championship 2023",
+    "schema:location": "Australia",
+    "schema:participant": "Daniel Mitka",
+    "schema:award": "Silver Medal",
+  },
+};
 
 export default function AustraliaCompetitionPage() {
-  const { isDarkMode } = useTheme();
-  const t = useTranslations("Australia");
-
-  const achievements = [
-    {
-      position: t("results.achievements.0.position"),
-      event: t("results.achievements.0.event"),
-      description: t("results.achievements.0.description"),
-      highlight: true,
-    },
-    {
-      position: t("results.achievements.1.position"),
-      event: t("results.achievements.1.event"),
-      description: t("results.achievements.1.description"),
-    },
-    {
-      position: t("results.achievements.2.position"),
-      event: t("results.achievements.2.event"),
-      description: t("results.achievements.2.description"),
-    },
-    {
-      position: t("results.achievements.3.position"),
-      event: t("results.achievements.3.event"),
-      description: t("results.achievements.3.description"),
-    },
-  ];
-
-  return (
-    <div
-      className={clsx(
-        "min-h-screen transition-colors duration-300",
-        isDarkMode ? "bg-gray-900" : "bg-white"
-      )}
-    >
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-white">
-        <div className="absolute inset-0">
-          <Image
-            src="/winPhoto.jpg"
-            alt="Competition victory moment"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div
-            className={clsx(
-              "absolute inset-0 transition-all duration-300",
-              isDarkMode ? "bg-black/70" : "bg-black/50"
-            )}
-          />
-        </div>
-
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider">
-              {t("hero.badge1")}
-            </span>
-            <span className="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-              {t("hero.badge2")}
-            </span>
-          </div>
-
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-            {t("hero.title")}
-            <span className="block text-yellow-400">{t("hero.subtitle")}</span>
-          </h1>
-
-          <div
-            className={clsx(
-              "rounded-2xl p-8 inline-flex items-center gap-6 shadow-2xl transition-colors duration-300",
-              isDarkMode
-                ? "bg-gray-800/95 text-white"
-                : "bg-white/95 text-gray-900"
-            )}
-          >
-            <div className="text-6xl">🥈</div>
-            <div className="text-left">
-              <h3 className="text-2xl font-bold mb-2">
-                {t("hero.eventTitle")}
-              </h3>
-              <p
-                className={clsx(
-                  "text-lg transition-colors duration-300",
-                  isDarkMode ? "text-gray-300" : "text-gray-600"
-                )}
-              >
-                {t("hero.partner")}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Competition Details */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Event Info */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div
-              className={clsx(
-                "flex items-center gap-4 p-6 rounded-xl transition-colors duration-300",
-                isDarkMode ? "bg-gray-800" : "bg-gray-50"
-              )}
-            >
-              <MapPin className="w-8 h-8 text-blue-600" />
-              <div>
-                <h3
-                  className={clsx(
-                    "font-bold transition-colors duration-300",
-                    isDarkMode ? "text-white" : "text-gray-900"
-                  )}
-                >
-                  {t("info.location")}
-                </h3>
-                <p
-                  className={clsx(
-                    "transition-colors duration-300",
-                    isDarkMode ? "text-gray-300" : "text-gray-600"
-                  )}
-                >
-                  {t("info.locationValue")}
-                </p>
-              </div>
-            </div>
-            <div
-              className={clsx(
-                "flex items-center gap-4 p-6 rounded-xl transition-colors duration-300",
-                isDarkMode ? "bg-gray-800" : "bg-gray-50"
-              )}
-            >
-              <Calendar className="w-8 h-8 text-blue-600" />
-              <div>
-                <h3
-                  className={clsx(
-                    "font-bold transition-colors duration-300",
-                    isDarkMode ? "text-white" : "text-gray-900"
-                  )}
-                >
-                  {t("info.date")}
-                </h3>
-                <p
-                  className={clsx(
-                    "transition-colors duration-300",
-                    isDarkMode ? "text-gray-300" : "text-gray-600"
-                  )}
-                >
-                  {t("info.dateValue")}
-                </p>
-              </div>
-            </div>
-            <div
-              className={clsx(
-                "flex items-center gap-4 p-6 rounded-xl transition-colors duration-300",
-                isDarkMode ? "bg-gray-800" : "bg-gray-50"
-              )}
-            >
-              <Users className="w-8 h-8 text-blue-600" />
-              <div>
-                <h3
-                  className={clsx(
-                    "font-bold transition-colors duration-300",
-                    isDarkMode ? "text-white" : "text-gray-900"
-                  )}
-                >
-                  {t("info.category")}
-                </h3>
-                <p
-                  className={clsx(
-                    "transition-colors duration-300",
-                    isDarkMode ? "text-gray-300" : "text-gray-600"
-                  )}
-                >
-                  {t("info.categoryValue")}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Story */}
-          <div className="grid lg:grid-cols-2 gap-12 mb-16">
-            <div>
-              <h2
-                className={clsx(
-                  "text-4xl font-bold mb-6 transition-colors duration-300",
-                  isDarkMode ? "text-white" : "text-gray-900"
-                )}
-              >
-                {t("story.title")}
-              </h2>
-              <p
-                className={clsx(
-                  "text-lg mb-6 leading-relaxed transition-colors duration-300",
-                  isDarkMode ? "text-gray-300" : "text-gray-700"
-                )}
-              >
-                {t("story.paragraph1")}
-              </p>
-              <div className="border-l-4 border-blue-600 pl-6 mb-6">
-                <p
-                  className={clsx(
-                    "text-xl font-medium leading-relaxed transition-colors duration-300",
-                    isDarkMode ? "text-gray-200" : "text-gray-800"
-                  )}
-                >
-                  {t("story.highlight")}
-                </p>
-              </div>
-              <p
-                className={clsx(
-                  "text-lg leading-relaxed transition-colors duration-300",
-                  isDarkMode ? "text-gray-300" : "text-gray-700"
-                )}
-              >
-                {t("story.paragraph2")}
-              </p>
-            </div>
-            <div className="relative">
-              <Image
-                src="/fotkaWithAdam.jpg"
-                alt="Daniel with Adam Pekař at the championship"
-                width={600}
-                height={400}
-                className="rounded-xl shadow-lg object-cover w-full h-full"
-                priority
-              />
-            </div>
-          </div>
-
-          {/* Achievements Grid */}
-          <div>
-            <h2
-              className={clsx(
-                "text-4xl font-bold mb-8 text-center transition-colors duration-300",
-                isDarkMode ? "text-white" : "text-gray-900"
-              )}
-            >
-              {t("results.title")}
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {achievements.map((achievement, index) => (
-                <div
-                  key={index}
-                  className={clsx(
-                    "p-6 rounded-xl transition-all duration-300 hover:scale-105",
-                    achievement.highlight
-                      ? isDarkMode
-                        ? "bg-gradient-to-br from-yellow-900/50 to-yellow-800/50 border-2 border-yellow-500"
-                        : "bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300"
-                      : isDarkMode
-                      ? "bg-gray-800 hover:bg-gray-700"
-                      : "bg-gray-50 hover:bg-gray-100"
-                  )}
-                >
-                  <div className="text-center">
-                    {achievement.highlight && (
-                      <Award className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
-                    )}
-                    <span
-                      className={clsx(
-                        "text-4xl font-bold block mb-3",
-                        achievement.highlight
-                          ? "text-yellow-600"
-                          : "text-blue-600"
-                      )}
-                    >
-                      {achievement.position}
-                    </span>
-                    <h3
-                      className={clsx(
-                        "font-bold mb-2 transition-colors duration-300",
-                        isDarkMode ? "text-white" : "text-gray-900"
-                      )}
-                    >
-                      {achievement.event}
-                    </h3>
-                    <p
-                      className={clsx(
-                        "text-sm transition-colors duration-300",
-                        isDarkMode ? "text-gray-300" : "text-gray-600"
-                      )}
-                    >
-                      {achievement.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Photo Gallery */}
-          <div className="mt-16">
-            <h2
-              className={clsx(
-                "text-4xl font-bold mb-8 text-center transition-colors duration-300",
-                isDarkMode ? "text-white" : "text-gray-900"
-              )}
-            >
-              {t("gallery.title")}
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="relative h-64 rounded-xl overflow-hidden group">
-                <Image
-                  src="/zapadPhoto.jpg"
-                  alt="Championship moment 1"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  priority
-                />
-              </div>
-              <div className="relative h-64 rounded-xl overflow-hidden group">
-                <Image
-                  src="/behaciPhoto_temp.jpg"
-                  alt="Championship moment 2"
-                  fill
-                  className="object-cover object-center group-hover:scale-110 transition-transform duration-300"
-                  style={{ objectPosition: "center 20%" }}
-                  priority
-                />
-              </div>
-              <div className="relative h-64 rounded-xl overflow-hidden group">
-                <Image
-                  src="/ausFoto_temp.jpg"
-                  alt="Championship team photo"
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  return <AustraliaCompetitionClient />;
 }
