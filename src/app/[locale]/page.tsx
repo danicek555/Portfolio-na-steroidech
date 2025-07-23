@@ -59,17 +59,10 @@ export const metadata: Metadata = {
     siteName: siteName,
     images: [
       {
-        url: `${siteUrl}/profilovaFotka.jpg`,
+        url: `${siteUrl}/openGraphImage.png`,
         width: 1200,
         height: 630,
         alt: "Daniel Mitka - Professional swimming athlete and developer",
-        type: "image/jpeg",
-      },
-      {
-        url: `${siteUrl}/fotkaWithAdam.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "Daniel Mitka with fellow swimmer at competition",
         type: "image/jpeg",
       },
     ],
