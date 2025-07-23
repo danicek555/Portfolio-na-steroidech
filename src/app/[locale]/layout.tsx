@@ -10,6 +10,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "../../i18n/routing";
 import Script from "next/script";
+import { Noto_Sans_Chakma } from "next/font/google";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz";
 const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Daniel Mitka Portfolio";
@@ -51,9 +52,11 @@ export const metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      onimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
@@ -130,7 +133,7 @@ export const metadata = {
     //   },
     // ]
   },
-  manifest: "/site.webmanifest",
+  manifest: `${siteUrl}/site.webmanifest`,
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
