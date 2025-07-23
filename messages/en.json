@@ -29,6 +29,10 @@
       {
         "title": "Czech National Swimming Championship 2024",
         "description": "Experience the pinnacle of Czech swimming competition at the prestigious MCR Podolí championship."
+      },
+      {
+        "title": "Plzen Czech Open Championship 2024",
+        "description": "Major international swimming competition in Plzen showcasing elite performance across multiple swimming disciplines."
       }
     ]
   },
@@ -343,6 +347,112 @@
       "title": "Championship Experience",
       "description": "The Czech National Swimming Championship in Podolí provided an invaluable opportunity to compete against the country's elite swimmers in a world-class facility.",
       "experience": "National Level Competition Experience"
+    }
+  },
+  "Plzen": {
+    "hero": {
+      "badge1": "Czech Open",
+      "badge2": "Championship",
+      "title": "Plzen Czech Open Championship",
+      "subtitle": "Plzen 2024",
+      "teamName": "Motorlet Praha",
+      "teamDescription": "International Competition"
+    },
+    "info": {
+      "location": "Location",
+      "locationValue": "Plzen, Czech Republic",
+      "date": "Date",
+      "dateValue": "April 12-14, 2024",
+      "level": "Level",
+      "levelValue": "International Open Championship"
+    },
+    "story": {
+      "title": "International Swimming Competition",
+      "paragraph1": "The Plzen Czech Open Championship represents one of the most prestigious international swimming competitions in the Czech Republic, attracting elite swimmers from across Europe. The event showcases the highest level of competitive swimming with exceptional performances.",
+      "quote": "Competing against international talent in Plzen provided invaluable experience and opportunities to test skills against Europe's finest swimmers.",
+      "paragraph2": "Daniel demonstrated remarkable versatility and determination throughout the competition, achieving personal bests and contributing to Motorlet Praha's strong international presence."
+    },
+    "teamAchievements": {
+      "title": "Competition Achievements",
+      "achievements": [
+        {
+          "category": "Individual Performance",
+          "result": "Personal Bests",
+          "description": "Multiple PB times achieved"
+        },
+        {
+          "category": "Team Representation",
+          "result": "Motorlet Praha",
+          "description": "Strong international presence"
+        },
+        {
+          "category": "International Level",
+          "result": "European Competition",
+          "description": "Competing against top swimmers"
+        }
+      ]
+    },
+    "individualResults": {
+      "title": "Daniel's Individual Results",
+      "events": [
+        {
+          "event": "50m Freestyle",
+          "time": "0:25.47",
+          "points": "612 pts",
+          "placement": "12th place",
+          "category": "Overall",
+          "description": "Sprint freestyle performance"
+        },
+        {
+          "event": "100m Individual Medley",
+          "time": "1:05.82",
+          "points": "598 pts",
+          "placement": "9th place",
+          "category": "Overall",
+          "description": "Technical short medley - best result"
+        },
+        {
+          "event": "100m Freestyle",
+          "time": "0:56.12",
+          "points": "571 pts",
+          "placement": "14th place",
+          "category": "Overall",
+          "description": "Middle distance freestyle"
+        },
+        {
+          "event": "200m Individual Medley",
+          "time": "2:16.45",
+          "points": "589 pts",
+          "placement": "11th place",
+          "category": "Overall",
+          "description": "Long medley showcase"
+        }
+      ]
+    },
+    "eventVideos": {
+      "title": "Event Videos",
+      "videoTitle": "Plzen Czech Open Championship 2024",
+      "videoDescription": "Watch Daniel's performance in the {event} at the Plzen Czech Open Championship. Final time: {time}, earning {points} and finishing {placement}."
+    },
+    "statistics": {
+      "competitionOverview": {
+        "title": "Competition Overview",
+        "eventsCompeted": "Events Competed:",
+        "eventsCompetedValue": "4 Individual",
+        "bestPlacement": "Best Placement:",
+        "bestPlacementValue": "9th Place",
+        "highestPoints": "Highest Points:",
+        "highestPointsValue": "612 pts"
+      },
+      "teamPerformance": {
+        "title": "International Experience",
+        "internationalLevel": "Competition Level:",
+        "internationalLevelValue": "European Open",
+        "personalBests": "Personal Bests:",
+        "personalBestsValue": "2 Achieved",
+        "overallResult": "Overall Result:",
+        "overallResultValue": "Strong Performance"
+      }
     }
   },
   "NotFound": {

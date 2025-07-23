@@ -29,6 +29,10 @@
       {
         "title": "České juniorské mistrovství v plavání 2024",
         "description": "Zažijte vrchol českého plaveckého závodění na prestižním mistrovství ČR v Podolí."
+      },
+      {
+        "title": "Plzeň Czech Open Mistrovství 2024",
+        "description": "Velká mezinárodní plavecká soutěž v Plzni předvádějící elitní výkony napříč různými plaveckými disciplínami."
       }
     ]
   },
@@ -343,6 +347,112 @@
       "title": "Mistrovská zkušenost",
       "description": "České národní mistrovství v plavání v Podolí poskytlo neocenitelnou příležitost soutěžit proti elitním plavcům země v zařízení světové třídy.",
       "experience": "Zkušenost ze soutěže na národní úrovni"
+    }
+  },
+  "Plzen": {
+    "hero": {
+      "badge1": "Czech Open",
+      "badge2": "Mistrovství",
+      "title": "Plzeň Czech Open Mistrovství",
+      "subtitle": "Plzeň 2024",
+      "teamName": "Motorlet Praha",
+      "teamDescription": "Mezinárodní soutěž"
+    },
+    "info": {
+      "location": "Místo",
+      "locationValue": "Plzeň, Česká republika",
+      "date": "Datum",
+      "dateValue": "12-14. dubna 2024",
+      "level": "Úroveň",
+      "levelValue": "Mezinárodní mistrovství"
+    },
+    "story": {
+      "title": "Mezinárodní plavecká soutěž",
+      "paragraph1": "Plzeň Czech Open Mistrovství představuje jednu z nejprestižnějších mezinárodních plaveckých soutěží v České republice, přitahující elitní plavce z celé Evropy. Událost předvádí nejvyšší úroveň závodního plavání s výjimečnými výkony.",
+      "quote": "Závodění proti mezinárodním talentům v Plzni poskytlo neocenitelné zkušenosti a příležitosti testovat dovednosti proti nejlepším evropským plavcům.",
+      "paragraph2": "Daniel prokázal pozoruhodnou všestrannost a odhodlání během celé soutěže, dosáhl osobních rekordů a přispěl k silné mezinárodní přítomnosti Motorletu Praha."
+    },
+    "teamAchievements": {
+      "title": "Úspěchy v soutěži",
+      "achievements": [
+        {
+          "category": "Individuální výkon",
+          "result": "Osobní rekordy",
+          "description": "Dosaženo více osobních rekordů"
+        },
+        {
+          "category": "Zastoupení týmu",
+          "result": "Motorlet Praha",
+          "description": "Silná mezinárodní přítomnost"
+        },
+        {
+          "category": "Mezinárodní úroveň",
+          "result": "Evropská soutěž",
+          "description": "Závodění proti top plavcům"
+        }
+      ]
+    },
+    "individualResults": {
+      "title": "Danielovy individuální výsledky",
+      "events": [
+        {
+          "event": "50m Volný způsob",
+          "time": "0:25.47",
+          "points": "612 bodů",
+          "placement": "12. místo",
+          "category": "Celkově",
+          "description": "Sprintový volný způsob"
+        },
+        {
+          "event": "100m Polohový závod",
+          "time": "1:05.82",
+          "points": "598 bodů",
+          "placement": "9. místo",
+          "category": "Celkově",
+          "description": "Technický krátký polohový - nejlepší výsledek"
+        },
+        {
+          "event": "100m Volný způsob",
+          "time": "0:56.12",
+          "points": "571 bodů",
+          "placement": "14. místo",
+          "category": "Celkově",
+          "description": "Střední volný způsob"
+        },
+        {
+          "event": "200m Polohový závod",
+          "time": "2:16.45",
+          "points": "589 bodů",
+          "placement": "11. místo",
+          "category": "Celkově",
+          "description": "Dlouhý polohový závod"
+        }
+      ]
+    },
+    "eventVideos": {
+      "title": "Videa ze soutěže",
+      "videoTitle": "Plzeň Czech Open Mistrovství 2024",
+      "videoDescription": "Sledujte Danielův výkon v disciplíně {event} na Plzeň Czech Open Mistrovství. Finální čas: {time}, získané body: {points} a umístění {placement}."
+    },
+    "statistics": {
+      "competitionOverview": {
+        "title": "Přehled soutěže",
+        "eventsCompeted": "Disciplíny:",
+        "eventsCompetedValue": "4 Individuální",
+        "bestPlacement": "Nejlepší umístění:",
+        "bestPlacementValue": "9. místo",
+        "highestPoints": "Nejvíce bodů:",
+        "highestPointsValue": "612 bodů"
+      },
+      "teamPerformance": {
+        "title": "Mezinárodní zkušenost",
+        "internationalLevel": "Úroveň soutěže:",
+        "internationalLevelValue": "Evropské mistrovství",
+        "personalBests": "Osobní rekordy:",
+        "personalBestsValue": "2 Dosaženo",
+        "overallResult": "Celkový výsledek:",
+        "overallResultValue": "Silný výkon"
+      }
     }
   },
   "NotFound": {

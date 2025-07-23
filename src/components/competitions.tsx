@@ -28,26 +28,32 @@ const Competitions: React.FC = () => {
     {
       title: t("competitions.0.title"),
       description: t("competitions.0.description"),
-      link: "/competitions/ostrava",
+      link: "/competitions/team-championship-finals-2025",
       img: "/ostrava1.jpg",
     },
     {
       title: t("competitions.1.title"),
       description: t("competitions.1.description"),
-      link: "/competitions/samorin",
+      link: "/competitions/slovakia-cup-2024",
       img: "/samorin.jpg",
     },
     {
       title: t("competitions.2.title"),
       description: t("competitions.2.description"),
-      link: "/competitions/australia",
+      link: "/competitions/lifesaving-worlds-australia",
       img: "/ausFoto_temp.jpg",
     },
     {
       title: t("competitions.3.title"),
       description: t("competitions.3.description"),
-      link: "/competitions/podoli",
+      link: "/competitions/czech-youth-nationals-2024",
       img: "/podoliFoto.jpg",
+    },
+    {
+      title: t("competitions.4.title"),
+      description: t("competitions.4.description"),
+      link: "/competitions/czech-open-nationals-2025",
+      img: "/plzen.jpg",
     },
   ];
 
@@ -75,18 +81,25 @@ const Competitions: React.FC = () => {
   }, []);
 
   const hasMoreThanMax = competitions.length > slidesToShow;
+  const maxSlide = competitions.length - slidesToShow;
+  const isAtStart = currentSlide === 0;
+  const isAtEnd = currentSlide >= maxSlide;
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) =>
-      prev + 1 >= competitions.length - slidesToShow + 1 ? 0 : prev + 1
-    );
-  }, [competitions.length, slidesToShow]);
+    setCurrentSlide((prev) => {
+      const newSlide = prev + 1;
+      // Stop at the boundary instead of wrapping
+      return newSlide > maxSlide ? prev : newSlide;
+    });
+  }, [maxSlide]);
 
   const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) =>
-      prev - 1 < 0 ? competitions.length - slidesToShow : prev - 1
-    );
-  }, [competitions.length, slidesToShow]);
+    setCurrentSlide((prev) => {
+      const newSlide = prev - 1;
+      // Stop at the boundary instead of wrapping
+      return newSlide < 0 ? prev : newSlide;
+    });
+  }, []);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -113,9 +126,11 @@ const Competitions: React.FC = () => {
 
     // If drag distance is significant, change slide
     if (Math.abs(dragOffset) > 50) {
-      if (dragOffset > 0) {
+      if (dragOffset > 0 && !isAtStart) {
+        // Only go to previous slide if not at start
         prevSlide();
-      } else {
+      } else if (dragOffset < 0 && !isAtEnd) {
+        // Only go to next slide if not at end
         nextSlide();
       }
     }
@@ -144,9 +159,11 @@ const Competitions: React.FC = () => {
 
     // If swipe distance is significant, change slide
     if (Math.abs(dragOffset) > 50) {
-      if (dragOffset > 0) {
+      if (dragOffset > 0 && !isAtStart) {
+        // Only go to previous slide if not at start
         prevSlide();
-      } else {
+      } else if (dragOffset < 0 && !isAtEnd) {
+        // Only go to next slide if not at end
         nextSlide();
       }
     }
@@ -159,16 +176,16 @@ const Competitions: React.FC = () => {
     if (!hasMoreThanMax || isMobile) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft") {
+      if (event.key === "ArrowLeft" && !isAtStart) {
         prevSlide();
-      } else if (event.key === "ArrowRight") {
+      } else if (event.key === "ArrowRight" && !isAtEnd) {
         nextSlide();
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [hasMoreThanMax, isMobile, nextSlide, prevSlide]);
+  }, [hasMoreThanMax, isMobile, nextSlide, prevSlide, isAtStart, isAtEnd]);
 
   // Handle mouse leave to reset drag state
   useEffect(() => {
@@ -187,12 +204,18 @@ const Competitions: React.FC = () => {
     <motion.div
       key={index}
       className={clsx(
-        "rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2",
+        "rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 select-none",
         isDarkMode ? "bg-gray-700" : "bg-white",
         hasMoreThanMax ? "min-w-0 flex-shrink-0" : ""
       )}
       whileHover={{ scale: isMobile ? 1 : 1.02 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      style={{
+        userSelect: "none",
+        WebkitUserSelect: "none",
+        MozUserSelect: "none",
+        msUserSelect: "none",
+      }}
     >
       <div className="relative h-48 sm:h-64 md:h-80">
         <Image
@@ -271,7 +294,7 @@ const Competitions: React.FC = () => {
           <div className="relative">
             {/* Slider Container with touch support */}
             <div
-              className="overflow-hidden cursor-grab active:cursor-grabbing py-2 sm:py-4 md:py-8 touch-pan-y"
+              className="overflow-hidden cursor-grab active:cursor-grabbing py-2 sm:py-4 md:py-8 touch-pan-y select-none"
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
@@ -279,9 +302,15 @@ const Competitions: React.FC = () => {
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
+              style={{
+                userSelect: "none",
+                WebkitUserSelect: "none",
+                MozUserSelect: "none",
+                msUserSelect: "none",
+              }}
             >
               <motion.div
-                className="flex gap-4 sm:gap-6 md:gap-8"
+                className="flex gap-4 sm:gap-6 md:gap-8 select-none"
                 animate={{
                   x: `calc(-${currentSlide * (100 / slidesToShow)}% - ${
                     currentSlide * (isMobile ? 1 : 2)
@@ -292,6 +321,12 @@ const Competitions: React.FC = () => {
                   stiffness: 300,
                   damping: 30,
                   duration: isDragging ? 0 : undefined,
+                }}
+                style={{
+                  userSelect: "none",
+                  WebkitUserSelect: "none",
+                  MozUserSelect: "none",
+                  msUserSelect: "none",
                 }}
               >
                 {competitions.map((comp, index) => (
@@ -317,22 +352,34 @@ const Competitions: React.FC = () => {
               <>
                 <button
                   onClick={prevSlide}
+                  disabled={isAtStart}
                   className={clsx(
                     "absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 z-10",
+                    isAtStart
+                      ? "opacity-50 cursor-not-allowed"
+                      : "hover:scale-110",
                     isDarkMode
-                      ? "bg-gray-700 hover:bg-gray-600 text-white"
-                      : "bg-white hover:bg-gray-50 text-gray-800 shadow-lg"
+                      ? "bg-gray-700 text-white"
+                      : "bg-white text-gray-800 shadow-lg",
+                    !isAtStart &&
+                      (isDarkMode ? "hover:bg-gray-600" : "hover:bg-gray-50")
                   )}
                 >
                   ←
                 </button>
                 <button
                   onClick={nextSlide}
+                  disabled={isAtEnd}
                   className={clsx(
                     "absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 z-10",
+                    isAtEnd
+                      ? "opacity-50 cursor-not-allowed"
+                      : "hover:scale-110",
                     isDarkMode
-                      ? "bg-gray-700 hover:bg-gray-600 text-white"
-                      : "bg-white hover:bg-gray-50 text-gray-800 shadow-lg"
+                      ? "bg-gray-700 text-white"
+                      : "bg-white text-gray-800 shadow-lg",
+                    !isAtEnd &&
+                      (isDarkMode ? "hover:bg-gray-600" : "hover:bg-gray-50")
                   )}
                 >
                   →
