@@ -63,7 +63,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Daniel Mitka - Professional swimming athlete and developer",
-        type: "image/jpeg",
+        type: "image/png",
       },
     ],
     locale: "cs_CZ",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     title: "Daniel Mitka - Czech Swimming Champion & Developer",
     description:
       "Czech Youth Swimming Champion & lifesaving medalist. Competitive swimmer with international experience. Full-stack developer.",
-    images: [`${siteUrl}/profilovaFotka.jpg`],
+    images: [`${siteUrl}/openGraphImage.png`],
     creator: process.env.NEXT_PUBLIC_TWITTER_HANDLE || "@MitkaDaniel",
   },
 

@@ -61,7 +61,7 @@ export const metadata = {
     siteName: siteName,
     images: [
       {
-        url: `${siteUrl}/profilovaFotka.jpg`,
+        url: `${siteUrl}/openGraphImage.png`,
         width: 1200,
         height: 630,
         alt: `${authorName} - Czech Swimming Champion & Developer`,
@@ -75,7 +75,7 @@ export const metadata = {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: [`${siteUrl}/profilovaFotka.jpg`],
+    images: [`${siteUrl}/openGraphImage.png`],
     creator: twitterHandle,
     site: twitterHandle,
   },
@@ -136,8 +136,8 @@ export const metadata = {
     "fb:admins": process.env.NEXT_PUBLIC_FACEBOOK_ADMIN_ID,
 
     // Enhanced Open Graph for social sharing - force profile image
-    "og:image": `${siteUrl}/profilovaFotka.jpg`,
-    "og:image:secure_url": `${siteUrl}/profilovaFotka.jpg`,
+    "og:image": `${siteUrl}/openGraphImage.png`,
+    "og:image:secure_url": `${siteUrl}/openGraphImage.png`,
     "og:image:width": "1200",
     "og:image:height": "630",
     "og:image:type": "image/jpeg",
