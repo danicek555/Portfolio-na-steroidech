@@ -67,20 +67,6 @@ export const metadata = {
         alt: `${authorName} - Czech Swimming Champion & Developer`,
         type: "image/jpeg",
       },
-      {
-        url: `${siteUrl}/skokDoVody.jpg`,
-        width: 1200,
-        height: 630,
-        alt: `${authorName} - Swimming Action`,
-        type: "image/jpeg",
-      },
-      {
-        url: `${siteUrl}/samorin.jpg`,
-        width: 1200,
-        height: 630,
-        alt: `${authorName} - Swimming Competition`,
-        type: "image/jpeg",
-      },
     ],
     // Facebook specific
     appId: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID,
@@ -149,10 +135,13 @@ export const metadata = {
     "fb:pages": process.env.NEXT_PUBLIC_FACEBOOK_PAGE_ID,
     "fb:admins": process.env.NEXT_PUBLIC_FACEBOOK_ADMIN_ID,
 
-    // Enhanced Open Graph for social sharing
+    // Enhanced Open Graph for social sharing - force profile image
+    "og:image": `${siteUrl}/profilovaFotka.jpg`,
+    "og:image:secure_url": `${siteUrl}/profilovaFotka.jpg`,
     "og:image:width": "1200",
     "og:image:height": "630",
     "og:image:type": "image/jpeg",
+    "og:image:alt": `${authorName} - Czech Swimming Champion & Developer`,
     "og:rich_attachment": "true",
     "og:see_also": `${siteUrl}/competitions`,
 
