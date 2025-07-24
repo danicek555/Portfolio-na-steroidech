@@ -39,6 +39,22 @@ export const metadata = {
     "full-stack developer",
     "web developer",
     "swimming competitions",
+    // Enhanced SEO keywords
+    "Czech national swimming team",
+    "SK Motorlet Praha",
+    "swimming records Czech Republic",
+    "lifesaving world championships",
+    "Czech swimming federation",
+    "competitive swimmer Prague",
+    "swimming training Czech Republic",
+    "national swimming championships",
+    "junior swimming champion",
+    "swimming technique expert",
+    "freestyle swimming specialist",
+    "individual medley swimmer",
+    "breaststroke technique",
+    "swimming coach consultation",
+    "swimming performance analysis",
   ],
   authors: [{ name: authorName }],
   creator: authorName,
@@ -50,7 +66,7 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
-      onimageindex: false,
+      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
@@ -70,7 +86,7 @@ export const metadata = {
         width: 1200,
         height: 630,
         alt: `${authorName} - Czech Swimming Champion & Developer`,
-        type: "image/jpeg",
+        type: "image/png",
       },
     ],
     // Facebook specific
@@ -85,12 +101,14 @@ export const metadata = {
     site: twitterHandle,
   },
 
-  verification: {
-    // Add verification codes if needed
-    // google: "your-google-verification-code",
-    // yandex: "your-yandex-verification-code",
-    // yahoo: "your-yahoo-verification-code",
-  },
+  // verification: {
+  //   google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+  //   yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+  //   yahoo: process.env.NEXT_PUBLIC_YAHOO_VERIFICATION,
+  //   other: {
+  //     "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION,
+  //   },
+  // },
   category: process.env.NEXT_PUBLIC_SITE_CATEGORY || "Sports & Technology",
   classification:
     process.env.NEXT_PUBLIC_SITE_CLASSIFICATION || "Portfolio Website",
@@ -145,7 +163,7 @@ export const metadata = {
     "og:image:secure_url": `${siteUrl}/openGraphImage.png`,
     "og:image:width": "1200",
     "og:image:height": "630",
-    "og:image:type": "image/jpeg",
+    "og:image:type": "image/png",
     "og:image:alt": `${authorName} - Czech Swimming Champion & Developer`,
     "og:rich_attachment": "true",
     "og:see_also": `${siteUrl}/competitions`,
@@ -158,6 +176,14 @@ export const metadata = {
     "profile:first_name": "Daniel",
     "profile:last_name": "Mitka",
     "profile:username": "danielmitka",
+
+    // Enhanced SEO meta tags
+    "application-name": authorName,
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-title": authorName,
+    "msapplication-tooltip": siteDescription,
+    "msapplication-starturl": siteUrl,
+    "msapplication-navbutton-color": "#2563eb",
   },
 };
 
@@ -199,7 +225,7 @@ export default function RootLayout({
         />
 
         {/* Google Tag Manager */}
-        <Script id="google-tag-manager">
+        <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -209,6 +235,7 @@ export default function RootLayout({
           `}
         </Script>
         {/* End Google Tag Manager */}
+
         <Script id="theme-mode" strategy="beforeInteractive">
           {`
             (function () {

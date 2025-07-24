@@ -108,147 +108,163 @@ const getBaseData = () => ({
     "https://instagram.com/daniel.mitka",
 });
 
-// Locale-specific data mappings
-const getLocalizedData = (locale: string = "en") => {
-  if (locale === "cs") {
-    return {
+// Enhanced localized data with more SEO keywords
+function getLocalizedData(locale: string = "en") {
+  const data = {
+    en: {
       description:
-        "Daniel Mitka, 16letý elitní plavec ze SK Motorlet Praha, dosáhl pozoruhodných úspěchů v českém plavání. Český juniorský mistr v plavání a medailista na mistrovství světa v záchranářství. Konkurenční plavec s mezinárodními zkušenostmi v Austrálii, na Slovensku a v České republice. Full-stack vývojář vášnivý pro technologie a sport.",
-      jobTitles: [
+        "Daniel Mitka, a 16-year-old elite swimmer from SK Motorlet Praha, has achieved remarkable success in Czech swimming. Czech Youth Swimming Champion, lifesaving world vice-champion, and full-stack developer. Record holder in mixed 4x50m medley relay. Competing internationally in Australia, Slovakia, and Czech Republic. Expert in freestyle, breaststroke, individual medley, and lifesaving techniques.",
+      jobTitle: [
+        "Professional Athlete",
+        "Full-Stack Developer",
+        "Competitive Swimmer",
+        "Czech Swimming Champion",
+        "Lifesaving World Vice-Champion",
+      ],
+      occupation: {
+        athlete: {
+          name: "Professional Athlete",
+          category: "Sports and Recreation",
+          skills: [
+            "Swimming",
+            "Lifesaving",
+            "Water Safety",
+            "Competitive Swimming",
+            "Freestyle Technique",
+            "Breaststroke",
+            "Individual Medley",
+            "Sprint Swimming",
+          ],
+          experience: "6+ years competitive swimming experience",
+          achievements: [
+            "Czech Youth Swimming Champion",
+            "National Record Holder",
+            "International Competition Experience",
+          ],
+        },
+        developer: {
+          name: "Full-Stack Developer",
+          category: "Technology",
+          skills: [
+            "JavaScript",
+            "TypeScript",
+            "React",
+            "Next.js",
+            "Node.js",
+            "Web Development",
+            "Full-Stack Development",
+          ],
+          experience: "3+ years development experience",
+        },
+      },
+      awards: [
+        "Czech Youth Swimming Champion",
+        "Silver Medal - Lifesaving World Championships Australia 2024",
+        "National Record Holder - Mixed 4x50m Medley Relay",
+        "Multiple National Championship Finals",
+        "International Competition Medalist",
+        "SK Motorlet Praha Top Performer",
+      ],
+      knowsAbout: [
+        "Competitive Swimming",
+        "Lifesaving Techniques",
+        "Water Safety",
+        "Sprint Swimming Training",
+        "Individual Medley Technique",
+        "Swimming Stroke Mechanics",
+        "Competition Strategy",
+        "Athletic Performance",
+        "Web Development",
+        "JavaScript Programming",
+        "React Development",
+        "Full-Stack Programming",
+      ],
+      organizations: {
+        swimming: "Czech Swimming Federation",
+        club: "SK Motorlet Praha",
+        lifesaving: "Czech Lifesaving Association",
+        international: "European Swimming Federation",
+      },
+    },
+    cs: {
+      description:
+        "Daniel Mitka, 16letý elitní plavec ze SK Motorlet Praha, dosáhl pozoruhodných úspěchů v českém plavání. Český juniorský mistr v plavání, světový vicemistr v záchranářství a full-stack vývojář. Držitel rekordu ve smíšené štafetě 4x50m polohově. Soutěží mezinárodně v Austrálii, na Slovensku a v České republice. Expert ve volném způsobu, prsu, polohovém závodě a záchranářských technikách.",
+      jobTitle: [
         "Profesionální sportovec",
         "Full-Stack vývojář",
         "Závodní plavec",
+        "Český mistr v plavání",
+        "Světový vicemistr v záchranářství",
       ],
-      athleteOccupation: {
-        name: "Profesionální sportovec",
-        category: "Sport a rekreace",
-        responsibilities: [
-          "Závodní plavání",
-          "Záchranářství",
-          "Trénink",
-          "Účast na soutěžích",
-        ],
-        skills: [
-          "Plavání",
-          "Záchranářství",
-          "Bezpečnost na vodě",
-          "Sportovní výkon",
-          "Závodní strategie",
-        ],
-      },
-      developerOccupation: {
-        name: "Full-Stack vývojář",
-        category: "Počítače a informační technologie",
-        responsibilities: [
-          "Webový vývoj",
-          "Softwarové inženýrství",
-          "Frontend vývoj",
-          "Backend vývoj",
-        ],
-        skills: [
-          "React",
-          "Next.js",
-          "TypeScript",
-          "JavaScript",
-          "Webový vývoj",
-          "Full-Stack vývoj",
-        ],
+      occupation: {
+        athlete: {
+          name: "Profesionální sportovec",
+          category: "Sport a rekreace",
+          skills: [
+            "Plavání",
+            "Záchranářství",
+            "Bezpečnost na vodě",
+            "Závodní plavání",
+            "Technika volného způsobu",
+            "Prsa",
+            "Polohový závod",
+            "Sprintové plavání",
+          ],
+          experience: "6+ let zkušeností v závodním plavání",
+          achievements: [
+            "Český juniorský mistr v plavání",
+            "Držitel národního rekordu",
+            "Mezinárodní závodní zkušenosti",
+          ],
+        },
+        developer: {
+          name: "Full-Stack vývojář",
+          category: "Technologie",
+          skills: [
+            "JavaScript",
+            "TypeScript",
+            "React",
+            "Next.js",
+            "Node.js",
+            "Webový vývoj",
+            "Full-Stack vývoj",
+          ],
+          experience: "3+ let vývojářských zkušeností",
+        },
       },
       awards: [
         "Český juniorský mistr v plavání",
-        "Stříbrná medaile - Mistrovství světa v záchranářství Austrálie 2023",
-        "Medailista mistrovství světa v záchranářství",
-        "Účastník Slovenského poháru",
-        "Účastník českého národního mistrovství",
-      ],
-      organizations: [
-        { name: "Český svaz plavání", country: "Česká republika" },
-        { name: "Česká asociace záchranářů", country: "Česká republika" },
+        "Stříbrná medaile - Mistrovství světa v záchranářství Austrálie 2024",
+        "Držitel národního rekordu - Smíšená štafeta 4x50m polohově",
+        "Několikanásobný finalista mistrovství republiky",
+        "Medailista mezinárodních soutěží",
+        "Nejlepší výkon SK Motorlet Praha",
       ],
       knowsAbout: [
         "Závodní plavání",
-        "Záchranářství",
+        "Záchranářské techniky",
         "Bezpečnost na vodě",
-        "Sportovní trénink",
+        "Trénink sprintového plavání",
+        "Technika polohového závodu",
+        "Mechanika plaveckých způsobů",
+        "Závodní strategie",
+        "Sportovní výkon",
         "Webový vývoj",
-        "Full-Stack vývoj",
-        "React",
-        "Next.js",
-        "TypeScript",
-        "České plavecké techniky",
+        "JavaScript programování",
+        "React vývoj",
+        "Full-Stack programování",
       ],
-    };
-  }
-
-  // Default English data
-  return {
-    description:
-      "Czech Youth Swimming Champion & Lifesaving Medalist. Competitive swimmer with international experience in Australia, Slovakia, and Czech Republic. Full-stack developer passionate about technology and sports.",
-    jobTitles: [
-      "Professional Athlete",
-      "Full-Stack Developer",
-      "Competitive Swimmer",
-    ],
-    athleteOccupation: {
-      name: "Professional Athlete",
-      category: "Sports and Recreation",
-      responsibilities: [
-        "Competitive Swimming",
-        "Lifesaving",
-        "Training",
-        "Competition Participation",
-      ],
-      skills: [
-        "Swimming",
-        "Lifesaving",
-        "Water Safety",
-        "Athletic Performance",
-        "Competition Strategy",
-      ],
+      organizations: {
+        swimming: "Český svaz plavání",
+        club: "SK Motorlet Praha",
+        lifesaving: "Český záchranářský svaz",
+        international: "Evropská plavecká federace",
+      },
     },
-    developerOccupation: {
-      name: "Full-Stack Developer",
-      category: "Computer and Information Technology",
-      responsibilities: [
-        "Web Development",
-        "Software Engineering",
-        "Frontend Development",
-        "Backend Development",
-      ],
-      skills: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "JavaScript",
-        "Web Development",
-        "Full-Stack Development",
-      ],
-    },
-    awards: [
-      "Czech Youth Swimming Champion",
-      "Silver Medal - Australia Youth Swimming Championship 2023",
-      "Lifesaving World Championships Medalist",
-      "Slovakia Cup Competitor",
-      "Czech National Championships Participant",
-    ],
-    organizations: [
-      { name: "Czech Swimming Federation", country: "Czech Republic" },
-      { name: "Czech Lifesaving Association", country: "Czech Republic" },
-    ],
-    knowsAbout: [
-      "Competitive Swimming",
-      "Lifesaving",
-      "Water Safety",
-      "Athletic Training",
-      "Web Development",
-      "Full-Stack Development",
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Czech Swimming Techniques",
-    ],
   };
-};
+
+  return data[locale as keyof typeof data] || data.en;
+}
 
 // Main person/athlete schema with locale support
 export function generatePersonSchema(locale: string = "en"): PersonSchema {
@@ -264,18 +280,18 @@ export function generatePersonSchema(locale: string = "en"): PersonSchema {
   // Define occupations using proper Schema.org Occupation type
   const athleteOccupation: OccupationSchema = {
     "@type": "Occupation",
-    name: localizedData.athleteOccupation.name,
-    occupationalCategory: localizedData.athleteOccupation.category,
-    responsibilities: localizedData.athleteOccupation.responsibilities,
-    skills: localizedData.athleteOccupation.skills,
+    name: localizedData.occupation.athlete.name,
+    occupationalCategory: localizedData.occupation.athlete.category,
+    responsibilities: [], // No specific responsibilities for this simplified schema
+    skills: localizedData.occupation.athlete.skills,
   };
 
   const developerOccupation: OccupationSchema = {
     "@type": "Occupation",
-    name: localizedData.developerOccupation.name,
-    occupationalCategory: localizedData.developerOccupation.category,
-    responsibilities: localizedData.developerOccupation.responsibilities,
-    skills: localizedData.developerOccupation.skills,
+    name: localizedData.occupation.developer.name,
+    occupationalCategory: localizedData.occupation.developer.category,
+    responsibilities: [], // No specific responsibilities for this simplified schema
+    skills: localizedData.occupation.developer.skills,
   };
 
   return {
@@ -285,7 +301,7 @@ export function generatePersonSchema(locale: string = "en"): PersonSchema {
     url: siteUrl,
     image: `${siteUrl}/profilovaFotka.jpg`,
     description: localizedData.description,
-    jobTitle: localizedData.jobTitles,
+    jobTitle: localizedData.jobTitle,
     nationality: "Czech Republic",
     birthPlace: "Czech Republic",
     hasOccupation: [athleteOccupation, developerOccupation],
@@ -300,14 +316,32 @@ export function generatePersonSchema(locale: string = "en"): PersonSchema {
       `${siteUrl}/en`,
     ],
     knowsAbout: localizedData.knowsAbout,
-    memberOf: localizedData.organizations.map((org) => ({
-      "@type": "SportsOrganization" as const,
-      name: org.name,
-      address: {
-        "@type": "PostalAddress" as const,
-        addressCountry: org.country,
+    memberOf: [
+      {
+        "@type": "SportsOrganization",
+        name: localizedData.organizations.swimming,
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "Czech Republic",
+        },
       },
-    })),
+      {
+        "@type": "SportsOrganization",
+        name: localizedData.organizations.lifesaving,
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "Czech Republic",
+        },
+      },
+      {
+        "@type": "SportsOrganization",
+        name: localizedData.organizations.international,
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "Europe",
+        },
+      },
+    ],
     inLanguage: locale === "cs" ? "cs-CZ" : "en-US",
   };
 }
@@ -404,6 +438,75 @@ export function generateSportsEventSchema(
     participant: [generatePersonSchema(locale)],
     competitor: [generatePersonSchema(locale)],
     inLanguage: locale === "cs" ? "cs-CZ" : "en-US",
+  };
+}
+
+// Add FAQ Schema for better search visibility
+export function generateFAQSchema(locale: string = "en") {
+  const faqData = {
+    en: {
+      questions: [
+        {
+          question: "Who is Daniel Mitka?",
+          answer:
+            "Daniel Mitka is a Czech Youth Swimming Champion and lifesaving world vice-champion from SK Motorlet Praha. He's also a full-stack developer with expertise in modern web technologies.",
+        },
+        {
+          question: "What are Daniel Mitka's swimming achievements?",
+          answer:
+            "Daniel is a Czech Youth Swimming Champion, silver medalist at the 2024 Lifesaving World Championships in Australia, and national record holder in the mixed 4x50m medley relay.",
+        },
+        {
+          question: "What swimming events does Daniel compete in?",
+          answer:
+            "Daniel competes in freestyle, breaststroke, individual medley events, and lifesaving competitions at national and international levels.",
+        },
+        {
+          question: "Where does Daniel Mitka train?",
+          answer:
+            "Daniel trains with SK Motorlet Praha, one of the leading swimming clubs in Czech Republic.",
+        },
+      ],
+    },
+    cs: {
+      questions: [
+        {
+          question: "Kdo je Daniel Mitka?",
+          answer:
+            "Daniel Mitka je český juniorský mistr v plavání a světový vicemistr v záchranářství ze SK Motorlet Praha. Je také full-stack vývojář s expertízou v moderních webových technologiích.",
+        },
+        {
+          question: "Jaké jsou plavecké úspěchy Daniela Mitky?",
+          answer:
+            "Daniel je český juniorský mistr v plavání, stříbrný medailista z MS v záchranářství 2024 v Austrálii a držitel národního rekordu ve smíšené štafetě 4x50m polohově.",
+        },
+        {
+          question: "V jakých disciplínách Daniel závodí?",
+          answer:
+            "Daniel závodí ve volném způsobu, prsu, polohových závodech a záchranářských soutěžích na národní i mezinárodní úrovni.",
+        },
+        {
+          question: "Kde Daniel Mitka trénuje?",
+          answer:
+            "Daniel trénuje v SK Motorlet Praha, jednom z předních plaveckých klubů v České republice.",
+        },
+      ],
+    },
+  };
+
+  const data = faqData[locale as keyof typeof faqData] || faqData.en;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: data.questions.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
   };
 }
 
