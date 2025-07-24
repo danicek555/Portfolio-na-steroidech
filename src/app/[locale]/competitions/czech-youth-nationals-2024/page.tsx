@@ -1,5 +1,10 @@
 import { Metadata } from "next";
+import Script from "next/script";
 import PodoliCompetitionClient from "./PodoliCompetitionClient";
+import {
+  generateSportsEventSchema,
+  createJsonLd,
+} from "../../../../lib/schema";
 
 // Environment variables for metadata
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz";
@@ -49,7 +54,7 @@ export const metadata: Metadata = {
     title: "Czech National Swimming Championship Podolí 2024 - Daniel Mitka",
     description:
       "National level competition at the prestigious Podolí swimming complex in Prague. Czech Republic's premier swimming championship.",
-    url: `${siteUrl}/competitions/podoli`,
+    url: `${siteUrl}/competitions/czech-youth-nationals-2024`,
     siteName: siteName,
     images: [
       {
@@ -76,11 +81,11 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: `${siteUrl}/competitions/podoli`,
+    canonical: `${siteUrl}/competitions/czech-youth-nationals-2024`,
     languages: {
-      cs: `${siteUrl}/cs/competitions/podoli`,
-      en: `${siteUrl}/en/competitions/podoli`,
-      "x-default": `${siteUrl}/competitions/podoli`,
+      cs: `${siteUrl}/cs/competitions/czech-youth-nationals-2024`,
+      en: `${siteUrl}/en/competitions/czech-youth-nationals-2024`,
+      "x-default": `${siteUrl}/competitions/czech-youth-nationals-2024`,
     },
   },
 
@@ -122,5 +127,37 @@ export const metadata: Metadata = {
 };
 
 export default function PodoliCompetitionPage() {
-  return <PodoliCompetitionClient />;
+  // Generate SportsEvent Schema.org structured data
+  const eventSchema = generateSportsEventSchema({
+    name: "Czech National Swimming Championship Podolí 2024",
+    description:
+      "National level competition at the prestigious Podolí swimming complex in Prague. Czech Republic's premier swimming championship featuring multiple swimming events.",
+    startDate: "2024-07-01",
+    endDate: "2024-07-07",
+    location: {
+      name: "Podolí Swimming Complex",
+      city: "Prague",
+      country: "Czech Republic",
+      region: "Prague",
+      coordinates: { lat: 50.0647, lng: 14.4124 },
+    },
+    sport: "Swimming",
+    awards: ["National Championship Title", "Czech Swimming Records"],
+    level: "National",
+    organizer: "Czech Swimming Federation",
+  });
+
+  return (
+    <>
+      {/* Schema.org JSON-LD for this specific event */}
+      <Script
+        id="podoli-competition-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: createJsonLd(eventSchema),
+        }}
+      />
+      <PodoliCompetitionClient />
+    </>
+  );
 }

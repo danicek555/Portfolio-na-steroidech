@@ -1,5 +1,10 @@
 import Script from "next/script";
 import { roboto, montserrat } from "../styles/fonts";
+import {
+  generateWebSiteSchema,
+  generatePersonSchema,
+  generateMultipleSchemas,
+} from "../lib/schema";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz";
 const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Daniel Mitka Portfolio";
@@ -173,12 +178,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Generate Schema.org structured data
+  const websiteSchema = generateWebSiteSchema();
+  const personSchema = generatePersonSchema();
+  const combinedSchema = generateMultipleSchemas(websiteSchema, personSchema);
+
   return (
     <html
       className={`${roboto.variable} ${montserrat.variable}`}
       suppressHydrationWarning
     >
       <head>
+        {/* Schema.org JSON-LD Structured Data */}
+        <Script
+          id="schema-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: combinedSchema,
+          }}
+        />
+
         {/* Google Tag Manager */}
         <Script id="google-tag-manager">
           {`

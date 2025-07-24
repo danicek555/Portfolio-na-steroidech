@@ -1,5 +1,10 @@
 import { Metadata } from "next";
+import Script from "next/script";
 import SamorinCompetitionClient from "./SamorinCompetitionClient";
+import {
+  generateSportsEventSchema,
+  createJsonLd,
+} from "../../../../lib/schema";
 
 // Environment variables for metadata
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz";
@@ -49,7 +54,7 @@ export const metadata: Metadata = {
     title: "Slovakia Cup Šamorín 2024 - Daniel Mitka",
     description:
       "International swimming competition in Slovakia. Cross-border event featuring Czech and Slovak swimmers at Šamorín aquatic center.",
-    url: `${siteUrl}/competitions/samorin`,
+    url: `${siteUrl}/competitions/slovakia-cup-2024`,
     siteName: siteName,
     images: [
       {
@@ -76,11 +81,11 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: `${siteUrl}/competitions/samorin`,
+    canonical: `${siteUrl}/competitions/slovakia-cup-2024`,
     languages: {
-      cs: `${siteUrl}/cs/competitions/samorin`,
-      en: `${siteUrl}/en/competitions/samorin`,
-      "x-default": `${siteUrl}/competitions/samorin`,
+      cs: `${siteUrl}/cs/competitions/slovakia-cup-2024`,
+      en: `${siteUrl}/en/competitions/slovakia-cup-2024`,
+      "x-default": `${siteUrl}/competitions/slovakia-cup-2024`,
     },
   },
 
@@ -122,5 +127,36 @@ export const metadata: Metadata = {
 };
 
 export default function SamorinCompetitionPage() {
-  return <SamorinCompetitionClient />;
+  // Generate SportsEvent Schema.org structured data
+  const eventSchema = generateSportsEventSchema({
+    name: "Slovakia Cup Šamorín 2024",
+    description:
+      "International swimming competition between Czech and Slovak swimmers at Šamorín aquatic center. Cross-border sporting event promoting regional swimming excellence.",
+    startDate: "2024-05-01",
+    endDate: "2024-05-05",
+    location: {
+      name: "Šamorín Aquatic Center",
+      city: "Šamorín",
+      country: "Slovakia",
+      region: "Trnava Region",
+    },
+    sport: "Swimming",
+    awards: ["International Competition Achievement"],
+    level: "International",
+    organizer: "Slovak Swimming Federation",
+  });
+
+  return (
+    <>
+      {/* Schema.org JSON-LD for this specific event */}
+      <Script
+        id="samorin-competition-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: createJsonLd(eventSchema),
+        }}
+      />
+      <SamorinCompetitionClient />
+    </>
+  );
 }

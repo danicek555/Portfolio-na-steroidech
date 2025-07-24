@@ -1,5 +1,10 @@
 import { Metadata } from "next";
+import Script from "next/script";
 import AustraliaCompetitionClient from "./AustraliaCompetitionClient";
+import {
+  generateSportsEventSchema,
+  createJsonLd,
+} from "../../../../lib/schema";
 
 // Environment variables for metadata
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz";
@@ -49,7 +54,7 @@ export const metadata: Metadata = {
     title: "Australia Youth Swimming Championship 2023 - Daniel Mitka",
     description:
       "Silver medal performance at Australia Youth Swimming Championship. Mixed Rescue event with Adam Pekař. International competitive swimming experience.",
-    url: `${siteUrl}/competitions/australia`,
+    url: `${siteUrl}/competitions/lifesaving-worlds-australia`,
     siteName: siteName,
     images: [
       {
@@ -76,11 +81,11 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: `${siteUrl}/competitions/australia`,
+    canonical: `${siteUrl}/competitions/lifesaving-worlds-australia`,
     languages: {
-      cs: `${siteUrl}/cs/competitions/australia`,
-      en: `${siteUrl}/en/competitions/australia`,
-      "x-default": `${siteUrl}/competitions/australia`,
+      cs: `${siteUrl}/cs/competitions/lifesaving-worlds-australia`,
+      en: `${siteUrl}/en/competitions/lifesaving-worlds-australia`,
+      "x-default": `${siteUrl}/competitions/lifesaving-worlds-australia`,
     },
   },
 
@@ -120,5 +125,37 @@ export const metadata: Metadata = {
 };
 
 export default function AustraliaCompetitionPage() {
-  return <AustraliaCompetitionClient />;
+  // Generate SportsEvent Schema.org structured data
+  const eventSchema = generateSportsEventSchema({
+    name: "Australia Youth Swimming Championship 2023",
+    description:
+      "International youth swimming championship featuring lifesaving and competitive swimming events. Daniel Mitka achieved silver medal in Mixed Rescue event with partner Adam Pekař.",
+    startDate: "2023-12-01",
+    endDate: "2023-12-10",
+    location: {
+      name: "Gold Coast Aquatic Centre",
+      city: "Gold Coast",
+      country: "Australia",
+      region: "Queensland",
+      coordinates: { lat: -27.9706, lng: 153.4185 },
+    },
+    sport: "Swimming",
+    awards: ["Silver Medal - Mixed Rescue Event"],
+    level: "International",
+    organizer: "Swimming Australia",
+  });
+
+  return (
+    <>
+      {/* Schema.org JSON-LD for this specific event */}
+      <Script
+        id="australia-competition-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: createJsonLd(eventSchema),
+        }}
+      />
+      <AustraliaCompetitionClient />
+    </>
+  );
 }

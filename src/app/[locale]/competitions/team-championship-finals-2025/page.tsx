@@ -1,5 +1,10 @@
 import { Metadata } from "next";
+import Script from "next/script";
 import OstravaCompetitionClient from "./OstravaCompetitionClient";
+import {
+  generateSportsEventSchema,
+  createJsonLd,
+} from "../../../../lib/schema";
 
 // Environment variables for metadata
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz";
@@ -49,7 +54,7 @@ export const metadata: Metadata = {
     title: "Team Championship Finals Ostrava 2025 - Daniel Mitka",
     description:
       "National level team swimming competition in Ostrava. Multiple individual events and team achievements at Czech swimming championships.",
-    url: `${siteUrl}/competitions/ostrava`,
+    url: `${siteUrl}/competitions/team-championship-finals-2025`,
     siteName: siteName,
     images: [
       {
@@ -76,11 +81,11 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: `${siteUrl}/competitions/ostrava`,
+    canonical: `${siteUrl}/competitions/team-championship-finals-2025`,
     languages: {
-      cs: `${siteUrl}/cs/competitions/ostrava`,
-      en: `${siteUrl}/en/competitions/ostrava`,
-      "x-default": `${siteUrl}/competitions/ostrava`,
+      cs: `${siteUrl}/cs/competitions/team-championship-finals-2025`,
+      en: `${siteUrl}/en/competitions/team-championship-finals-2025`,
+      "x-default": `${siteUrl}/competitions/team-championship-finals-2025`,
     },
   },
 
@@ -124,5 +129,36 @@ export const metadata: Metadata = {
 };
 
 export default function OstravaCompetitionPage() {
-  return <OstravaCompetitionClient />;
+  // Generate SportsEvent Schema.org structured data
+  const eventSchema = generateSportsEventSchema({
+    name: "Team Championship Finals Ostrava 2025",
+    description:
+      "National level team swimming competition featuring multiple individual events and team achievements. Premier Czech swimming championships with freestyle, breaststroke, and individual medley events.",
+    startDate: "2025-01-01",
+    endDate: "2025-01-07",
+    location: {
+      name: "Ostrava Aquatic Centre",
+      city: "Ostrava",
+      country: "Czech Republic",
+      region: "Moravian-Silesian",
+    },
+    sport: "Swimming",
+    awards: ["Team Championship Finalist", "National Competition Achievement"],
+    level: "National",
+    organizer: "Czech Swimming Federation",
+  });
+
+  return (
+    <>
+      {/* Schema.org JSON-LD for this specific event */}
+      <Script
+        id="ostrava-competition-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: createJsonLd(eventSchema),
+        }}
+      />
+      <OstravaCompetitionClient />
+    </>
+  );
 }

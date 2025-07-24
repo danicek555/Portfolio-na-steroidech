@@ -1,5 +1,10 @@
 import { Metadata } from "next";
+import Script from "next/script";
 import PlzenCompetitionClient from "./PlzenCompetitionClient";
+import {
+  generateSportsEventSchema,
+  createJsonLd,
+} from "../../../../lib/schema";
 
 // Environment variables for metadata
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz";
@@ -49,7 +54,7 @@ export const metadata: Metadata = {
     title: "Plzen Regional Swimming Championship 2024 - Daniel Mitka",
     description:
       "Regional swimming excellence in Western Bohemia. Multiple events at Plzen Regional Championship with strong performances in freestyle and medley.",
-    url: `${siteUrl}/competitions/plzen`,
+    url: `${siteUrl}/competitions/czech-open-nationals-2025`,
     siteName: siteName,
     images: [
       {
@@ -76,11 +81,11 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: `${siteUrl}/competitions/plzen`,
+    canonical: `${siteUrl}/competitions/czech-open-nationals-2025`,
     languages: {
-      cs: `${siteUrl}/cs/competitions/plzen`,
-      en: `${siteUrl}/en/competitions/plzen`,
-      "x-default": `${siteUrl}/competitions/plzen`,
+      cs: `${siteUrl}/cs/competitions/czech-open-nationals-2025`,
+      en: `${siteUrl}/en/competitions/czech-open-nationals-2025`,
+      "x-default": `${siteUrl}/competitions/czech-open-nationals-2025`,
     },
   },
 
@@ -122,5 +127,36 @@ export const metadata: Metadata = {
 };
 
 export default function PlzenCompetitionPage() {
-  return <PlzenCompetitionClient />;
+  // Generate SportsEvent Schema.org structured data
+  const eventSchema = generateSportsEventSchema({
+    name: "Plzen Regional Swimming Championship 2024",
+    description:
+      "Regional swimming excellence in Western Bohemia. Multiple events featuring freestyle, butterfly, and individual medley competitions at Plzen swimming facility.",
+    startDate: "2024-06-01",
+    endDate: "2024-06-03",
+    location: {
+      name: "Plzen Swimming Centre",
+      city: "Plzen",
+      country: "Czech Republic",
+      region: "Western Bohemia",
+    },
+    sport: "Swimming",
+    awards: ["Regional Championship Achievement"],
+    level: "Regional",
+    organizer: "Western Bohemia Swimming Association",
+  });
+
+  return (
+    <>
+      {/* Schema.org JSON-LD for this specific event */}
+      <Script
+        id="plzen-competition-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: createJsonLd(eventSchema),
+        }}
+      />
+      <PlzenCompetitionClient />
+    </>
+  );
 }

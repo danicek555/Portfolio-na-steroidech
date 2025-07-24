@@ -1,8 +1,10 @@
 import { Metadata } from "next";
+import Script from "next/script";
 import Hero from "../../components/hero";
 import About from "../../components/about";
 import Competitions from "../../components/competitions";
 import Projects from "../../components/projects";
+import { generatePersonSchema, createJsonLd } from "../../lib/schema";
 
 // Environment variables for metadata
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz";
@@ -114,9 +116,51 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  // Generate breadcrumb and portfolio-specific schema
+  const personSchema = generatePersonSchema();
+
+  // Breadcrumb navigation schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz",
+      },
+    ],
+  };
+
+  // Portfolio page schema
+  const portfolioSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    mainEntity: personSchema,
+    about: personSchema,
+    description:
+      "Official portfolio showcasing Daniel Mitka's swimming achievements, competition highlights, and development projects.",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz",
+  };
+
+  // Combined schema for this page
+  const combinedPageSchema = {
+    "@context": "https://schema.org",
+    "@graph": [breadcrumbSchema, portfolioSchema],
+  };
+
   return (
     <>
-      {/* Portfolio sections */}
+      {/* Schema.org JSON-LD for portfolio page */}
+      <Script
+        id="portfolio-page-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: createJsonLd(combinedPageSchema),
+        }}
+      />
+
       <Hero />
       <About />
       <Competitions />
