@@ -179,21 +179,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Google tag (gtag.js) */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-SYWRQ64G6V"
-        ></Script>
-        <Script id="google-analytics">
-          {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            dataLayer.push(arguments);
-          }
-          gtag("js", new Date());
-          gtag("config", "G-SYWRQ64G6V");
-          `}
-        </Script>
         {/* Google Tag Manager */}
         <Script id="google-tag-manager">
           {`
