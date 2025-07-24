@@ -178,9 +178,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Generate Schema.org structured data
-  const websiteSchema = generateWebSiteSchema();
-  const personSchema = generatePersonSchema();
+  // Generate Schema.org structured data (default to English for root layout)
+  const websiteSchema = generateWebSiteSchema("en");
+  const personSchema = generatePersonSchema("en");
   const combinedSchema = generateMultipleSchemas(websiteSchema, personSchema);
 
   return (

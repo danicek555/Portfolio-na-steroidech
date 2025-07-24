@@ -126,25 +126,56 @@ export const metadata: Metadata = {
   },
 };
 
-export default function SamorinCompetitionPage() {
-  // Generate SportsEvent Schema.org structured data
-  const eventSchema = generateSportsEventSchema({
-    name: "Slovakia Cup Šamorín 2024",
-    description:
-      "International swimming competition between Czech and Slovak swimmers at Šamorín aquatic center. Cross-border sporting event promoting regional swimming excellence.",
-    startDate: "2024-05-01",
-    endDate: "2024-05-05",
-    location: {
-      name: "Šamorín Aquatic Center",
-      city: "Šamorín",
-      country: "Slovakia",
-      region: "Trnava Region",
+export default async function SamorinCompetitionPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  // Generate SportsEvent Schema.org structured data with locale support
+  const eventNames = {
+    en: "Slovakia Cup Šamorín 2024",
+    cs: "Slovenský pohár Šamorín 2024",
+  };
+
+  const eventDescriptions = {
+    en: "International swimming competition between Czech and Slovak swimmers at Šamorín aquatic center. Cross-border sporting event promoting regional swimming excellence.",
+    cs: "Mezinárodní plavecká soutěž mezi českými a slovenskými plavci na plaveckém centru Šamorín. Přeshraniční sportovní akce podporující regionální plaveckou excelenci.",
+  };
+
+  const organizers = {
+    en: "Slovak Swimming Federation",
+    cs: "Slovenský plavecký zväz",
+  };
+
+  const awards = {
+    en: ["International Competition Achievement"],
+    cs: ["Úspěch v mezinárodní soutěži"],
+  };
+
+  const eventSchema = generateSportsEventSchema(
+    {
+      name: eventNames[locale as keyof typeof eventNames] || eventNames.en,
+      description:
+        eventDescriptions[locale as keyof typeof eventDescriptions] ||
+        eventDescriptions.en,
+      startDate: "2024-05-01",
+      endDate: "2024-05-05",
+      location: {
+        name:
+          locale === "cs" ? "Šamorín Aquatic Center" : "Šamorín Aquatic Center",
+        city: "Šamorín",
+        country: locale === "cs" ? "Slovensko" : "Slovakia",
+        region: locale === "cs" ? "Trnavský kraj" : "Trnava Region",
+      },
+      sport: locale === "cs" ? "Plavání" : "Swimming",
+      awards: awards[locale as keyof typeof awards] || awards.en,
+      level: "International",
+      organizer: organizers[locale as keyof typeof organizers] || organizers.en,
     },
-    sport: "Swimming",
-    awards: ["International Competition Achievement"],
-    level: "International",
-    organizer: "Slovak Swimming Federation",
-  });
+    locale
+  );
 
   return (
     <>

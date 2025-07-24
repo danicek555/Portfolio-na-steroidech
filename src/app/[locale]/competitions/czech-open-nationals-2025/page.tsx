@@ -126,25 +126,56 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PlzenCompetitionPage() {
-  // Generate SportsEvent Schema.org structured data
-  const eventSchema = generateSportsEventSchema({
-    name: "Plzen Regional Swimming Championship 2024",
-    description:
-      "Regional swimming excellence in Western Bohemia. Multiple events featuring freestyle, butterfly, and individual medley competitions at Plzen swimming facility.",
-    startDate: "2024-06-01",
-    endDate: "2024-06-03",
-    location: {
-      name: "Plzen Swimming Centre",
-      city: "Plzen",
-      country: "Czech Republic",
-      region: "Western Bohemia",
+export default async function PlzenCompetitionPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  // Generate SportsEvent Schema.org structured data with locale support
+  const eventNames = {
+    en: "Plzen Regional Swimming Championship 2024",
+    cs: "Plzeň Czech Open Mistrovství 2024",
+  };
+
+  const eventDescriptions = {
+    en: "Regional swimming excellence in Western Bohemia. Multiple events featuring freestyle, butterfly, and individual medley competitions at Plzen swimming facility.",
+    cs: "Regionální plavecká excelence v západních Čechách. Mnoho disciplín zahrnujících volný způsob, motýl a polohové závody na plaveckém zařízení v Plzni.",
+  };
+
+  const organizers = {
+    en: "Western Bohemia Swimming Association",
+    cs: "Západočeský plavecký svaz",
+  };
+
+  const awards = {
+    en: ["Regional Championship Achievement"],
+    cs: ["Úspěch v regionálním mistrovství"],
+  };
+
+  const eventSchema = generateSportsEventSchema(
+    {
+      name: eventNames[locale as keyof typeof eventNames] || eventNames.en,
+      description:
+        eventDescriptions[locale as keyof typeof eventDescriptions] ||
+        eventDescriptions.en,
+      startDate: "2024-06-01",
+      endDate: "2024-06-03",
+      location: {
+        name:
+          locale === "cs" ? "Plzeň Swimming Centre" : "Plzen Swimming Centre",
+        city: locale === "cs" ? "Plzeň" : "Plzen",
+        country: locale === "cs" ? "Česká republika" : "Czech Republic",
+        region: locale === "cs" ? "Západní Čechy" : "Western Bohemia",
+      },
+      sport: locale === "cs" ? "Plavání" : "Swimming",
+      awards: awards[locale as keyof typeof awards] || awards.en,
+      level: "Regional",
+      organizer: organizers[locale as keyof typeof organizers] || organizers.en,
     },
-    sport: "Swimming",
-    awards: ["Regional Championship Achievement"],
-    level: "Regional",
-    organizer: "Western Bohemia Swimming Association",
-  });
+    locale
+  );
 
   return (
     <>

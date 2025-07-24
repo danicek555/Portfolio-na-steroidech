@@ -115,9 +115,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
-  // Generate breadcrumb and portfolio-specific schema
-  const personSchema = generatePersonSchema();
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  // Generate breadcrumb and portfolio-specific schema with locale support
+  const personSchema = generatePersonSchema(locale);
 
   // Breadcrumb navigation schema
   const breadcrumbSchema = {
@@ -140,8 +146,11 @@ export default function HomePage() {
     mainEntity: personSchema,
     about: personSchema,
     description:
-      "Official portfolio showcasing Daniel Mitka's swimming achievements, competition highlights, and development projects.",
+      locale === "cs"
+        ? "Oficiální portfolio Daniela Mitky předvádějící plavecké úspěchy, závodní vrcholy a vývojové projekty."
+        : "Official portfolio showcasing Daniel Mitka's swimming achievements, competition highlights, and development projects.",
     url: process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz",
+    inLanguage: locale === "cs" ? "cs-CZ" : "en-US",
   };
 
   // Combined schema for this page

@@ -124,26 +124,59 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AustraliaCompetitionPage() {
-  // Generate SportsEvent Schema.org structured data
-  const eventSchema = generateSportsEventSchema({
-    name: "Australia Youth Swimming Championship 2023",
-    description:
-      "International youth swimming championship featuring lifesaving and competitive swimming events. Daniel Mitka achieved silver medal in Mixed Rescue event with partner Adam Pekař.",
-    startDate: "2023-12-01",
-    endDate: "2023-12-10",
-    location: {
-      name: "Gold Coast Aquatic Centre",
-      city: "Gold Coast",
-      country: "Australia",
-      region: "Queensland",
-      coordinates: { lat: -27.9706, lng: 153.4185 },
+export default async function AustraliaCompetitionPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  // Generate SportsEvent Schema.org structured data with locale support
+  const eventNames = {
+    en: "Australia Youth Swimming Championship 2023",
+    cs: "Mistrovství světa v záchranářství Austrálie 2023",
+  };
+
+  const eventDescriptions = {
+    en: "International youth swimming championship featuring lifesaving and competitive swimming events. Daniel Mitka achieved silver medal in Mixed Rescue event with partner Adam Pekař.",
+    cs: "Mezinárodní juniorské mistrovství v plavání zahrnující záchranářství a závodní plavecké disciplíny. Daniel Mitka dosáhl stříbrné medaile v disciplíně Smíšené záchranářství s partnerem Adamem Pekařem.",
+  };
+
+  const awards = {
+    en: ["Silver Medal - Mixed Rescue Event"],
+    cs: ["Stříbrná medaile - Smíšené záchranářství"],
+  };
+
+  const organizers = {
+    en: "Swimming Australia",
+    cs: "Swimming Australia",
+  };
+
+  const eventSchema = generateSportsEventSchema(
+    {
+      name: eventNames[locale as keyof typeof eventNames] || eventNames.en,
+      description:
+        eventDescriptions[locale as keyof typeof eventDescriptions] ||
+        eventDescriptions.en,
+      startDate: "2023-12-01",
+      endDate: "2023-12-10",
+      location: {
+        name:
+          locale === "cs"
+            ? "Gold Coast Aquatic Centre"
+            : "Gold Coast Aquatic Centre",
+        city: "Gold Coast",
+        country: locale === "cs" ? "Austrálie" : "Australia",
+        region: "Queensland",
+        coordinates: { lat: -27.9706, lng: 153.4185 },
+      },
+      sport: locale === "cs" ? "Plavání" : "Swimming",
+      awards: awards[locale as keyof typeof awards] || awards.en,
+      level: "International",
+      organizer: organizers[locale as keyof typeof organizers] || organizers.en,
     },
-    sport: "Swimming",
-    awards: ["Silver Medal - Mixed Rescue Event"],
-    level: "International",
-    organizer: "Swimming Australia",
-  });
+    locale
+  );
 
   return (
     <>

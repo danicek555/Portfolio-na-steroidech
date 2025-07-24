@@ -126,26 +126,59 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PodoliCompetitionPage() {
-  // Generate SportsEvent Schema.org structured data
-  const eventSchema = generateSportsEventSchema({
-    name: "Czech National Swimming Championship Podolí 2024",
-    description:
-      "National level competition at the prestigious Podolí swimming complex in Prague. Czech Republic's premier swimming championship featuring multiple swimming events.",
-    startDate: "2024-07-01",
-    endDate: "2024-07-07",
-    location: {
-      name: "Podolí Swimming Complex",
-      city: "Prague",
-      country: "Czech Republic",
-      region: "Prague",
-      coordinates: { lat: 50.0647, lng: 14.4124 },
+export default async function PodoliCompetitionPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  // Generate SportsEvent Schema.org structured data with locale support
+  const eventNames = {
+    en: "Czech National Swimming Championship Podolí 2024",
+    cs: "České národní mistrovství v plavání Podolí 2024",
+  };
+
+  const eventDescriptions = {
+    en: "National level competition at the prestigious Podolí swimming complex in Prague. Czech Republic's premier swimming championship featuring multiple swimming events.",
+    cs: "Národní soutěž na prestižním plaveckém komplexu Podolí v Praze. Premiérové české plavecké mistrovství s mnoha plaveckými disciplínami.",
+  };
+
+  const organizers = {
+    en: "Czech Swimming Federation",
+    cs: "Český svaz plavání",
+  };
+
+  const awards = {
+    en: ["National Championship Title", "Czech Swimming Records"],
+    cs: ["Titul národního mistra", "České plavecké rekordy"],
+  };
+
+  const eventSchema = generateSportsEventSchema(
+    {
+      name: eventNames[locale as keyof typeof eventNames] || eventNames.en,
+      description:
+        eventDescriptions[locale as keyof typeof eventDescriptions] ||
+        eventDescriptions.en,
+      startDate: "2024-07-01",
+      endDate: "2024-07-07",
+      location: {
+        name:
+          locale === "cs"
+            ? "Plavecký komplex Podolí"
+            : "Podolí Swimming Complex",
+        city: locale === "cs" ? "Praha" : "Prague",
+        country: locale === "cs" ? "Česká republika" : "Czech Republic",
+        region: "Prague",
+        coordinates: { lat: 50.0647, lng: 14.4124 },
+      },
+      sport: locale === "cs" ? "Plavání" : "Swimming",
+      awards: awards[locale as keyof typeof awards] || awards.en,
+      level: "National",
+      organizer: organizers[locale as keyof typeof organizers] || organizers.en,
     },
-    sport: "Swimming",
-    awards: ["National Championship Title", "Czech Swimming Records"],
-    level: "National",
-    organizer: "Czech Swimming Federation",
-  });
+    locale
+  );
 
   return (
     <>

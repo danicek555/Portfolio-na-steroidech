@@ -128,25 +128,56 @@ export const metadata: Metadata = {
   },
 };
 
-export default function OstravaCompetitionPage() {
-  // Generate SportsEvent Schema.org structured data
-  const eventSchema = generateSportsEventSchema({
-    name: "Team Championship Finals Ostrava 2025",
-    description:
-      "National level team swimming competition featuring multiple individual events and team achievements. Premier Czech swimming championships with freestyle, breaststroke, and individual medley events.",
-    startDate: "2025-01-01",
-    endDate: "2025-01-07",
-    location: {
-      name: "Ostrava Aquatic Centre",
-      city: "Ostrava",
-      country: "Czech Republic",
-      region: "Moravian-Silesian",
+export default async function OstravaCompetitionPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  // Generate SportsEvent Schema.org structured data with locale support
+  const eventNames = {
+    en: "Team Championship Finals Ostrava 2025",
+    cs: "Finále MČR družstev Ostrava 2025",
+  };
+
+  const eventDescriptions = {
+    en: "National level team swimming competition featuring multiple individual events and team achievements. Premier Czech swimming championships with freestyle, breaststroke, and individual medley events.",
+    cs: "Národní týmová plavecká soutěž s mnoha individuálními disciplínami a týmovými úspěchy. Premiérové české plavecké mistrovství s volným způsobem, prsa a polohový závod.",
+  };
+
+  const organizers = {
+    en: "Czech Swimming Federation",
+    cs: "Český svaz plavání",
+  };
+
+  const awards = {
+    en: ["Team Championship Finalist", "National Competition Achievement"],
+    cs: ["Finalista týmového mistrovství", "Úspěch v národní soutěži"],
+  };
+
+  const eventSchema = generateSportsEventSchema(
+    {
+      name: eventNames[locale as keyof typeof eventNames] || eventNames.en,
+      description:
+        eventDescriptions[locale as keyof typeof eventDescriptions] ||
+        eventDescriptions.en,
+      startDate: "2025-01-01",
+      endDate: "2025-01-07",
+      location: {
+        name:
+          locale === "cs" ? "Ostrava Aquatic Centre" : "Ostrava Aquatic Centre",
+        city: "Ostrava",
+        country: locale === "cs" ? "Česká republika" : "Czech Republic",
+        region: locale === "cs" ? "Moravskoslezský kraj" : "Moravian-Silesian",
+      },
+      sport: locale === "cs" ? "Plavání" : "Swimming",
+      awards: awards[locale as keyof typeof awards] || awards.en,
+      level: "National",
+      organizer: organizers[locale as keyof typeof organizers] || organizers.en,
     },
-    sport: "Swimming",
-    awards: ["Team Championship Finalist", "National Competition Achievement"],
-    level: "National",
-    organizer: "Czech Swimming Federation",
-  });
+    locale
+  );
 
   return (
     <>

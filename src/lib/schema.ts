@@ -1,7 +1,8 @@
 // Schema.org JSON-LD structured data utilities
+
 export interface PersonSchema {
   "@context": "https://schema.org";
-  "@type": "Person" | ["Person", "Athlete"];
+  "@type": "Person";
   name: string;
   url: string;
   image: string;
@@ -13,17 +14,18 @@ export interface PersonSchema {
   knowsAbout?: string[];
   alumniOf?: string[];
   award?: string[];
-  sport?: string[];
   memberOf?: OrganizationSchema[];
+  hasOccupation?: OccupationSchema[];
+  inLanguage?: string;
 }
 
-export interface AthleteSchema extends Omit<PersonSchema, "@type"> {
-  "@context": "https://schema.org";
-  "@type": ["Person", "Athlete"];
-  sport: string[];
-  award: string[];
-  competesFor?: OrganizationSchema;
-  nationality: string;
+export interface OccupationSchema {
+  "@context"?: "https://schema.org";
+  "@type": "Occupation";
+  name: string;
+  occupationalCategory?: string;
+  responsibilities?: string[];
+  skills?: string[];
 }
 
 export interface SportsEventSchema {
@@ -44,6 +46,7 @@ export interface SportsEventSchema {
     | "EventCancelled";
   award?: string[];
   participant?: PersonSchema[];
+  inLanguage?: string;
 }
 
 export interface PlaceSchema {
@@ -82,7 +85,7 @@ export interface WebSiteSchema {
   name: string;
   url: string;
   description: string;
-  publisher: PersonSchema | OrganizationSchema;
+  publisher: PersonSchema;
   inLanguage: string[];
   potentialAction?: {
     "@type": "SearchAction";
@@ -105,47 +108,132 @@ const getBaseData = () => ({
     "https://instagram.com/daniel.mitka",
 });
 
-// Main person/athlete schema for Daniel Mitka
-export function generatePersonSchema(): AthleteSchema {
-  const {
-    siteUrl,
-    authorName,
-    twitterHandle,
-    facebookProfile,
-    instagramProfile,
-  } = getBaseData();
+// Locale-specific data mappings
+const getLocalizedData = (locale: string = "en") => {
+  if (locale === "cs") {
+    return {
+      description:
+        "Daniel Mitka, 16letý elitní plavec ze SK Motorlet Praha, dosáhl pozoruhodných úspěchů v českém plavání. Český juniorský mistr v plavání a medailista na mistrovství světa v záchranářství. Konkurenční plavec s mezinárodními zkušenostmi v Austrálii, na Slovensku a v České republice. Full-stack vývojář vášnivý pro technologie a sport.",
+      jobTitles: [
+        "Profesionální sportovec",
+        "Full-Stack vývojář",
+        "Závodní plavec",
+      ],
+      athleteOccupation: {
+        name: "Profesionální sportovec",
+        category: "Sport a rekreace",
+        responsibilities: [
+          "Závodní plavání",
+          "Záchranářství",
+          "Trénink",
+          "Účast na soutěžích",
+        ],
+        skills: [
+          "Plavání",
+          "Záchranářství",
+          "Bezpečnost na vodě",
+          "Sportovní výkon",
+          "Závodní strategie",
+        ],
+      },
+      developerOccupation: {
+        name: "Full-Stack vývojář",
+        category: "Počítače a informační technologie",
+        responsibilities: [
+          "Webový vývoj",
+          "Softwarové inženýrství",
+          "Frontend vývoj",
+          "Backend vývoj",
+        ],
+        skills: [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "JavaScript",
+          "Webový vývoj",
+          "Full-Stack vývoj",
+        ],
+      },
+      awards: [
+        "Český juniorský mistr v plavání",
+        "Stříbrná medaile - Mistrovství světa v záchranářství Austrálie 2023",
+        "Medailista mistrovství světa v záchranářství",
+        "Účastník Slovenského poháru",
+        "Účastník českého národního mistrovství",
+      ],
+      organizations: [
+        { name: "Český svaz plavání", country: "Česká republika" },
+        { name: "Česká asociace záchranářů", country: "Česká republika" },
+      ],
+      knowsAbout: [
+        "Závodní plavání",
+        "Záchranářství",
+        "Bezpečnost na vodě",
+        "Sportovní trénink",
+        "Webový vývoj",
+        "Full-Stack vývoj",
+        "React",
+        "Next.js",
+        "TypeScript",
+        "České plavecké techniky",
+      ],
+    };
+  }
 
+  // Default English data
   return {
-    "@context": "https://schema.org",
-    "@type": ["Person", "Athlete"],
-    name: authorName,
-    url: siteUrl,
-    image: `${siteUrl}/profilovaFotka.jpg`,
     description:
       "Czech Youth Swimming Champion & Lifesaving Medalist. Competitive swimmer with international experience in Australia, Slovakia, and Czech Republic. Full-stack developer passionate about technology and sports.",
-    jobTitle: [
+    jobTitles: [
       "Professional Athlete",
       "Full-Stack Developer",
       "Competitive Swimmer",
     ],
-    nationality: "Czech Republic",
-    birthPlace: "Czech Republic",
-    sport: ["Swimming", "Lifesaving", "Aquatic Sports"],
-    award: [
+    athleteOccupation: {
+      name: "Professional Athlete",
+      category: "Sports and Recreation",
+      responsibilities: [
+        "Competitive Swimming",
+        "Lifesaving",
+        "Training",
+        "Competition Participation",
+      ],
+      skills: [
+        "Swimming",
+        "Lifesaving",
+        "Water Safety",
+        "Athletic Performance",
+        "Competition Strategy",
+      ],
+    },
+    developerOccupation: {
+      name: "Full-Stack Developer",
+      category: "Computer and Information Technology",
+      responsibilities: [
+        "Web Development",
+        "Software Engineering",
+        "Frontend Development",
+        "Backend Development",
+      ],
+      skills: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "JavaScript",
+        "Web Development",
+        "Full-Stack Development",
+      ],
+    },
+    awards: [
       "Czech Youth Swimming Champion",
       "Silver Medal - Australia Youth Swimming Championship 2023",
       "Lifesaving World Championships Medalist",
       "Slovakia Cup Competitor",
       "Czech National Championships Participant",
     ],
-    sameAs: [
-      twitterHandle.startsWith("@")
-        ? `https://twitter.com/${twitterHandle.substring(1)}`
-        : twitterHandle,
-      facebookProfile,
-      instagramProfile,
-      `${siteUrl}/cs`,
-      `${siteUrl}/en`,
+    organizations: [
+      { name: "Czech Swimming Federation", country: "Czech Republic" },
+      { name: "Czech Lifesaving Association", country: "Czech Republic" },
     ],
     knowsAbout: [
       "Competitive Swimming",
@@ -159,30 +247,79 @@ export function generatePersonSchema(): AthleteSchema {
       "TypeScript",
       "Czech Swimming Techniques",
     ],
-    memberOf: [
-      {
-        "@type": "SportsOrganization",
-        name: "Czech Swimming Federation",
-        address: {
-          "@type": "PostalAddress",
-          addressCountry: "Czech Republic",
-        },
-      },
-      {
-        "@type": "SportsOrganization",
-        name: "Czech Lifesaving Association",
-        address: {
-          "@type": "PostalAddress",
-          addressCountry: "Czech Republic",
-        },
-      },
+  };
+};
+
+// Main person/athlete schema with locale support
+export function generatePersonSchema(locale: string = "en"): PersonSchema {
+  const {
+    siteUrl,
+    authorName,
+    twitterHandle,
+    facebookProfile,
+    instagramProfile,
+  } = getBaseData();
+  const localizedData = getLocalizedData(locale);
+
+  // Define occupations using proper Schema.org Occupation type
+  const athleteOccupation: OccupationSchema = {
+    "@type": "Occupation",
+    name: localizedData.athleteOccupation.name,
+    occupationalCategory: localizedData.athleteOccupation.category,
+    responsibilities: localizedData.athleteOccupation.responsibilities,
+    skills: localizedData.athleteOccupation.skills,
+  };
+
+  const developerOccupation: OccupationSchema = {
+    "@type": "Occupation",
+    name: localizedData.developerOccupation.name,
+    occupationalCategory: localizedData.developerOccupation.category,
+    responsibilities: localizedData.developerOccupation.responsibilities,
+    skills: localizedData.developerOccupation.skills,
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: authorName,
+    url: siteUrl,
+    image: `${siteUrl}/profilovaFotka.jpg`,
+    description: localizedData.description,
+    jobTitle: localizedData.jobTitles,
+    nationality: "Czech Republic",
+    birthPlace: "Czech Republic",
+    hasOccupation: [athleteOccupation, developerOccupation],
+    award: localizedData.awards,
+    sameAs: [
+      twitterHandle.startsWith("@")
+        ? `https://twitter.com/${twitterHandle.substring(1)}`
+        : twitterHandle,
+      facebookProfile,
+      instagramProfile,
+      `${siteUrl}/cs`,
+      `${siteUrl}/en`,
     ],
+    knowsAbout: localizedData.knowsAbout,
+    memberOf: localizedData.organizations.map((org) => ({
+      "@type": "SportsOrganization" as const,
+      name: org.name,
+      address: {
+        "@type": "PostalAddress" as const,
+        addressCountry: org.country,
+      },
+    })),
+    inLanguage: locale === "cs" ? "cs-CZ" : "en-US",
   };
 }
 
-// Website schema
-export function generateWebSiteSchema(): WebSiteSchema {
+// Website schema with locale support
+export function generateWebSiteSchema(locale: string = "en"): WebSiteSchema {
   const { siteUrl, siteName } = getBaseData();
+
+  const descriptions = {
+    en: "Official portfolio of Daniel Mitka - Czech Youth Swimming Champion, lifesaving medalist, and full-stack developer. Explore swimming achievements, competition highlights, and development projects.",
+    cs: "Oficiální portfolio Daniela Mitky - český juniorský mistr v plavání, medailista v záchranářství a full-stack vývojář. Prozkoumejte plavecké úspěchy, závodní vrcholy a vývojové projekty.",
+  };
 
   return {
     "@context": "https://schema.org",
@@ -190,8 +327,8 @@ export function generateWebSiteSchema(): WebSiteSchema {
     name: siteName,
     url: siteUrl,
     description:
-      "Official portfolio of Daniel Mitka - Czech Youth Swimming Champion, lifesaving medalist, and full-stack developer. Explore swimming achievements, competition highlights, and development projects.",
-    publisher: generatePersonSchema(),
+      descriptions[locale as keyof typeof descriptions] || descriptions.en,
+    publisher: generatePersonSchema(locale),
     inLanguage: ["en", "cs"],
     potentialAction: {
       "@type": "SearchAction",
@@ -201,24 +338,27 @@ export function generateWebSiteSchema(): WebSiteSchema {
   };
 }
 
-// Competition event schema generator
-export function generateSportsEventSchema(eventData: {
-  name: string;
-  description: string;
-  startDate: string;
-  endDate?: string;
-  location: {
+// Competition event schema generator with locale support
+export function generateSportsEventSchema(
+  eventData: {
     name: string;
-    city: string;
-    country: string;
-    region?: string;
-    coordinates?: { lat: number; lng: number };
-  };
-  sport: string;
-  awards?: string[];
-  level: "International" | "National" | "Regional";
-  organizer?: string;
-}): SportsEventSchema {
+    description: string;
+    startDate: string;
+    endDate?: string;
+    location: {
+      name: string;
+      city: string;
+      country: string;
+      region?: string;
+      coordinates?: { lat: number; lng: number };
+    };
+    sport: string;
+    awards?: string[];
+    level: "International" | "National" | "Regional";
+    organizer?: string;
+  },
+  locale: string = "en"
+): SportsEventSchema {
   const location: PlaceSchema = {
     "@type": "SportsActivityLocation",
     name: eventData.location.name,
@@ -261,8 +401,9 @@ export function generateSportsEventSchema(eventData: {
     sport: eventData.sport,
     eventStatus: "EventScheduled",
     award: eventData.awards,
-    participant: [generatePersonSchema()],
-    competitor: [generatePersonSchema()],
+    participant: [generatePersonSchema(locale)],
+    competitor: [generatePersonSchema(locale)],
+    inLanguage: locale === "cs" ? "cs-CZ" : "en-US",
   };
 }
 
@@ -270,7 +411,6 @@ export function generateSportsEventSchema(eventData: {
 export function createJsonLd(
   schema:
     | PersonSchema
-    | AthleteSchema
     | SportsEventSchema
     | WebSiteSchema
     | Record<string, unknown>
@@ -282,7 +422,6 @@ export function createJsonLd(
 export function generateMultipleSchemas(
   ...schemas: (
     | PersonSchema
-    | AthleteSchema
     | SportsEventSchema
     | WebSiteSchema
     | Record<string, unknown>
