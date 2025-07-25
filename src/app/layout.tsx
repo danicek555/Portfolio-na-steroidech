@@ -6,7 +6,9 @@ import {
   generateMultipleSchemas,
 } from "../lib/schema";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  "https://portfolio-na-steroidech.vercel.app";
 const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Daniel Mitka Portfolio";
 const siteTitle =
   process.env.NEXT_PUBLIC_SITE_TITLE ||
@@ -138,7 +140,7 @@ export const metadata = {
     url: false,
   },
   alternates: {
-    canonical: `${siteUrl}/en`, // Default to English locale
+    // Canonical will be set by locale layout, not here
     languages: {
       "x-default": `${siteUrl}/en`,
       "en-US": `${siteUrl}/en`,
