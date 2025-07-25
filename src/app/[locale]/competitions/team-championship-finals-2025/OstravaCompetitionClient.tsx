@@ -636,6 +636,7 @@ export default function OstravaCompetitionClient() {
                         duration={result.duration}
                         views={result.views}
                         className="mb-4"
+                        priority={index < 2} // Prioritize first 2 videos for faster loading
                       />
                     </motion.div>
                   )
