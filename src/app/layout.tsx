@@ -138,11 +138,13 @@ export const metadata = {
     url: false,
   },
   alternates: {
-    canonical: siteUrl,
+    canonical: `${siteUrl}/en`, // Default to English locale
     languages: {
-      "x-default": siteUrl,
+      "x-default": `${siteUrl}/en`,
       "en-US": `${siteUrl}/en`,
       "cs-CZ": `${siteUrl}/cs`,
+      en: `${siteUrl}/en`,
+      cs: `${siteUrl}/cs`,
     },
   },
   metadataBase: new URL(siteUrl),
