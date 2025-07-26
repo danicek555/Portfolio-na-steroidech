@@ -12,26 +12,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Define supported locales
   const locales = ["en", "cs"];
 
-  // Base pages with their priorities
+  // Base pages without fragments - only actual pages
   const basePages = [
     {
       url: "",
       priority: 1.0,
-      changeFrequency: "weekly" as const,
-    },
-    {
-      url: "#about",
-      priority: 0.8,
-      changeFrequency: "monthly" as const,
-    },
-    {
-      url: "#work",
-      priority: 0.8,
-      changeFrequency: "monthly" as const,
-    },
-    {
-      url: "#competitions",
-      priority: 0.9,
       changeFrequency: "weekly" as const,
     },
   ];
