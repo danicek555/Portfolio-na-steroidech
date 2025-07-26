@@ -266,6 +266,7 @@ export default function RootLayout({
             })();
           `}
         </Script>
+        <meta name="msvalidate.01" content="0D0DAFC7989A1E883D0B80797FAEDBED" />
       </head>
       <body
         className="transition-colors duration-300 bg-white dark:bg-gray-900"

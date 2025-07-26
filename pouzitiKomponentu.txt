@@ -70,3 +70,26 @@ This metadata will significantly improve:
 
 Your site is now optimized for maximum visibility and professional appearance across all platforms! 🚀
 
+
+
+
+    {
+      title: t("projects.1.title"),
+      description: t("projects.1.description"),
+      technologies: ["NodeJS", "Javascript", "Puppeteer"],
+      link: "https://github.com/danicek555/Auto-Kupovani-Listku",
+      img: "/botTicketPortal.png",
+      type: "external",
+      featured: true,
+    },
+
+          {
+        "title": "Automatický bot pro nákup lístků na Ticketportal",
+        "description": "Bot, který automaticky nakupuje lístky na Ticketportal pro konkrétní událost s konkrétními vyhledávacími parametry."
+      }
+
+            {
+        "title": "Automatic Bot for Buying Tickets on Ticketportal",
+        "description": "A bot that automatically buys tickets on Ticketportal for a specific event with specific search parameters."
+      }
+

@@ -1,38 +1,13 @@
-chtel bych pridavat kazdy zavody jako nejaky karty a muzes si je prokliknout, tam budou vzdycky vsechny natocene zavody a neco o tech zavodech
 
 nejakou galerii vsech zavodu, kde si dokazu vyfiltrovat podle toho jaky to byli zavody, rok vzdalenost atd. a ukaze mi to vzdycky ty VideoGallery
 
 nejake supercool animace od Motionu napriklad na landing page jak scrolluju, nebo ze bude litat za cursorem tlacitko recrute! jako na univerzitu
-dat vsude anglicky preklad 
-vymazat automaticky bot pro nakup listku... 
 pridat nejak moje vysledky z czech swimming na moji stranku
 nejake prace na kterych pracuju? 
 pridat mapu kam chodim na treninky a kdo je muj hlavni trener atd
 vice motion animaci na strance, klidne uplne silene
 
-video 
-pridat analytics, hodit to na raspberry pi pres nginx a pres https
-
-    {
-      title: t("projects.1.title"),
-      description: t("projects.1.description"),
-      technologies: ["NodeJS", "Javascript", "Puppeteer"],
-      link: "https://github.com/danicek555/Auto-Kupovani-Listku",
-      img: "/botTicketPortal.png",
-      type: "external",
-      featured: true,
-    },
-
-          {
-        "title": "Automatický bot pro nákup lístků na Ticketportal",
-        "description": "Bot, který automaticky nakupuje lístky na Ticketportal pro konkrétní událost s konkrétními vyhledávacími parametry."
-      }
-
-            {
-        "title": "Automatic Bot for Buying Tickets on Ticketportal",
-        "description": "A bot that automatically buys tickets on Ticketportal for a specific event with specific search parameters."
-      }
-
-
-      jak funguji analytics?
-      jak funguje cookies?
+youtube video ?
+hodit to na raspberry pi pres nginx a pres https
+odstranit nepotrebny md files
+co google search console? 
