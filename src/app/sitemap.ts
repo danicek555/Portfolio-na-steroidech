@@ -1,7 +1,9 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://portfolio-na-steroidech.vercel.app/en";
 
   // Get current date for lastModified
   const currentDate = new Date();
@@ -57,20 +59,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       });
     });
-  });
-
-  // Add redirect for root URL (without locale)
-  sitemap.push({
-    url: baseUrl,
-    lastModified: currentDate,
-    changeFrequency: "weekly",
-    priority: 1.0,
-    alternates: {
-      languages: {
-        en: `${baseUrl}/en`,
-        cs: `${baseUrl}/cs`,
-      },
-    },
   });
 
   return sitemap;
