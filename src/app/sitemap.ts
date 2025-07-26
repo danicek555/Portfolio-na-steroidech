@@ -3,7 +3,7 @@ import { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://portfolio-na-steroidech.vercel.app/en";
+    "https://portfolio-na-steroidech.vercel.app";
 
   // Get current date for lastModified
   const currentDate = new Date();
