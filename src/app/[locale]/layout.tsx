@@ -4,6 +4,7 @@ import Footer from "../../components/footer";
 import { ThemeProvider } from "../../components/ThemeProvider";
 import DarkModeToggle from "../../components/DarkModeToggle";
 import LanguageToggle from "../../components/LanguageToggle";
+import BetaPopup from "../../components/BetaPopup";
 import { roboto, montserrat } from "../../styles/fonts";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
@@ -92,6 +93,7 @@ export default async function LocaleLayout({
           <Footer />
           <DarkModeToggle />
           <LanguageToggle />
+          <BetaPopup />
         </ThemeProvider>
       </NextIntlClientProvider>
     </div>
