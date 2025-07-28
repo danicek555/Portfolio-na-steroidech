@@ -52,6 +52,11 @@ const BetaPopup = () => {
     setIsVisible(false);
     // Remember that user dismissed the popup
     localStorage.setItem("betaPopupDismissed", "true");
+
+    // Dispatch custom event to notify other components
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent("betaPopupClosed"));
+    }, 300); // Small delay to let the exit animation start
   };
 
   const overlayVariants = {

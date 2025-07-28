@@ -5,6 +5,7 @@ import { ThemeProvider } from "../../components/ThemeProvider";
 import DarkModeToggle from "../../components/DarkModeToggle";
 import LanguageToggle from "../../components/LanguageToggle";
 import BetaPopup from "../../components/BetaPopup";
+import RecruitButton from "../../components/RecruitButton";
 import { roboto, montserrat } from "../../styles/fonts";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
@@ -94,6 +95,7 @@ export default async function LocaleLayout({
           <DarkModeToggle />
           <LanguageToggle />
           <BetaPopup />
+          <RecruitButton />
         </ThemeProvider>
       </NextIntlClientProvider>
     </div>
