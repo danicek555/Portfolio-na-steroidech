@@ -136,8 +136,8 @@ const BetaPopup = () => {
               </h3>
 
               <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                This is a beta version of Daniel Mitka's portfolio on steroids.
-                We're testing new features and improvements.
+                This is a beta version of Daniel Mitka&apos;s portfolio on
+                steroids. We&apos;re testing new features and improvements.
               </p>
 
               {/* Action buttons */}
