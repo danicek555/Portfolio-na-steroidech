@@ -14,7 +14,7 @@ import type { Metadata } from "next";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://portfolio-na-steroidech.vercel.app";
+  "https://danielmitkanasteroidech.vercel.app";
 
 // Generate metadata for each locale with proper canonical and hreflang
 export async function generateMetadata({

@@ -10,7 +10,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://portfolio-na-steroidech.vercel.app";
+  "https://danielmitkanasteroidech.vercel.app";
 const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Daniel Mitka Portfolio";
 const siteTitle =
   process.env.NEXT_PUBLIC_SITE_TITLE ||

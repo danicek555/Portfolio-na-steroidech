@@ -121,7 +121,7 @@ const RecruitButton = () => {
 
   const handleClick = () => {
     window.open(
-      "mailto:contact@danielmitka.com?subject=Recruitment Inquiry",
+      "mailto:danmitka@gmail.com?subject=Recruitment Inquiry",
       "_blank"
     );
     setIsVisible(false);
