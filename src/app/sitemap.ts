@@ -2,14 +2,19 @@ import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://danielmitkanasteroidech.vercel.app";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://steroid.danielmitka.com";
 
   // Get current date for lastModified
   const currentDate = new Date();
 
   // Define your competition pages
-  const competitions = ["ostrava", "samorin", "australia", "podoli", "plzen"];
+  const competitions = [
+    "czech-open-nationals-2025",
+    "czech-youth-nationals-2024",
+    "lifesaving-worlds-australia",
+    "slovakia-cup-2024",
+    "team-championship-finals-2025",
+  ];
 
   // Define supported locales
   const locales = ["en", "cs"];
