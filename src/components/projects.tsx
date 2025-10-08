@@ -26,7 +26,7 @@ const Projects: React.FC = () => {
       title: t("projects.0.title"),
       description: t("projects.0.description"),
       technologies: ["HTML", "CSS", "JavaScript"],
-      link: "https://daniel.mitka.cz/terka/",
+      link: "https://steroid.danielmitka.com/terka/",
       img: "/Macbook_No_Background.png",
       type: "external",
       featured: true,

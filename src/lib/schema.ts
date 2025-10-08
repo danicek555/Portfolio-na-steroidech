@@ -96,7 +96,8 @@ export interface WebSiteSchema {
 
 // Environment variables for consistent data
 const getBaseData = () => ({
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://daniel.mitka.cz",
+  siteUrl:
+    process.env.NEXT_PUBLIC_SITE_URL || "https://steroid.danielmitka.com",
   siteName: process.env.NEXT_PUBLIC_SITE_NAME || "Daniel Mitka Portfolio",
   authorName: process.env.NEXT_PUBLIC_AUTHOR_NAME || "Daniel Mitka",
   twitterHandle: process.env.NEXT_PUBLIC_TWITTER_HANDLE || "@MitkaDaniel",

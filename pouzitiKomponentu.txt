@@ -58,7 +58,7 @@ Perfect! I've created comprehensive, in-depth metadata for your layout file. Her
 - **Search engine verification** placeholders
 
 ## 📝 **To-Do for You:**
-1. **Update domain**: Replace `"https://danielmitka.com"` with your actual domain
+1. **Update domain**: Replace `"https://steroid.danielmitka.com"` with your actual domain
 2. **Add Twitter handle**: Update `@danielmitka` with your real Twitter username
 3. **Add verification codes**: Uncomment and add Google/Yandex verification if needed
 
