@@ -6,6 +6,8 @@ import DarkModeToggle from "../../components/DarkModeToggle";
 import LanguageToggle from "../../components/LanguageToggle";
 import BetaPopup from "../../components/BetaPopup";
 import RecruitButton from "../../components/RecruitButton";
+import ScrollProgressBar from "../../components/effects/ScrollProgressBar";
+import CustomCursor from "../../components/effects/CustomCursor";
 import { roboto, montserrat } from "../../styles/fonts";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
@@ -88,6 +90,8 @@ export default async function LocaleLayout({
     >
       <NextIntlClientProvider>
         <ThemeProvider>
+          <ScrollProgressBar />
+          <CustomCursor />
           <Navbar />
           <main>{children}</main>
           <Footer />

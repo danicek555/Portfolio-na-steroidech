@@ -6,6 +6,7 @@ import { useTheme } from "./ThemeProvider";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import TiltCard from "./effects/TiltCard";
 
 type Project = {
   title: string;
@@ -226,15 +227,7 @@ const Projects: React.FC = () => {
                         viewport={{ once: true }}
                         className="flex-1 max-w-2xl"
                       >
-                        <motion.div
-                          whileHover={{
-                            scale: 1.05,
-                            rotateY: 5,
-                            rotateX: 5,
-                          }}
-                          transition={{ duration: 0.4 }}
-                          className="relative"
-                        >
+                        <TiltCard max={12} glare={false} className="relative">
                           <Image
                             src={project.img}
                             alt={project.title}
@@ -243,7 +236,7 @@ const Projects: React.FC = () => {
                             className="w-full h-auto object-contain drop-shadow-2xl"
                             priority
                           />
-                        </motion.div>
+                        </TiltCard>
                       </motion.div>
                     </div>
                   </motion.div>
