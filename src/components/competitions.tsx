@@ -204,7 +204,7 @@ const Competitions: React.FC = () => {
     <motion.div
       key={index}
       className={clsx(
-        "rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 select-none",
+        "group rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 select-none",
         isDarkMode ? "bg-gray-700" : "bg-white",
         hasMoreThanMax ? "min-w-0 flex-shrink-0" : ""
       )}
@@ -217,19 +217,21 @@ const Competitions: React.FC = () => {
         msUserSelect: "none",
       }}
     >
-      <div className="relative h-48 sm:h-64 md:h-80">
+      <div className="relative h-48 sm:h-64 md:h-80 overflow-hidden">
         <Image
           src={comp.img}
           alt={comp.title}
           fill
           className={clsx(
-            "object-cover",
+            "object-cover transition-transform duration-700 ease-out group-hover:scale-110",
             comp.img === "/samorin.jpg" || comp.img === "/ausFoto_temp.jpg"
               ? "object-center"
               : "object-[50%_30%]"
           )}
           priority
         />
+        {/* Gradient glow sweep on hover */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-green-500/40 via-transparent to-blue-500/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       </div>
       <div className="p-3 sm:p-4 md:p-6">
         <h3

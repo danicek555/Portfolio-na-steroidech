@@ -5,6 +5,7 @@ import { useTheme } from "./ThemeProvider";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import TiltCard from "./effects/TiltCard";
 
 const About: React.FC = () => {
   const { isDarkMode } = useTheme();
@@ -107,13 +108,9 @@ const About: React.FC = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="relative max-w-xl mx-auto lg:mx-0"
           >
-            <motion.div
-              whileHover={{
-                scale: 1.05,
-                rotateY: 5,
-                transition: { duration: 0.4 },
-              }}
-              className="overflow-hidden rounded-lg"
+            <TiltCard
+              max={16}
+              className="overflow-hidden rounded-lg shadow-2xl"
             >
               <Image
                 src="/profilovaFotka.jpg"
@@ -123,15 +120,26 @@ const About: React.FC = () => {
                 className="rounded-lg object-cover w-full h-auto"
                 priority
               />
-            </motion.div>
+            </TiltCard>
 
-            {/* Floating accent element */}
+            {/* Floating accent elements */}
             <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              viewport={{ once: true }}
-              className="absolute -bottom-4 -right-4 w-20 h-20 bg-green-500 rounded-full opacity-20"
+              animate={{ y: [0, -16, 0], scale: [1, 1.1, 1] }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute -bottom-6 -right-6 w-24 h-24 bg-green-500 rounded-full opacity-20 blur-sm"
+            />
+            <motion.div
+              animate={{ y: [0, 14, 0], x: [0, 10, 0] }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="absolute -top-6 -left-6 w-16 h-16 bg-blue-500 rounded-full opacity-20 blur-sm"
             />
           </motion.div>
         </div>
